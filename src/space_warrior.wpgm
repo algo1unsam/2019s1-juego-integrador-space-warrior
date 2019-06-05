@@ -13,9 +13,17 @@ program space_warrior {
 
 	game.addVisual(nave)
 	game.addVisual(enemigo1)
+	game.addVisual(enemigo2)
+	game.addVisual(enemigo3)
+	game.addVisual(enemigo4)
+	game.addVisual(enemigo5)
+	game.addVisual(enemigo6)
+	game.addVisual(enemigo7)
+	game.addVisual(enemigo8)
 
-	
-	
+
+	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
+	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
 	
 	game.start()
 }
