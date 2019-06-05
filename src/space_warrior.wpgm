@@ -1,0 +1,21 @@
+import wollok.game.*
+import nave.*
+import enemigos.*
+
+
+program space_warrior {
+
+	game.title("Space Warrior")
+	game.height(12)
+	game.width(12)	
+	game.ground("ground.png")
+
+	game.addVisual(nave)
+	game.addVisual(enemigo1)
+
+
+	
+	
+	
+	game.start()
+}
