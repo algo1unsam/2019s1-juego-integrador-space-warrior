@@ -4,7 +4,7 @@ class Enemigo {
 
 	method position() = game.at(0,0)
 
-	method image () = "alien.png"
+	method image()= "alien.png"
 	
 	
 }

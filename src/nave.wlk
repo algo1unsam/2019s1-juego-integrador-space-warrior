@@ -7,6 +7,6 @@ object nave {
 	
 	
 	
-	method image() = "player.png"
+	method image()= "player.png"
 	
 }
