@@ -2,10 +2,11 @@ import wollok.game.*
 
 class Enemigo {
 
+	const disparosEfectuados = []
+
 	method position() = game.at(0,0)
 
 	method image()= "alien.png"
-	
 	
 }
 
