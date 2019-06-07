@@ -28,6 +28,7 @@ program space_warrior {
 	
 	
 	keyboard.r().onPressDo { enemigo1.disparoInicial()}
+	keyboard.e().onPressDo { enemigo1.disparoTrayecto()}
 	
 	
 	game.start()

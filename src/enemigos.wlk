@@ -5,27 +5,34 @@ import disparo.*
 
 class Enemigo {
 
-	const disparosEfectuados = []
+	const property disparosEfectuados = []
 
 	method position() = game.at(0,0)
 
 	method image()= "alien.png"
 	
+	//como le pasas el disparo?
 
 	method disparoInicial() {
 		const disparo = new Disparo()
 		disparosEfectuados.add(disparo)
 		disparo.position(self.position().down(1))
 		game.addVisualIn(disparo, disparo.position()) 
+		disparo.bajarEnTablero()
 		
 	} 
 	
 	
+
+	method disparoTrayecto(){
+		
+		//game.addVisualIn(disparo, disparo.position()) 	
+		//bajar en el tablero
+	}
+	
+
+
 }
-
-
-
-
 
 
 object enemigo1 inherits Enemigo{
