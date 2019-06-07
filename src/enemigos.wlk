@@ -16,19 +16,19 @@ class Enemigo {
 	method disparoInicial() {
 		const disparo = new Disparo()
 		//creo el objeto disparo1
+		disparo.position(self.position().down(1))
 		
-		//disparo.position(self.position().down(1)) 
 		disparosEfectuados.add(disparo)
 		//agrego el disparo a la lista de disparos efectuados
-		
-		//disparo.position(self.position().down(1))
+
 		game.addVisual(disparo)
-		//game.addVisualIn(disparo.image(), disparo.position())
+	
 		
 		//agrego el disparo en el tablero
 		
-		disparo.bajarEnTablero()
+		game.onTick(5000, "bajarEnTablero", { => disparo.bajarEnTablero()})
 		
+			
 	} 
 	
 	
