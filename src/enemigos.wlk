@@ -8,6 +8,10 @@ class Enemigo {
 
 	method image()= "alien.png"
 	
+	method disparar() {
+		
+	} 
+	
 }
 
 

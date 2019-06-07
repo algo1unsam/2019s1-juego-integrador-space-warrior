@@ -1,6 +1,7 @@
 import wollok.game.*
 import nave.*
 import enemigos.*
+import disparo.*
 
 
 program space_warrior {
@@ -24,6 +25,10 @@ program space_warrior {
 
 	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
+	
+	
+	keyboard.r().onPressDo { enemigo1.disparar()}
+	
 	
 	game.start()
 }
