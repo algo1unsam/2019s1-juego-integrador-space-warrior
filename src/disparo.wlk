@@ -5,16 +5,17 @@ import enemigos.*
 
 class Disparo {
 
-	var property position
+	var property position = game.at(3,4)
 	
-	var property esInicial = 1 //revisar esto
+	//var property esInicial = 1 
 	
-	method image()="shoot.png"
+	method image()="player.png"
 	
 	method bajarEnTablero(){
-		position=(self.position().down(1))
-		//o aca, aguantar unos segundos
-		//remove visual
+		
+		game.onTick(5000, { => game.removeVisual(self)})
+		//position=((self.position()).down(1))
+		//game.onTick(5000, self, game.addVisualIn(self.image(),position))
 		}
 		
 }

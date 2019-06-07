@@ -22,7 +22,6 @@ program space_warrior {
 	game.addVisual(enemigo7)
 	game.addVisual(enemigo8)
 
-
 	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
 	
