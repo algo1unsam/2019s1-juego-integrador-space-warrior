@@ -1,4 +1,7 @@
 import wollok.game.*
+import nave.*
+import enemigos.*
+import disparo.*
 
 class Enemigo {
 
@@ -8,9 +11,15 @@ class Enemigo {
 
 	method image()= "alien.png"
 	
-	method disparar() {
+
+	method disparoInicial() {
+		const disparo = new Disparo()
+		disparosEfectuados.add(disparo)
+		disparo.position(self.position().down(1))
+		game.addVisualIn(disparo, disparo.position()) 
 		
 	} 
+	
 	
 }
 

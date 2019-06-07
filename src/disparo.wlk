@@ -3,14 +3,14 @@ import nave.*
 import enemigos.*
 
 
-class Disparos {
+class Disparo {
 
-		
 	var property position
 	
+	var property esInicial = 1
 	
+	method image()="shoot.png"
 	
-	method image()= "shoot.png"
 	
 	
 }

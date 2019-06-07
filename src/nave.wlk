@@ -1,4 +1,7 @@
 import wollok.game.*
+import nave.*
+import enemigos.*
+import disparo.*
 
 
 object nave {

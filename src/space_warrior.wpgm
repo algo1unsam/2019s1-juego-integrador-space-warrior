@@ -27,7 +27,7 @@ program space_warrior {
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
 	
 	
-	keyboard.r().onPressDo { enemigo1.disparar()}
+	keyboard.r().onPressDo { enemigo1.disparoInicial()}
 	
 	
 	game.start()
