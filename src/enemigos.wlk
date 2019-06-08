@@ -5,39 +5,39 @@ import disparo.*
 
 class Enemigo {
 
+	var property umbral = game.height()
+	//capaz precisas que sea property
 	const property disparosEfectuados = []
 
 	method position() = game.at(0,0)
+	
+	//PROBAR CON VAR PROPERTY POSITION
 
 	method image()= "alien.png"
-	
-	//como le pasas el disparo?
 
 	method disparoInicial() {
+		
 		const disparo = new Disparo()
 		//creo el objeto disparo1
 		disparo.position(self.position().down(1))
-		
 		disparosEfectuados.add(disparo)
 		//agrego el disparo a la lista de disparos efectuados
-
 		game.addVisual(disparo)
-	
-		
 		//agrego el disparo en el tablero
 		
-		game.onTick(5000, "bajarEnTablero", { => disparo.bajarEnTablero()})
+			game.onTick(5000, "bajarEnTablero", { => disparo.bajarEnTablero(self)})
 		
+			
+		
+			
+		//el disparo comienza a descender por el tablero
 			
 	} 
 	
-	
-
-	method disparoTrayecto(){
-		
-		//game.addVisualIn(disparo, disparo.position()) 	
-		//bajar en el tablero
-	}
+	method acercarseAlUmbral() {
+		var nuevoUmbral = (umbral-1)
+		umbral = nuevoUmbral
+	} 
 	
 
 
