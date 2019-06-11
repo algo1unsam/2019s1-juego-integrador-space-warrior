@@ -5,8 +5,6 @@ import disparo.*
 
 class Enemigo {
 	
-	const property disparosEfectuados = []
-
 	method position() = game.at(0,0)
 	
 	//PROBAR CON VAR PROPERTY POSITION
@@ -18,19 +16,10 @@ class Enemigo {
 		const disparo = new Disparo()
 		
 		disparo.position(self.position().down(1))
-		disparosEfectuados.add(disparo)	
 		game.addVisual(disparo)
-		disparo.avanzarEnTablero(self)
-		if (disparo.posicionFinal() == 8){self.finDelDisparo()} //esto esta mal
-		//capaz se puede hacer con un onTick, evaluar
-		//game.onTick(5000, "avanzarEnTablero", { => self.avanzarUnLugar()})
+		disparo.avanzarEnTablero()
 		
 	} 
-		method finDelDisparo(){
-			
-			disparosEfectuados.removeAllSuchThat{disparo => disparo == disparosEfectuados.first()}	
-			//ver si en vez de hacerlo con metodo se puede agregar la linea directamente a disparoInicial	
-	}
 	 
 }
 

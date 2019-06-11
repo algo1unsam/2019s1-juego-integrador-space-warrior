@@ -33,9 +33,15 @@ program space_warrior {
 	//para arrancar el juego, tocando la barra espaciadora
 	//"Toca la barra espaciadora para comenzar a jugar"
 	
-	//no se si esta del todo bien esto *
+	keyboard.space().onPressDo { game.onTick(3000, "comenzarDisparos"+enemigo1, { => enemigo1.disparoInicial()})}
+	
+	
+	
+
 	game.whenCollideDo(nave, { disparo => disparo.impactarNave()})
-	//obtener el collider y eliminarlo del juego
+	
+	//game.onTick(1000, "comenzarDisparos"+self.identity, { => enemigo1.disparoInicial()})
+	//cuando matas a un enemigo deja de disparar
 	
 	game.start()
 }

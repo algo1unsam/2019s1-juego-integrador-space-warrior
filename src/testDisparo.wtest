@@ -1,5 +1,5 @@
 
-test "testX" {
+test "Test metodo fin del disparo" {
 
 	assert.that(true)
 

@@ -10,10 +10,10 @@ class Disparo {
 	
 	method image()="shoot.png"
 	
- 	method avanzarEnTablero(enemigo){
+ 	method avanzarEnTablero(){
  		
- 		game.onTick(5000, "avanzarEnTablero", { => self.avanzarUnLugar()})
-
+ 		game.onTick(1000, "avanzarEnTablero", { => self.avanzarUnLugar()})
+		//+self.identity()
 }
 
 	method avanzarUnLugar(){
@@ -21,8 +21,8 @@ class Disparo {
 		game.removeVisual(self)
 		position = position.down(1)
 		game.addVisualIn(self,position)
-		if (posicionFinal == 8){//emprolijar esto: usar valores de height de nave y tablero
-			self.impactarNave()
+		if (posicionFinal == 11){//emprolijar esto: usar valores de height de nave y tablero
+			//self.impactarNave()
 			game.removeVisual(self)
 			
 			
@@ -35,8 +35,10 @@ class Disparo {
 	
 	
 	method impactarNave(){
-		
+		game.removeTickEvent("avanzarEnTablero")
+		game.removeVisual(self)
 		nave.recibeDisparo()
+		
 	}
 
 		

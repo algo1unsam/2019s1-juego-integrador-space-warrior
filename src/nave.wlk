@@ -13,4 +13,11 @@ object nave {
 	
 	method recibeDisparo(){vida-=5}
 	
+	method disparar(){
+		
+		
+		
+		
+	}
+	
 }
