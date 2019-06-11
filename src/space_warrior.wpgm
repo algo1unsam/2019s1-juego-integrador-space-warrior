@@ -29,7 +29,7 @@ program space_warrior {
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
 	
 	
-	keyboard.r().onPressDo { enemigo1.disparoInicial()}
+	keyboard.up().onPressDo { nave.disparar()}
 	//para arrancar el juego, tocando la barra espaciadora
 	//"Toca la barra espaciadora para comenzar a jugar"
 	

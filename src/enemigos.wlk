@@ -5,6 +5,8 @@ import disparo.*
 
 class Enemigo {
 	
+	const enemigos = []
+	
 	method position() = game.at(0,0)
 	
 	//PROBAR CON VAR PROPERTY POSITION
@@ -20,6 +22,10 @@ class Enemigo {
 		disparo.avanzarEnTablero()
 		
 	} 
+
+
+	
+
 	 
 }
 

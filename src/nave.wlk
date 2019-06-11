@@ -15,6 +15,13 @@ object nave {
 	
 	method disparar(){
 		
+		const disparo = new Disparo()
+		
+		disparo.position(self.position().up(1))
+		game.addVisual(disparo)
+		disparo.subirEnTablero()
+		
+	} 
 		
 		
 		
