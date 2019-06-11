@@ -24,8 +24,14 @@ class Enemigo {
 		
 	} 
 	
-	
-	method finDelDisparo(){return 0}
+	//intentar reducir este metodo porque tambien disparo usa algo parecido
+	method finDelDisparo(){
+		game.removeTickEvent("avanzarEnTablero")
+		game.removeVisual(self)
+		//eliminar disparo de la lista - buscar forma de hacerlo sin crear 
+		//una variable auxiliar para guardar disparo
+		
+	}
 	 
 }
 

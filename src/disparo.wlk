@@ -27,17 +27,17 @@ class Disparo {
 			
 			
 			//si llego aca y no esta en la misma posicion que la nave, sigue uno mas y se elimina
-			self.detenerDisparo()
+			game.removeTickEvent("avanzarEnTablero")
 		}
 	
 	}
 	
 	
-	method impactarNave(){}
-	
-	method detenerDisparo(){
-		game.removeTickEvent("avanzarEnTablero")
+	method impactarNave(){
+		
+		nave.recibeDisparo()
 	}
+
 		
 	
 	
