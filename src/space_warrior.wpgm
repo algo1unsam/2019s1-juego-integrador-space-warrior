@@ -27,7 +27,7 @@ program space_warrior {
 	
 	
 	keyboard.r().onPressDo { enemigo1.disparoInicial()}
-	//hacer un forEach de disparoInicial para arrancar el juego, tocando por ej la barra espaciadora
+	//para arrancar el juego, tocando la barra espaciadora
 	//"Toca la barra espaciadora para comenzar a jugar"
 	
 	

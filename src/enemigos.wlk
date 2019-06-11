@@ -4,8 +4,10 @@ import enemigos.*
 import disparo.*
 
 class Enemigo {
-
-	var property umbral = game.height()
+	
+	var descenso = 0
+	var property umbral = game.height() - descenso
+	
 	//capaz precisas que sea property
 	const property disparosEfectuados = []
 
@@ -18,15 +20,20 @@ class Enemigo {
 	method disparoInicial() {
 		
 		const disparo = new Disparo()
-		//creo el objeto disparo1
+		
 		disparo.position(self.position().down(1))
 		disparosEfectuados.add(disparo)
-		//agrego el disparo a la lista de disparos efectuados
+		
 		game.addVisual(disparo)
-		//agrego el disparo en el tablero
+		disparo.bajarEnTablero(self)
 		
-			game.onTick(5000, "bajarEnTablero", { => disparo.bajarEnTablero(self)})
+		//4.times({i => game.onTick(5000, "bajarEnTablero", { => disparo.bajarEnTablero(self)})})
+		//4.times({i => disparo.bajarEnTablero(self)})
+	
 		
+		
+		//game.onTick(5000, "bajarEnTablero", { => disparo.bajarEnTablero(self)})
+			
 			
 		
 			
@@ -37,6 +44,7 @@ class Enemigo {
 	method acercarseAlUmbral() {
 		var nuevoUmbral = (umbral-1)
 		umbral = nuevoUmbral
+		//if (umbral==1) {game.removeTickEvent("bajarEnTablero")} 
 	} 
 	
 
