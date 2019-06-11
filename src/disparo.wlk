@@ -10,9 +10,9 @@ class Disparo {
 	
 	method image()="shoot.png"
 	
- 	method bajarEnTablero(enemigo){
+ 	method avanzarEnTablero(enemigo){
  		
- 		game.onTick(5000, "bajarEnTablero", { => self.bajar()})
+ 		game.onTick(5000, "avanzarEnTablero", { => self.avanzarUnLugar()})
 		
 		
 		//enemigo.acercarseAlUmbral()
@@ -21,20 +21,20 @@ class Disparo {
 
 }
 
-	method bajar(){
+	method avanzarUnLugar(){
 		i += 1
 		game.removeVisual(self)
 		position = position.down(1)
 		game.addVisualIn(self,position)
-		if (i == 2){
+		if (i == (game.width() - 2)){
 			//si llego aca y no esta en la misma posicion que la nave, sigue uno mas y se elimina
-			self.finDelDisparo()
+			self.detenerDisparo()
 		}
 	
 	}
 	
-	method finDelDisparo(){
-		game.removeTickEvent("bajarEnTablero")
+	method detenerDisparo(){
+		game.removeTickEvent("avanzarEnTablero")
 	}
 		
 	

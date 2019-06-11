@@ -20,10 +20,13 @@ class Enemigo {
 		disparo.position(self.position().down(1))
 		disparosEfectuados.add(disparo)	
 		game.addVisual(disparo)
-		disparo.bajarEnTablero(self)
+		disparo.avanzarEnTablero(self)
 		
 	} 
 	
+	
+	method finDelDisparo(){return 0}
+	 
 }
 
 
