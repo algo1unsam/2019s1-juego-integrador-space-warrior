@@ -22,7 +22,14 @@ program space_warrior {
 	game.addVisual(enemigo7)
 	game.addVisual(enemigo8)
 	
-	//no se si esta del todo bien esto *
+	const enemigos = [enemigo1, enemigo2, enemigo3, enemigo4, enemigo5, enemigo6, enemigo7, enemigo8]
+
+	
+	keyboard.space().onPressDo { game.onTick(3000, "comenzarDisparos"+enemigo1, { => enemigo1.disparoInicial()})}
+	keyboard.space().onPressDo { 
+		game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}})
+		//enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}
+	}
 	
 	
 	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
@@ -30,12 +37,9 @@ program space_warrior {
 	
 	
 	keyboard.up().onPressDo { nave.disparar()}
-	//para arrancar el juego, tocando la barra espaciadora
-	//"Toca la barra espaciadora para comenzar a jugar"
-	
-	keyboard.space().onPressDo { game.onTick(3000, "comenzarDisparos"+enemigo1, { => enemigo1.disparoInicial()})}
-	
-	
+
+	//on tick se mueven todos para la derecha 
+	//on tick se mueven todos para la izquierda 
 	
 
 	game.whenCollideDo(nave, { disparo => disparo.impactarNave()})

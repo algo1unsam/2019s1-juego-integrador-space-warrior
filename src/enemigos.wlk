@@ -5,9 +5,12 @@ import disparo.*
 
 class Enemigo {
 	
-	const enemigos = []
-	
-	method position() = game.at(0,0)
+	//const enemigos = [enemigo1, enemigo2, enemigo3, enemigo4, enemigo5, enemigo6, enemigo7, enemigo8]
+
+	var property posicionFinalIzq = 0
+	var property posicionFinalDer = 0
+	var property position	
+	//method position() = game.at(0,0)
 	
 	//PROBAR CON VAR PROPERTY POSITION
 
@@ -22,11 +25,28 @@ class Enemigo {
 		disparo.avanzarEnTablero()
 		
 	} 
-
-
-	
-
 	 
+	method moverHaciaIzquierda(){
+		game.onTick(4000, "moverHaciaIzquierda"+self.identity(), { => self.position(self.position().left(1))})
+		posicionFinalIzq += 1
+		if (posicionFinalIzq == 4){
+			game.removeTickEvent("moverHaciaIzquierda"+self.identity())
+			self.moverHaciaDerecha()
+		}
+	}
+	 
+	
+	
+	method moverHaciaDerecha(){
+		game.onTick(4000, "moverHaciaDerecha"+self.identity(), { => self.position(self.position().right(1))})
+		posicionFinalDer += 1
+		if (posicionFinalDer == 4){
+		game.removeTickEvent("moverHaciaDerecha"+self.identity())
+		self.moverHaciaIzquierda()		
+		
+		}
+		
+	} 
 }
 
 
