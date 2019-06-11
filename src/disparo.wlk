@@ -51,7 +51,11 @@ class Disparo {
 	}
 	
 	
-	method impactarEnemigo(){}
+	method impactarEnemigo(){
+		self.terminarDisparo()
+		game.removeVisual(self)
+		
+	}
 
 		
 	method terminarDisparo(){
