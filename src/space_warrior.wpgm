@@ -21,7 +21,10 @@ program space_warrior {
 	game.addVisual(enemigo6)
 	game.addVisual(enemigo7)
 	game.addVisual(enemigo8)
-
+	
+	//no se si esta del todo bien esto *
+	const disparo = new Disparo()	
+	
 	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
 	
@@ -30,6 +33,9 @@ program space_warrior {
 	//para arrancar el juego, tocando la barra espaciadora
 	//"Toca la barra espaciadora para comenzar a jugar"
 	
+	//no se si esta del todo bien esto *
+	game.whenCollideDo(disparo, { nave => nave.impactarNave() })
+	//obtener el collider y eliminarlo del juego
 	
 	game.start()
 }
