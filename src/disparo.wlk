@@ -27,7 +27,7 @@ class Disparo {
 		game.removeVisual(self)
 		position = position.down(1)
 		game.addVisualIn(self,position)
-		if (posicionFinal == 11){					//emprolijar esto: usar valores de height de nave y tablero		
+		if (posicionFinal == (game.height() - 1)){					//emprolijar esto: usar valores de height de nave y tablero		
 			self.terminarDisparo()
 		}
 	
@@ -38,7 +38,7 @@ class Disparo {
 		game.removeVisual(self)
 		position = position.up(1)
 		game.addVisualIn(self,position)
-		if (posicionFinal == 11){							
+		if (posicionFinal == (game.height() - 1)){							
 			self.terminarDisparo()
 		}
 	}
@@ -49,6 +49,9 @@ class Disparo {
 		nave.recibeDisparo()
 		
 	}
+	
+	
+	method impactarEnemigo(){}
 
 		
 	method terminarDisparo(){

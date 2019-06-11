@@ -27,7 +27,7 @@ program space_warrior {
 	
 	keyboard.space().onPressDo { game.onTick(3000, "comenzarDisparos"+enemigo1, { => enemigo1.disparoInicial()})}
 	keyboard.space().onPressDo { 
-		game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}})
+	game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}})
 		//enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}
 	}
 	
@@ -43,6 +43,9 @@ program space_warrior {
 	
 
 	game.whenCollideDo(nave, { disparo => disparo.impactarNave()})
+	
+	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactarNave()})}
+	//sera legal?
 	
 	//game.onTick(1000, "comenzarDisparos"+self.identity, { => enemigo1.disparoInicial()})
 	//cuando matas a un enemigo deja de disparar
