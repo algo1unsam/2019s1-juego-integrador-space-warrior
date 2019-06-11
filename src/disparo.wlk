@@ -51,9 +51,9 @@ class Disparo {
 	}
 	
 	
-	method impactarEnemigo(){
+	method impactarEnemigo(enemigo){
 		self.terminarDisparo()
-		game.removeVisual(self)
+		enemigo.recibeDisparo()
 		
 	}
 

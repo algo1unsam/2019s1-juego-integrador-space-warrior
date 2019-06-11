@@ -44,7 +44,7 @@ program space_warrior {
 
 	game.whenCollideDo(nave, { disparo => disparo.impactarNave()})
 	
-	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactarEnemigo()})}
+	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactarEnemigo(enemigo)})}
 	//sera legal?
 	
 	//game.onTick(1000, "comenzarDisparos"+self.identity, { => enemigo1.disparoInicial()})

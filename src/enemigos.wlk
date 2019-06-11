@@ -4,15 +4,11 @@ import enemigos.*
 import disparo.*
 
 class Enemigo {
-	
-	//const enemigos = [enemigo1, enemigo2, enemigo3, enemigo4, enemigo5, enemigo6, enemigo7, enemigo8]
 
 	var property posicionFinalIzq = 0
 	var property posicionFinalDer = 0
-	var property position	
-	//method position() = game.at(0,0)
-	
-	//PROBAR CON VAR PROPERTY POSITION
+	var property position
+	var property vida=20
 
 	method image()= "alien.png"
 
@@ -45,9 +41,18 @@ class Enemigo {
 		self.moverHaciaIzquierda()		
 		
 		}
+		}
 		
-	} 
-}
+		
+		
+	method recibeDisparo(){
+		if (vida>0) {vida-=5} else game.removeVisual(self)
+		
+	}	
+		
+		
+} 
+
 
 
 object enemigo1 inherits Enemigo{
