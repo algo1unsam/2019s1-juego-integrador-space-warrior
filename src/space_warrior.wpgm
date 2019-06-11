@@ -34,7 +34,7 @@ program space_warrior {
 	//"Toca la barra espaciadora para comenzar a jugar"
 	
 	//no se si esta del todo bien esto *
-	game.whenCollideDo(nave, { disparo => nave.recibeDisparo()})
+	game.whenCollideDo(nave, { disparo => disparo.impactarNave()})
 	//obtener el collider y eliminarlo del juego
 	
 	game.start()

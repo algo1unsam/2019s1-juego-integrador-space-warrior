@@ -21,16 +21,15 @@ class Enemigo {
 		disparosEfectuados.add(disparo)	
 		game.addVisual(disparo)
 		disparo.avanzarEnTablero(self)
+		if (disparo.posicionFinal() == 8){self.finDelDisparo()} //esto esta mal
+		//capaz se puede hacer con un onTick, evaluar
+		//game.onTick(5000, "avanzarEnTablero", { => self.avanzarUnLugar()})
 		
 	} 
-	
-	//intentar reducir este metodo porque tambien disparo usa algo parecido
-	method finDelDisparo(){
-		game.removeTickEvent("avanzarEnTablero")
-		game.removeVisual(self)
-		//eliminar disparo de la lista - buscar forma de hacerlo sin crear 
-		//una variable auxiliar para guardar disparo
-		
+		method finDelDisparo(){
+			
+			disparosEfectuados.removeAllSuchThat{disparo => disparo == disparosEfectuados.first()}	
+			//ver si en vez de hacerlo con metodo se puede agregar la linea directamente a disparoInicial	
 	}
 	 
 }

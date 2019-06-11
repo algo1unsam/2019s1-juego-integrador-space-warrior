@@ -6,7 +6,7 @@ import enemigos.*
 class Disparo {
 
 	var property position
-	var posicionFinal = 0
+	var property posicionFinal = 0
 	
 	method image()="shoot.png"
 	
@@ -22,7 +22,8 @@ class Disparo {
 		position = position.down(1)
 		game.addVisualIn(self,position)
 		if (posicionFinal == 8){//emprolijar esto: usar valores de height de nave y tablero
-			
+			self.impactarNave()
+			game.removeVisual(self)
 			
 			
 			
