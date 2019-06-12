@@ -45,14 +45,18 @@ class Enemigo {
 		}
 		
 		
-		
 	method recibeDisparo(){
 		if (vida > 0) {
 			vida-=5
-		} else game.removeVisual(self)
+		} else {
+			nave.matarEnemigo()
+			game.removeVisual(self)
+			}
+		}
 		
-	}	
-		
+	
+	
+	method pasarDeNivel(){ nivel+=1	}	
 		
 } 
 
