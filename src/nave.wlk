@@ -8,6 +8,7 @@ object nave {
 	
 	var property position = game.at(6,2)
 	var property vida = 10
+	var property muertes = 0
 	
 	method image()= "player.png"
 	
@@ -22,6 +23,11 @@ object nave {
 		disparo.avanzarEnTablero(self)
 		
 	} 
+	
+	method matarEnemigo(){
+		if (muertes<8) muertes+=1
+	}
+	
 		
 		
 		
