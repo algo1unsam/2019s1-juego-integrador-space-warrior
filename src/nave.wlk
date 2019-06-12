@@ -14,7 +14,7 @@ object nave {
 	
 	method recibeDisparo(){vida-=5}
 	
-	method disparar(){
+	method disparoInicial(){
 		
 		const disparo = new Disparo()
 		
