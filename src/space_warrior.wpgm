@@ -37,12 +37,14 @@ program space_warrior {
 	
 	keyboard.space().onPressDo { 
 	game.onTick(1000, "pasarDeNivel", 
-		{=> if (nivel == 1 and enemigos.all{enemigo.nivel() == 2})
+		{=> if (nivel == 1 and (nave.muertes() == 8))
 			
 			{
-				game.say(nave, "NIVEL 2") //pasar a nivel 2 
+				game.say(nave, "NIVEL 2")
+				nave.muertes(0)
+				//nivel = 2 
 					
-			} else if (nivel == 2 and enemigos.all{enemigo.nivel() == 3}) {game.say(nave, "NIVEL 2")}
+			} else if (nivel == 2 and (nave.muertes() == 4)) {game.say(nave, "NIVEL 3")}
 		})	
 	}
 	
