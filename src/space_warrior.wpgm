@@ -23,10 +23,10 @@ program space_warrior {
 	game.addVisual(enemigo8)
 	
 	const enemigos = [enemigo1, enemigo2, enemigo3, enemigo4, enemigo5, enemigo6, enemigo7, enemigo8]
-
+	var nivel = 1 
 	
 	keyboard.space().onPressDo { 
-		game.onTick(4000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
+	game.onTick(4000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
 		
 	}
 	
@@ -34,6 +34,21 @@ program space_warrior {
 	game.onTick(2000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}})
 	
 	}
+	
+	keyboard.space().onPressDo { 
+	game.onTick(1000, "pasarDeNivel", 
+		{=> if (nivel == 1 and enemigos.all{enemigo.nivel() == 2})
+			
+			{
+				game.say(nave, "NIVEL 2") //pasar a nivel 2 
+					
+			} else if (nivel == 2 and enemigos.all{enemigo.nivel() == 3}) {game.say(nave, "NIVEL 2")}
+		})	
+	}
+	
+	
+	
+	
 	//juntar los dos de space
 	
 	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
