@@ -10,26 +10,10 @@ class Disparo {
 	
 	method image()="shoot.png"
 
-/*	
- 	method avanzarEnTablero(){
- 		
- 		game.onTick(1000, "avanzarEnTablero"+self.identity(), { => self.bajarUnLugar()})
-		//+self.identity()
-}
-
-	method subirEnTablero(){
-		
-		game.onTick(500, "avanzarEnTablero"+self.identity(), { => self.subirUnLugar()})
-		
-	}
-
-*/
-
-		method avanzarEnTablero(disparador){
- 		if (not disparador == nave){
- 				game.onTick(1000, "avanzarEnTablero"+self.identity(), { => self.bajarUnLugar()})
- 			} else game.onTick(500, "avanzarEnTablero"+self.identity(), { => self.subirUnLugar()})
- 		}
+	method avanzarEnTablero(disparador){
+ 		if (disparador == nave){	game.onTick(500, "avanzarEnTablero"+self.identity(), { => self.subirUnLugar()})}
+ 			else game.onTick(1000, "avanzarEnTablero"+self.identity(), { => self.bajarUnLugar()})
+ 	}
 
 
 	method bajarUnLugar(){
