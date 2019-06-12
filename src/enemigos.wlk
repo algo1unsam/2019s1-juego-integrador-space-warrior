@@ -9,6 +9,8 @@ class Enemigo {
 	var property posicionFinalDer = 0
 	var property position
 	var property vida=20
+	var property estaMuerto = false
+	
 
 	method image()= "alien.png"
 
@@ -46,7 +48,9 @@ class Enemigo {
 		
 		
 	method recibeDisparo(){
-		if (vida>0) {vida-=5} else game.removeVisual(self)
+		if (vida > 0) {
+			vida-=5
+		} else game.removeVisual(self)
 		
 	}	
 		

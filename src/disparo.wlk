@@ -18,7 +18,7 @@ class Disparo {
 
 	method subirEnTablero(){
 		
-		game.onTick(1000, "avanzarEnTablero"+self.identity(), { => self.subirUnLugar()})
+		game.onTick(500, "avanzarEnTablero"+self.identity(), { => self.subirUnLugar()})
 		
 	}
 

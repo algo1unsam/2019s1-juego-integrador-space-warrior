@@ -25,10 +25,14 @@ program space_warrior {
 	const enemigos = [enemigo1, enemigo2, enemigo3, enemigo4, enemigo5, enemigo6, enemigo7, enemigo8]
 
 	
-	keyboard.space().onPressDo { game.onTick(3000, "comenzarDisparos"+enemigo1, { => enemigo1.disparoInicial()})}
+	keyboard.space().onPressDo { 
+		game.onTick(3000, "comenzarDisparos"+enemigo1, { => enemigo1.disparoInicial()})	
+		//dejar igual que el de abajo	
+	}
+	
 	keyboard.space().onPressDo { 
 	game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}})
-		//enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}
+	
 	}
 	
 	
@@ -37,18 +41,11 @@ program space_warrior {
 	
 	
 	keyboard.up().onPressDo { nave.disparar()}
-
-	//on tick se mueven todos para la derecha 
-	//on tick se mueven todos para la izquierda 
 	
 
 	game.whenCollideDo(nave, { disparo => disparo.impactarNave()})
 	
-	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactarEnemigo(enemigo)})}
-	//sera legal?
-	
-	//game.onTick(1000, "comenzarDisparos"+self.identity, { => enemigo1.disparoInicial()})
-	//cuando matas a un enemigo deja de disparar
+	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactarEnemigo(enemigo)})}		
 	
 	game.start()
 }
