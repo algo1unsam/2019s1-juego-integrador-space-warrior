@@ -57,7 +57,7 @@ program space_warrior {
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
 	
 	
-	keyboard.up().onPressDo { nave.disparar()}
+	keyboard.up().onPressDo { nave.disparoInicial()}
 	
 
 	game.whenCollideDo(nave, { disparo => disparo.impactarNave()})
