@@ -9,8 +9,8 @@ class Enemigo {
 	var property posicionFinalDer = 0
 	var property position
 	var property vida=20
-	var property estaMuerto = false
-	
+	var property nivel = 1
+
 
 	method image()= "alien.png"
 
@@ -56,7 +56,10 @@ class Enemigo {
 		
 } 
 
+class EnemigoMalo inherits Enemigo{}
 
+
+class EnemigoMuyMalo inherits Enemigo{}
 
 object enemigo1 inherits Enemigo{
 	
