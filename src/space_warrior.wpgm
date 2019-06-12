@@ -26,15 +26,15 @@ program space_warrior {
 
 	
 	keyboard.space().onPressDo { 
-		game.onTick(3000, "comenzarDisparos"+enemigo1, { => enemigo1.disparoInicial()})	
-		//dejar igual que el de abajo	
+		game.onTick(4000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
+		
 	}
 	
 	keyboard.space().onPressDo { 
-	game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}})
+	game.onTick(2000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}})
 	
 	}
-	
+	//juntar los dos de space
 	
 	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
