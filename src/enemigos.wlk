@@ -25,10 +25,10 @@ class Enemigo {
 	} 
 	 
 	method moverHaciaIzquierda(){
-		game.onTick(4000, "moverHaciaIzquierda"+self.identity(), { => self.position(self.position().left(1))})
+		posicionFinalDer = 0
+		self.position(self.position().left(1))
 		posicionFinalIzq += 1
 		if (posicionFinalIzq == 4){
-			game.removeTickEvent("moverHaciaIzquierda"+self.identity())
 			self.moverHaciaDerecha()
 		}
 	}
@@ -36,11 +36,11 @@ class Enemigo {
 	
 	
 	method moverHaciaDerecha(){
-		game.onTick(4000, "moverHaciaDerecha"+self.identity(), { => self.position(self.position().right(1))})
+		posicionFinalIzq = 0
+		self.position(self.position().right(1))
 		posicionFinalDer += 1
 		if (posicionFinalDer == 4){
-		game.removeTickEvent("moverHaciaDerecha"+self.identity())
-		self.moverHaciaIzquierda()		
+			self.moverHaciaIzquierda()		
 		
 		}
 		}
