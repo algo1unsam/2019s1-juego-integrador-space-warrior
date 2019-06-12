@@ -19,7 +19,7 @@ object nave {
 		
 		disparo.position(self.position().up(1))
 		game.addVisual(disparo)
-		disparo.subirEnTablero()
+		disparo.avanzarEnTablero(self)
 		
 	} 
 		

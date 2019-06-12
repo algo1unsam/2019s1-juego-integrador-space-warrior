@@ -20,7 +20,7 @@ class Enemigo {
 		
 		disparo.position(self.position().down(1))
 		game.addVisual(disparo)
-		disparo.avanzarEnTablero()
+		disparo.avanzarEnTablero(self)
 		
 	} 
 	 
