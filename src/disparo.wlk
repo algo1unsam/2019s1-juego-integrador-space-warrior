@@ -31,6 +31,7 @@ class Disparo {
  			} else game.onTick(500, "avanzarEnTablero"+self.identity(), { => self.subirUnLugar()})
  		}
 
+
 	method bajarUnLugar(){
 		posicionFinal += 1
 		game.removeVisual(self)
