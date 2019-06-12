@@ -25,9 +25,9 @@ class Disparo {
 	method bajarUnLugar(){
 		posicionFinal += 1
 		game.removeVisual(self)
-		position = position.down(1)
+		self.position(self.position().down(1))
 		game.addVisualIn(self,position)
-		if (posicionFinal == (game.height() - 1)){					//emprolijar esto: usar valores de height de nave y tablero		
+		if (posicionFinal == (game.height() - 1)){						
 			self.terminarDisparo()
 		}
 	
@@ -36,7 +36,7 @@ class Disparo {
 	method subirUnLugar(){
 		posicionFinal += 1
 		game.removeVisual(self)
-		position = position.up(1)
+		self.position(self.position().up(1))
 		game.addVisualIn(self,position)
 		if (posicionFinal == (game.height() - 1)){							
 			self.terminarDisparo()
