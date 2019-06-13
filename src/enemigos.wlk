@@ -48,9 +48,32 @@ class Enemigo {
 		
 	method desplazarse(){
 		
+		game.removeVisual(self)	
+		if (posicionFinal > -3 and posicionFinal <= 0){
+			self.position(self.position().left(1))
+			posicionFinal-=1
+			
+		} else if (posicionFinal > 0 and posicionFinal<3){
+			
+			self.position(self.position().right(1))
+			posicionFinal+=1
+			
+		} else if (posicionFinal == -3){
+			posicionFinal = 0
+			self.position(self.position().right(1))
+			posicionFinal+=1
+			
+		} else if (posicionFinal == 3){
+			posicionFinal = 0
+			self.position(self.position().left(1))
+			posicionFinal-=1
+		}
+		game.addVisualIn(self,position)
+
 		
 		
-	}		
+	}
+		
 		
 		
 		
