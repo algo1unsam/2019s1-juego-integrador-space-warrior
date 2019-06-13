@@ -10,9 +10,9 @@ class Disparo {
 	
 	method image()="shoot.png"
 
-	method avanzarEnTablero(disparador){
+	method avanzarEnTablero(disparador, msegs){
  		if (disparador == nave){ game.onTick(500, "avanzarEnTablero"+self.identity(), { => self.desplazarse(disparador)})}
- 			else game.onTick(1000, "avanzarEnTablero"+self.identity(), { => self.desplazarse(disparador)})
+ 			else game.onTick(msegs, "avanzarEnTablero"+self.identity(), { => self.desplazarse(disparador)})
  	}
 
 	method desplazarse(disparador){
@@ -21,11 +21,12 @@ class Disparo {
 		game.removeVisual(self)
 		if (disparador==nave){self.position(self.position().up(1))} else {self.position(self.position().down(1))}
 		game.addVisualIn(self,position)
-		self.terminarDisparo()
+		if (posicionFinal == (game.height() - 1)){
+		self.terminarDisparo()}
 		
 	}
 	
-	
+	/*
 	method impactarNave(){
 		self.terminarDisparo()
 		nave.recibeDisparo()
@@ -39,12 +40,19 @@ class Disparo {
 		
 	}
 
+ */
+
+	method impactar(disparador){
+		self.terminarDisparo()
+		disparador.recibeDisparo()
+	}
+
 		
 	method terminarDisparo(){
-		if (posicionFinal == (game.height() - 1)){							
+									
 			game.removeTickEvent("avanzarEnTablero"+self.identity())
 			game.removeVisual(self)
-		}
+		
 		
 	}
 	

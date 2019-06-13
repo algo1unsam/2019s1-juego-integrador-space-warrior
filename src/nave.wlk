@@ -14,13 +14,15 @@ object nave {
 	
 	method recibeDisparo(){vida-=5}
 	
+	method estaMuerto()= (vida<=0)
+	
 	method disparoInicial(){
 		
 		const disparo = new Disparo()
 		
 		disparo.position(self.position().up(1))
 		game.addVisual(disparo)
-		disparo.avanzarEnTablero(self)
+		disparo.avanzarEnTablero(self, 3000)
 		
 	} 
 	

@@ -60,9 +60,9 @@ program space_warrior {
 	keyboard.up().onPressDo { nave.disparoInicial()}
 	
 
-	game.whenCollideDo(nave, { disparo => disparo.impactarNave()})
+	game.whenCollideDo(nave, { disparo => disparo.impactar(nave)})
 	
-	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactarEnemigo(enemigo)})}		
+	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}		
 	
 	game.start()
 }
