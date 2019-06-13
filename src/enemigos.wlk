@@ -28,6 +28,7 @@ class Enemigo {
 		//la logica masomenos está, pero lo hace como se le canta
 		//le falta una vuelta de tuerca
 		//tiene que ser -1,-2,0,1,2
+		//SE PUEDE HACER CON OBJETOS????
 	
 		if (sentido == 0){
 			if (posicionIzq==2) {
@@ -81,6 +82,16 @@ class EnemigoMalo inherits Enemigo{}
 
 
 class EnemigoMuyMalo inherits Enemigo{}
+
+
+//valores cualquiera para probar
+
+object posicionEnemigo{
+	var posicionIzq= 0
+	method posicion() = 
+		if (posicionIzq==1) 0 else 1
+}
+
 
 object enemigo1 inherits Enemigo{
 	
