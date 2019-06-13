@@ -1,6 +1,5 @@
 import wollok.game.*
 import nave.*
-import enemigos.*
 import disparo.*
 
 class Enemigo {
@@ -82,15 +81,6 @@ class EnemigoMalo inherits Enemigo{}
 
 
 class EnemigoMuyMalo inherits Enemigo{}
-
-
-//valores cualquiera para probar
-
-object posicionEnemigo{
-	var posicionIzq= 0
-	method posicion() = 
-		if (posicionIzq==1) 0 else 1
-}
 
 
 object enemigo1 inherits Enemigo{
