@@ -25,22 +25,6 @@ class Disparo {
 		self.terminarDisparo()}
 		
 	}
-	
-	/*
-	method impactarNave(){
-		self.terminarDisparo()
-		nave.recibeDisparo()
-		
-	}
-	
-	
-	method impactarEnemigo(enemigo){
-		self.terminarDisparo()
-		enemigo.recibeDisparo()
-		
-	}
-
- */
 
 	method impactar(disparador){
 		self.terminarDisparo()

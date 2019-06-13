@@ -7,6 +7,7 @@ class Enemigo {
 
 	var property posicionFinalIzq = 0
 	var property posicionFinalDer = 0
+	var property posicionFinal = 0
 	var property position
 	var property vida=20
 	var property nivel = 1
@@ -43,6 +44,16 @@ class Enemigo {
 		
 		}
 		}
+		
+		
+	method desplazarse(){
+		
+		
+		
+	}		
+		
+		
+		
 		
 		
 	method recibeDisparo(){

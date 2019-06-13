@@ -31,7 +31,7 @@ program space_warrior {
 	}
 	
 	keyboard.space().onPressDo { 
-	game.onTick(2000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.moverHaciaIzquierda()}})
+	game.onTick(2000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	
 	}
 	
