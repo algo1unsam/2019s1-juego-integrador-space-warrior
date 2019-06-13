@@ -12,6 +12,10 @@ class Enemigo {
 	var property vida=20
 	var property nivel = 1
 	var property msegs = 5000
+	var property posicionAnterior = 0
+	
+	
+	const property posiciones = [0, -1, -2, -1, 0, 1, 2, 1]
 
 	method image()= "alien.png"
 
@@ -46,38 +50,55 @@ class Enemigo {
 		}
 		
 		
-	method desplazarse(){
-		
-		game.removeVisual(self)	
-		if (posicionFinal > -3 and posicionFinal <= 0){
+	method desplazarse(sentido){
+		//le estas pasando siempre el mismo valor de sentido desde el program...
+		//armar un if en el program para modificar el valor de sentido?
+		var _sentido = sentido
+		if (_sentido == -1){
 			self.position(self.position().left(1))
-			posicionFinal-=1
-			
-		} else if (posicionFinal > 0 and posicionFinal<3){
-			
+			_sentido = 1
+		} else if (_sentido == 1){
 			self.position(self.position().right(1))
-			posicionFinal+=1
-			
-		} else if (posicionFinal == -3){
-			posicionFinal = 0
-			self.position(self.position().right(1))
-			posicionFinal+=1
-			
-		} else if (posicionFinal == 3){
-			posicionFinal = 0
-			self.position(self.position().left(1))
-			posicionFinal-=1
+			_sentido = -1
 		}
-		game.addVisualIn(self,position)
+		
+		
+		/* 
+		if (posicionFinal == 0 and posicionAnterior==0){
+			self.position(self.position().left(1))	
+		posicionFinal-=1	
+			}
+		
+		
+		
+		if (posicionFinal == -1 or ((posicionFinal == 0) and posicionAnterior>0)){
+			self.position(self.position().left(1))
+			posicionFinal-=1//tomar sig valor de lista	
+			
+		}	else if ((posicionFinal%2) == 0 and posicionAnterior<0){
+			self.position(self.position().right(2))
+			posicionFinal+=1
+		}
+		
+			else if ((posicionFinal%2) == 0 and posicionAnterior>0){
+			self.position(self.position().left(2))
+			posicionFinal-=1
+			
+		
+		}
+		
+		else if (posicionFinal == 1 or ((posicionFinal == 0) and posicionAnterior<0)){
+			self.position(self.position().right(1))
+			posicionFinal+=1//tomar sig valor de lista	
+		
+		*/
 
-		
-		
+	
 	}
 		
+
 		
-		
-		
-		
+	
 		
 	method recibeDisparo(){
 		if (vida > 0) {
