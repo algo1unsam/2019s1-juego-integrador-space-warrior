@@ -24,7 +24,6 @@ program space_warrior {
 	
 	const enemigos = [enemigo1, enemigo2, enemigo3, enemigo4, enemigo5, enemigo6, enemigo7, enemigo8]
 	var nivel = 1 
-	var sentido = -1
 	
 	keyboard.space().onPressDo { 
 	game.onTick(4000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
@@ -32,7 +31,7 @@ program space_warrior {
 	}
 	
 	keyboard.space().onPressDo { 
-	game.onTick(2000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse(sentido)}})
+	game.onTick(2000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	
 	}
 	

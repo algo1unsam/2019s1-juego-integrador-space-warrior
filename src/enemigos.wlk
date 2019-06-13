@@ -5,17 +5,13 @@ import disparo.*
 
 class Enemigo {
 
-	var property posicionFinalIzq = 0
-	var property posicionFinalDer = 0
-	var property posicionFinal = 0
+	var property posicionIzq = 1
+	var property posicionDer = 1
+	var property sentido = 0
 	var property position
 	var property vida=20
 	var property nivel = 1
 	var property msegs = 5000
-	var property posicionAnterior = 0
-	
-	
-	const property posiciones = [0, -1, -2, -1, 0, 1, 2, 1]
 
 	method image()= "alien.png"
 
@@ -26,80 +22,46 @@ class Enemigo {
 		game.addVisual(disparo)
 		disparo.avanzarEnTablero(self, msegs)
 		
-	} 
-	 
-	method moverHaciaIzquierda(){
-		posicionFinalDer = 0
-		self.position(self.position().left(1))
-		posicionFinalIzq += 1
-		if (posicionFinalIzq == 4){
-			self.moverHaciaDerecha()
-		}
-	}
-	 
+	} 		
+		
+	method desplazarse(){
+		//la logica masomenos está, pero lo hace como se le canta
+		//le falta una vuelta de tuerca
+		//tiene que ser -1,-2,0,1,2
 	
-	
-	method moverHaciaDerecha(){
-		posicionFinalIzq = 0
-		self.position(self.position().right(1))
-		posicionFinalDer += 1
-		if (posicionFinalDer == 4){
-			self.moverHaciaIzquierda()		
-		
-		}
-		}
-		
-		
-	method desplazarse(sentido){
-		//le estas pasando siempre el mismo valor de sentido desde el program...
-		//armar un if en el program para modificar el valor de sentido?
-		var _sentido = sentido
-		if (_sentido == -1){
-			self.position(self.position().left(1))
-			_sentido = 1
-		} else if (_sentido == 1){
-			self.position(self.position().right(1))
-			_sentido = -1
-		}
-		
-		
-		/* 
-		if (posicionFinal == 0 and posicionAnterior==0){
-			self.position(self.position().left(1))	
-		posicionFinal-=1	
-			}
-		
-		
-		
-		if (posicionFinal == -1 or ((posicionFinal == 0) and posicionAnterior>0)){
-			self.position(self.position().left(1))
-			posicionFinal-=1//tomar sig valor de lista	
-			
-		}	else if ((posicionFinal%2) == 0 and posicionAnterior<0){
-			self.position(self.position().right(2))
-			posicionFinal+=1
-		}
-		
-			else if ((posicionFinal%2) == 0 and posicionAnterior>0){
-			self.position(self.position().left(2))
-			posicionFinal-=1
-			
-		
-		}
-		
-		else if (posicionFinal == 1 or ((posicionFinal == 0) and posicionAnterior<0)){
-			self.position(self.position().right(1))
-			posicionFinal+=1//tomar sig valor de lista	
-		
-		*/
+		if (sentido == 0){
+			if (posicionIzq==2) {
+						self.position(self.position().left(2))
+						posicionIzq=1
+						//self.position(self.position().right(2))
 
-	
-	}
+			} else if (posicionIzq==1){
+					self.position(self.position().left(1))
+					posicionIzq+=1}
+					
+		sentido=1
+		
+		} else if (sentido == 1) {
+			
+			if (posicionDer==2) {
+						self.position(self.position().right(2))
+						posicionDer=1
+						//self.position(self.position().left(2))
+
+			} else if (posicionDer==1){
+					self.position(self.position().right(1))
+					posicionDer+=1}
+			
+		sentido = 0	
+			
+			
+		}
 		
 
 		
 	
-		
+	}	
+	
 	method recibeDisparo(){
 		if (vida > 0) {
 			vida-=5
