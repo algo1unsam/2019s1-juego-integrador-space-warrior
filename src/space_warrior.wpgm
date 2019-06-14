@@ -26,12 +26,12 @@ program space_warrior {
 	var nivel = 1 
 	
 	keyboard.space().onPressDo { 
-	game.onTick(4000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
+	game.onTick(2000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
 		
 	}
 	
 	keyboard.space().onPressDo { 
-	game.onTick(2000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
+	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	
 	}
 	

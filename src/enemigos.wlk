@@ -1,6 +1,7 @@
 import wollok.game.*
 import nave.*
 import disparo.*
+import posiciones.*
 
 class Enemigo {
 
@@ -13,6 +14,7 @@ class Enemigo {
 	var property msegs = 5000
 
 	method image()= "alien.png"
+	
 
 	method disparoInicial() {
 		
@@ -23,44 +25,37 @@ class Enemigo {
 		
 	} 		
 		
-	method desplazarse(){
-		//la logica masomenos está, pero lo hace como se le canta
-		//le falta una vuelta de tuerca
-		//tiene que ser -1,-2,0,1,2
-		//SE PUEDE HACER CON OBJETOS????
+	method desplazarse(nuevaPosicion){
+		
+		//en este metodo lo unico que tengo que ir cambiando es el sentido
 	
-		if (sentido == 0){
-			if (posicionIzq==2) {
-						self.position(self.position().left(2))
-						posicionIzq=1
-						//self.position(self.position().right(2))
+	if (sentido == 0 and posicionIzq==2){
 
-			} else if (posicionIzq==1){
-					self.position(self.position().left(1))
-					posicionIzq+=1}
-					
-		sentido=1
-		
-		} else if (sentido == 1) {
+			position = (self.position().left(1))
+			posicionIzq=1
+			sentido=1
 			
-			if (posicionDer==2) {
-						self.position(self.position().right(2))
-						posicionDer=1
-						//self.position(self.position().left(2))
-
-			} else if (posicionDer==1){
-					self.position(self.position().right(1))
-					posicionDer+=1}
-			
-		sentido = 0	
-			
-			
-		}
-		
-
-		
+					 
+				} else if (sentido == 0 and posicionIzq==1){
+					position =  (self.position().left(1))
+					posicionIzq+=1
+				}			
 	
+					else if (sentido == 1 and posicionDer==2) {
+						
+							position =  (self.position().right(2))
+							posicionDer=1
+							sentido = 0
+				
+								} else if (sentido == 1 and posicionDer==1){
+										position =  (self.position().right(1))
+										posicionDer+=1
+							
+								
+							}
 	}	
+	
+	
 	
 	method recibeDisparo(){
 		if (vida > 0) {
@@ -77,16 +72,9 @@ class Enemigo {
 		
 } 
 
-class EnemigoMalo inherits Enemigo{}
-
-
-class EnemigoMuyMalo inherits Enemigo{}
-
-
 object enemigo1 inherits Enemigo{
 	
-	override method position() = game.at(2,11) 	
-	
+	override method position() = game.at(2,11)
 	
 }
 
@@ -94,6 +82,9 @@ object enemigo1 inherits Enemigo{
 object enemigo2 inherits Enemigo{
 	
 	override method position() = game.at(3,11) 
+
+
+
 	
 	override method disparoInicial(){
 		msegs=6000
@@ -105,7 +96,8 @@ object enemigo2 inherits Enemigo{
 
 object enemigo3 inherits Enemigo{
 	
-	override method position() = game.at(4,11) 
+	override method position() = game.at(4,11)  
+
 	
 	override method disparoInicial(){
 		msegs=3500
@@ -119,7 +111,10 @@ object enemigo3 inherits Enemigo{
 
 object enemigo4 inherits Enemigo{
 	
-	override method position() = game.at(5,11) 
+	override method position() = game.at(5,11)  
+
+
+
 
 
 	override method disparoInicial(){
@@ -136,6 +131,9 @@ object enemigo4 inherits Enemigo{
 object enemigo5 inherits Enemigo{
 	
 	override method position() = game.at(6,11) 
+
+	
+	
 	
 	override method disparoInicial(){
 		msegs=7000
@@ -151,7 +149,7 @@ object enemigo5 inherits Enemigo{
 object enemigo6 inherits Enemigo{
 	
 	override method position() = game.at(7,11) 
-	
+ 	
 	
 }
 
@@ -161,7 +159,8 @@ object enemigo6 inherits Enemigo{
 object enemigo7 inherits Enemigo{
 	
 	override method position() = game.at(8,11) 
-	
+
+
 	override method disparoInicial(){
 		msegs=4500
 		super()
