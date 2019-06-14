@@ -1,7 +1,7 @@
 import wollok.game.*
 import nave.*
 import disparo.*
-import posiciones.*
+
 
 class Enemigo {
 
@@ -25,9 +25,9 @@ class Enemigo {
 		
 	} 		
 		
-	method desplazarse(nuevaPosicion){
+	method desplazarse(){
 	
-	/*if (sentido == 0 and posicionIzq==2){
+	if (sentido == 0 and posicionIzq==2){
 
 			position = (self.position().left(1))
 			posicionIzq=1
@@ -51,34 +51,8 @@ class Enemigo {
 							
 								
 							}
-	}	*/
-	
-	//solo quiero saber cuando tengo que cambiar el sentido
-	//cuando arranca, el sentido es -1
-	
-	
-	if (sentido == -1){
-		sentido-=1
-		self.position(self.position().left(2))
-		
-		} else if (sentido == 1){
-			sentido+=1
-			self.position(self.position().right(2))
-			
-			} else if (sentido==-2){
-				sentido=1
-				self.position(self.position().left(1))
-				
-				} else if (sentido == 2){
-					sentido=-1
-					self.position(self.position().right(1))
-				}
 	
 	}
-	
-	
-	
-	
 	
 	
 	
