@@ -3,34 +3,22 @@ import nave.*
 import enemigos.*
 import disparo.*
 
-//crear clase posiciones
 class Posicion{
-
 	
 	var desplazamiento = 0
-
+	var posicion = 0
+	//si la posicion es cero, cambia el sentido ?
 
 
 	method devuelvePosicion(){
-/* 		var posicion
-		
-		if (sentido == -1 and desplazamiento == 0){
-			desplazamiento+=1
-		}
-		else if (sentido == -1 and desplazamiento == 1){
-			posicion=1
-			desplazamiento+=1
-			
-		} else if (sentido == -1 and desplazamiento == 2){
-			posicion=2
-			desplazamiento=0
-			sentido=1
-		}*/
+		self.moverEnX()
+		return posicion
+		//fijate si devuelve 1 o 0
 }
 		
-	method moverEnX(sentido)
+	method moverEnX()
 
-	method moverEnY(sentido){}
+	method moverEnY(){}
 
 	}
 
@@ -38,10 +26,19 @@ class Posicion{
 
 object posEnemigo inherits Posicion{
 
-	override method moverEnX(sentido){
+	override method moverEnX(){
 		
-		
-		
+		if (desplazamiento==0 or desplazamiento == 2)
+		{
+				posicion=1 
+				desplazamiento+=1
+			}
+				else if (desplazamiento==1)
+				{
+					posicion=2
+					desplazamiento-=1
+				}
+			
 	}
 	
 

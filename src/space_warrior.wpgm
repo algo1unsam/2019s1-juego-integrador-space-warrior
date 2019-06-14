@@ -2,6 +2,7 @@ import wollok.game.*
 import nave.*
 import enemigos.*
 import disparo.*
+import posiciones.*
 
 
 program space_warrior {
@@ -31,7 +32,7 @@ program space_warrior {
 	}
 	
 	keyboard.space().onPressDo { 
-	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
+	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse(posEnemigo)}})
 	
 	}
 	
@@ -40,8 +41,11 @@ program space_warrior {
 		{=> if (nivel == 1 and (nave.muertes() == 8))
 			
 			{
+				
 				game.say(nave, "NIVEL 2")
 				nave.muertes(0)
+				game.removeTickEvent("comenzarDisparos")
+				
 				//nivel = 2 
 					
 			} else if (nivel == 2 and (nave.muertes() == 4)) {game.say(nave, "NIVEL 3")}
@@ -63,6 +67,8 @@ program space_warrior {
 	game.whenCollideDo(nave, { disparo => disparo.impactar(nave)})
 	
 	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}		
+	
+	game.errorReporter(nave)
 	
 	game.start()
 }
