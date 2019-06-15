@@ -43,17 +43,27 @@ keyboard.space().onPressDo {
 
 	game.onTick(1000, "pasarDeNivel", {=>
 			if (nivel == 1 and (nave.muertes() == 8)) {
-				game.clear() // ojo porque capaz saca algo mas que los elementos del tablero
+				
+				//game.clear() // ojo porque capaz saca algo mas que los elementos del tablero
 				game.addVisual(nave)
 				game.say(nave, "NIVEL 2")
 				nave.muertes(0)
 				game.removeTickEvent("comenzarDisparos")
-				enemigos.forEach{ enemigo => enemigo.pasarDeNivel()}
+				game.removeTickEvent("comenzarDesplazamiento") // en realidad, no lo tenes que 
+				//quitar, solo modificar el metodo en enemigoMalo
+				nivel=2
+				enemigos.add(
+					new Enemigo(position = game.at(2,11), pasos=1, nivel=2)
+				)
+				enemigos.forEach { enemigo => game.addVisual(enemigo) }
+				//enemigos.forEach{ enemigo => enemigo.pasarDeNivel()}
+				
 			} else if (nivel == 2 and (nave.muertes() == 4)) {
 				game.say(nave, "NIVEL 3")
 			}
 		})
 	}
+	
 	
 //----------------------------------------Nave---------------------------------------------------------	
 	
