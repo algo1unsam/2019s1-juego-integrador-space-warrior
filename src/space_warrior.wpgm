@@ -13,7 +13,7 @@ program space_warrior {
 	game.ground("ground.png")
 	game.addVisual(nave)
 	
-	var nivel = 1 
+
 	const enemigos = [
 		new Enemigo(position = game.at(2,11), pasos=1),
 		new Enemigo(position = game.at(3,11)),
@@ -35,30 +35,33 @@ keyboard.space().onPressDo {
 		
 	game.onTick(6000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
 	game.onTick(3000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
-	game.onTick(1000, "enemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}}
-	)	
+	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
+		
 	
 	
 //Cambio de nivel	
 
 	game.onTick(1000, "pasarDeNivel", {=>
-			if (nivel == 1 and (nave.muertes() == 8)) {
+			if (nave.nivel() == 1 and (nave.muertes() == 8)) {
 				
 				//game.clear() // ojo porque capaz saca algo mas que los elementos del tablero
+				nave.subirNivel()
+				nave.muertes(0)
 				game.addVisual(nave)
 				game.say(nave, "NIVEL 2")
-				nave.muertes(0)
+				//nave.terminoNivel(disparo)
+				
 				game.removeTickEvent("comenzarDisparos")
 				game.removeTickEvent("comenzarDesplazamiento") // en realidad, no lo tenes que 
 				//quitar, solo modificar el metodo en enemigoMalo
-				nivel=2
+				
 				enemigos.add(
 					new Enemigo(position = game.at(2,11), pasos=1, nivel=2)
 				)
 				enemigos.forEach { enemigo => game.addVisual(enemigo) }
 				//enemigos.forEach{ enemigo => enemigo.pasarDeNivel()}
 				
-			} else if (nivel == 2 and (nave.muertes() == 4)) {
+			} else if (nave.nivel() == 2 and (nave.muertes() == 4)) {
 				game.say(nave, "NIVEL 3")
 			}
 		})
