@@ -8,7 +8,7 @@ class Enemigo {
 	var property posicionIzq = 1
 	var property posicionDer = 1
 	var property sentido = 0
-	var property position
+	var property position = game.at(0,0)
 	var property vida=20
 	var property nivel = 1
 	var property msegs = 6000
