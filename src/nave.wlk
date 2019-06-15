@@ -18,7 +18,8 @@ object nave {
 	
 	method disparoInicial(){
 		
-		const disparo = new Disparo()
+		
+		const disparo = new Disparo(position=self.position(),image="bullet.png")
 		disparo.position(self.position().up(1))
 		game.addVisual(disparo)
 		disparo.avanzarEnTablero(self, 3000)

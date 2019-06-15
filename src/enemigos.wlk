@@ -38,7 +38,7 @@ class Enemigo {
 			position =  (self.position().left(1))
 			posicionIzq+=1
 		
-		} else if (sentido == 1 and posicionDer==2) {		
+		} else if (sentido == 1 and posicionDer==1) {		
 			position = (self.position().right(2))
 			posicionDer=1
 			sentido = 0
