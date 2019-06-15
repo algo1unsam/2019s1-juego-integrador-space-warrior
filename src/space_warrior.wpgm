@@ -35,38 +35,24 @@ keyboard.space().onPressDo {
 		
 	game.onTick(6000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
 	game.onTick(3000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
-	
-	game.onTick(1000, "enemigosMuertos", 
-		{ => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}}
+	game.onTick(1000, "enemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}}
 	)	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 //Cambio de nivel	
 
-	game.onTick(1000, "pasarDeNivel", 
-		{=> if (nivel == 1 and (nave.muertes() == 8))
-			
-			{
-				game.clear() //ojo porque capaz saca algo mas que los elementos del tablero
+	game.onTick(1000, "pasarDeNivel", {=>
+			if (nivel == 1 and (nave.muertes() == 8)) {
+				game.clear() // ojo porque capaz saca algo mas que los elementos del tablero
 				game.addVisual(nave)
 				game.say(nave, "NIVEL 2")
 				nave.muertes(0)
 				game.removeTickEvent("comenzarDisparos")
-				enemigos.forEach{enemigo => enemigo.pasarDeNivel()}
-					
-					
-			} else if (nivel == 2 and (nave.muertes() == 4)) {game.say(nave, "NIVEL 3")}
-		})	
+				enemigos.forEach{ enemigo => enemigo.pasarDeNivel()}
+			} else if (nivel == 2 and (nave.muertes() == 4)) {
+				game.say(nave, "NIVEL 3")
+			}
+		})
 	}
 	
 //----------------------------------------Nave---------------------------------------------------------	

@@ -5,22 +5,19 @@ import enemigos.*
 
 class Disparo {
 	
-	var image="shoot.png"
+	var image = "shoot.png"
 	var property position
 	var property posicionFinal = 0
-	
-	method image() = image
-		
 
-	method avanzarEnTablero(disparador, msegs){
- 		if (disparador == nave){ game.onTick(500, "avanzarEnTablero"+self.identity(), { => self.desplazarse(disparador)})}
- 			else game.onTick(msegs, "avanzarEnTablero"+self.identity(), { => self.desplazarse(disparador)})
- 	}
- 	
- 	
- 
-	method desplazarse(disparador){
-		
+	method image() = image
+
+	method avanzarEnTablero(disparador, msegs) {
+		if (disparador == nave) {
+			game.onTick(500, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador)})
+		} else game.onTick(msegs, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador) })
+	}
+
+	method desplazarse(disparador) {
 		posicionFinal += 1
 		game.removeVisual(self)
 		if (disparador == nave) {
@@ -32,23 +29,16 @@ class Disparo {
 		if (posicionFinal == (game.height() - 1)) {
 			self.terminarDisparo()
 		}
-		
-	} 
- 
+	}
 
- 
-	method impactar(disparador){
+	method impactar(disparador) {
 		self.terminarDisparo()
 		disparador.recibeDisparo()
 	}
 
-		
-	method terminarDisparo(){
-									
-			game.removeTickEvent("avanzarEnTablero"+self.identity())
-			game.removeVisual(self)
-		
-		
+	method terminarDisparo() {
+		game.removeTickEvent("avanzarEnTablero" + self.identity())
+		game.removeVisual(self)
 	}
 	
 }

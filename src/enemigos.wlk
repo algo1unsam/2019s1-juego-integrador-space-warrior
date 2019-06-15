@@ -16,12 +16,14 @@ class Enemigo {
 
 	method image()= "alien.png"
 	
+	method estaMuerto()= (vida<=0)
+	
+	method pasarDeNivel(){ nivel+=1	}	
 
 	method disparoInicial() {
 		
 		const disparo = new Disparo()
 		disparo.position(self.position().down(1))
-//		console.println(position)
 		game.addVisual(disparo)
 		disparo.avanzarEnTablero(self, msegs)
 		
@@ -50,19 +52,14 @@ class Enemigo {
 		}
 	}
 	
-	method recibeDisparo(){
+	method recibeDisparo() {
 		if (vida > 0) {
-			vida-=5
+			vida -= 5
 		} else {
 			nave.matarEnemigo()
 			game.removeVisual(self)
-			
-			}
 		}
-		
-	method estaMuerto()= (vida<=0)
-	
-	method pasarDeNivel(){ nivel+=1	}	
+	}
 		
 } 
 
