@@ -4,6 +4,8 @@ import enemigos.*
 import disparo.*
 
 program space_warrior {
+	
+//-----------------------------------------Inicio--------------------------------------------------
 
 	game.title("SpaceWarrior")
 	game.height(12)
@@ -23,23 +25,34 @@ program space_warrior {
 		new Enemigo(position = game.at(9,11),pasos=1)
 	]
 
-
 	enemigos.forEach { enemigo => game.addVisual(enemigo) }
 
-
-
-
-
+//------------------------------------------OnTicks--------------------------------------------------------
 	
-	
-	keyboard.space().onPressDo { 
+keyboard.space().onPressDo { 
+		
+//Disparos y enemigos
+		
 	game.onTick(6000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
-
 	game.onTick(3000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	
-	}
+	game.onTick(1000, "enemigosMuertos", 
+		{ => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}}
+	)	
 	
-	keyboard.space().onPressDo { 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//Cambio de nivel	
+
 	game.onTick(1000, "pasarDeNivel", 
 		{=> if (nivel == 1 and (nave.muertes() == 8))
 			
@@ -56,11 +69,10 @@ program space_warrior {
 		})	
 	}
 	
+//----------------------------------------Nave---------------------------------------------------------	
 	
 	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
-	
-	
 	keyboard.up().onPressDo { nave.disparoInicial()}
 	
 //--------------------------------------Colisiones------------------------------------------------------
