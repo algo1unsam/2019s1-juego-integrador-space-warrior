@@ -21,13 +21,13 @@ class Disparo {
 
 	method desplazarse(disparador) {
 		posicionFinal += 1
-		game.removeVisual(self) //quitar
+		//game.removeVisual(self) //quitar
 		if (disparador == nave) {
 			self.position(self.position().up(1))
 		} else {
 			self.position(self.position().down(disparador.pasos()))
 		}
-		game.addVisualIn(self, position) //quitar
+		//game.addVisualIn(self, position) //quitar
 		if (posicionFinal == (game.height() - 1)) {
 			self.terminarDisparo()
 		}	else if (nave.nivel()==2){//esto hay que corregirlo urgente
