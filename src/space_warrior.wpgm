@@ -9,9 +9,9 @@ program space_warrior {
 	game.height(12)
 	game.width(13)	
 	game.ground("ground.png")
-
-
 	game.addVisual(nave)
+	
+	var nivel = 1 
 	const enemigos = [
 		new Enemigo(position = game.at(2,11), pasos=1),
 		new Enemigo(position = game.at(3,11)),
@@ -23,9 +23,14 @@ program space_warrior {
 		new Enemigo(position = game.at(9,11),pasos=1)
 	]
 
+
 	enemigos.forEach { enemigo => game.addVisual(enemigo) }
 
-	var nivel = 1 
+
+
+
+
+	
 	
 	keyboard.space().onPressDo { 
 	game.onTick(6000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
@@ -39,7 +44,7 @@ program space_warrior {
 		{=> if (nivel == 1 and (nave.muertes() == 8))
 			
 			{
-				//game.clear() //ojo porque capaz saca algo mas que los elementos del tablero
+				game.clear() //ojo porque capaz saca algo mas que los elementos del tablero
 				game.addVisual(nave)
 				game.say(nave, "NIVEL 2")
 				nave.muertes(0)
@@ -58,11 +63,13 @@ program space_warrior {
 	
 	keyboard.up().onPressDo { nave.disparoInicial()}
 	
+//--------------------------------------Colisiones------------------------------------------------------
 
-	game.whenCollideDo(nave, { disparo => disparo.impactar(nave)})
+	game.whenCollideDo(nave, {disparo  => disparo.impactar(nave)})
 	
-	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}		
-	
+	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
+		
+//------------------------------------------------------------------------------------------------------	
 	game.errorReporter(nave)
 	
 	game.start()

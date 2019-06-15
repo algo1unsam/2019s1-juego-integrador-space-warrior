@@ -35,11 +35,7 @@ class Disparo {
 		
 	} 
  
- 
- 
- 
- 
- 
+
  
 	method impactar(disparador){
 		self.terminarDisparo()
