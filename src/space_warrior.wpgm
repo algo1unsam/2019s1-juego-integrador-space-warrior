@@ -39,7 +39,7 @@ program space_warrior {
 		{=> if (nivel == 1 and (nave.muertes() == 8))
 			
 			{
-				game.clear() //ojo porque capaz saca algo mas que los elementos del tablero
+				//game.clear() //ojo porque capaz saca algo mas que los elementos del tablero
 				game.addVisual(nave)
 				game.say(nave, "NIVEL 2")
 				nave.muertes(0)
@@ -51,10 +51,6 @@ program space_warrior {
 		})	
 	}
 	
-	
-	
-	
-	//juntar los dos de space
 	
 	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
 	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	

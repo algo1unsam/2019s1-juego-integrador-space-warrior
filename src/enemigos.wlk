@@ -56,6 +56,7 @@ class Enemigo {
 		} else {
 			nave.matarEnemigo()
 			game.removeVisual(self)
+			
 			}
 		}
 		

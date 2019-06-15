@@ -4,11 +4,13 @@ import enemigos.*
 
 
 class Disparo {
-
+	
+	var image="shoot.png"
 	var property position
 	var property posicionFinal = 0
 	
-	method image()="shoot.png"
+	method image() = image
+		
 
 	method avanzarEnTablero(disparador, msegs){
  		if (disparador == nave){ game.onTick(500, "avanzarEnTablero"+self.identity(), { => self.desplazarse(disparador)})}
