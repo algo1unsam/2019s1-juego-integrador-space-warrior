@@ -10,20 +10,20 @@ program space_warrior {
 
 	game.title("SpaceWarrior")
 	game.height(12)
-	game.width(13)	
+	game.width(15)	
 	game.ground("ground.png")
 	game.addVisual(nave)
 	
 
 	const enemigos = [
 		new Enemigo(position = game.at(2,11), pasos=1),
-		new Enemigo(position = game.at(3,11)),
-		new Enemigo(position = game.at(4,11), pasos=3),
-		new Enemigo(position = game.at(5,11)),
+		new Enemigo(position = game.at(4,11)),
 		new Enemigo(position = game.at(6,11)),
-		new Enemigo(position = game.at(7,11),pasos=3),
-		new Enemigo(position = game.at(8,11)),
-		new Enemigo(position = game.at(9,11),pasos=1)
+		new Enemigo(position = game.at(8,11), pasos=3),
+		new Enemigo(position = game.at(10,11), pasos=3),
+		new Enemigo(position = game.at(12,11))
+		//,new Enemigo(position = game.at(8,11)),
+		//new Enemigo(position = game.at(9,11),pasos=1)
 	]
 
 	enemigos.forEach { enemigo => game.addVisual(enemigo) }
@@ -34,8 +34,8 @@ keyboard.space().onPressDo {
 		
 //Disparos y enemigos
 		
-	game.onTick(6000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
-	game.onTick(3000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
+	game.onTick(7000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
+	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 		
 	
@@ -45,16 +45,21 @@ keyboard.space().onPressDo {
 	game.onTick(1000, "pasarDeNivel", {=>
 			if (nave.nivel() == 1 and (nave.muertes() == 8)) {
 				
-				//game.clear() // ojo porque capaz saca algo mas que los elementos del tablero
-				nave.subirNivel()
-				nave.muertes(0)
+				 // ojo porque capaz saca algo mas que los elementos del tablero
+				
 				game.addVisual(nave)
 				game.say(nave, "NIVEL 2")
+			
+				nave.subirNivel()
+				nave.muertes(0)
 				
 				enemigos.add(new EnemigoMalo(position = game.at(3,11), pasos=1, nivel=2))
 				enemigos.add(new EnemigoMalo(position = game.at(5,11), pasos=1, nivel=2))
 				enemigos.add(new EnemigoMalo(position = game.at(7,11), pasos=1, nivel=2))
 				enemigos.add(new EnemigoMalo(position = game.at(9,11), pasos=1, nivel=2))
+				
+				
+				
 				
 				enemigos.forEach { enemigo => game.addVisual(enemigo) }
 				//nave.terminoNivel(disparo)
@@ -81,13 +86,12 @@ keyboard.space().onPressDo {
 	
 //--------------------------------------Colisiones------------------------------------------------------
 
-	game.whenCollideDo(nave, {disparo  => disparo.impactar(nave)})
+	//collide para nave
+	
+	
+	game.whenCollideDo(nave, {disparo => disparo.impactar(nave)})	
 	
 	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
-	
-	//remplazar por un solo collide de disparo con disparador
-
-	
 	
 		
 //------------------------------------------------------------------------------------------------------	

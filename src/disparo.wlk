@@ -8,6 +8,7 @@ class Disparo {
 	var image = "shoot.png"
 	var property position
 	var property posicionFinal = 0
+	
 
 	method image() = image
 
@@ -20,21 +21,19 @@ class Disparo {
 	}
 
 	method desplazarse(disparador) {
+		
 		posicionFinal += 1
-		//game.removeVisual(self) //quitar
+		
 		if (disparador == nave) {
 			self.position(self.position().up(1))
 		} else {
 			self.position(self.position().down(disparador.pasos()))
 		}
-		//game.addVisualIn(self, position) //quitar
+	
 		if (posicionFinal == (game.height() - 1)) {
 			self.terminarDisparo()
-		}	else if (nave.nivel()==2){//esto hay que corregirlo urgente
-			self.terminarDisparo()	
 		}
-		//chequeate esto...
-		//game.whenCollideDo(disparador, {disparo => self.impactar(disparador)})		
+
 		
 	}
 

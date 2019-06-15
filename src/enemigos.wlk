@@ -23,7 +23,7 @@ class Enemigo {
 	method disparoInicial() {
 		
 		const disparo = new Disparo()
-		disparo.position(self.position().down(1))
+		disparo.position(self.position().down(pasos))
 		game.addVisual(disparo)
 		disparo.avanzarEnTablero(self, msegs)
 		

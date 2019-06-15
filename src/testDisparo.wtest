@@ -1,6 +1,7 @@
 import disparo.*
 import nave.*
 import enemigos.*
+import wollok.game.*
 
 
 describe "Tests del disparo"{
@@ -8,6 +9,7 @@ describe "Tests del disparo"{
 	const enemigo = new Enemigo()
 	const disparoN = new Disparo(position = nave.position().up(1))
 	const disparoE = new Disparo(position = enemigo.position().down(1))
+
 
 test "Disparo de la nave avanza correctamente" {
 
@@ -40,6 +42,8 @@ test "Disparo del enemigo avanza correctamente (con valor de pasos=1)" {
 	assert.equals(enemigo.position().down(4), disparoE.position())
 
 }
+
+
 
 }
 
