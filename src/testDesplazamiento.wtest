@@ -1,0 +1,16 @@
+import enemigos.*
+
+
+//Metodo desplazarse
+
+//armar describe
+
+
+
+test "Enemigo1: primera posicion a la izquierda " {
+
+	enemigo1.desplazarse()
+
+	assert.equals(enemigo1.position().left(1), enemigo1.position())
+
+}

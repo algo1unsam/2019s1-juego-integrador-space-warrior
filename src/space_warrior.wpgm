@@ -12,24 +12,24 @@ program space_warrior {
 
 
 	game.addVisual(nave)
-	game.addVisual(enemigo1)
-	game.addVisual(enemigo2)
-	game.addVisual(enemigo3)
-	game.addVisual(enemigo4)
-	game.addVisual(enemigo5)
-	game.addVisual(enemigo6)
-	game.addVisual(enemigo7)
-	game.addVisual(enemigo8)
-	
-	const enemigos = [enemigo1, enemigo2, enemigo3, enemigo4, enemigo5, enemigo6, enemigo7, enemigo8]
+	const enemigos = [
+		new Enemigo(position = game.at(1,11)),
+		new Enemigo(position = game.at(2,11)),
+		new Enemigo(position = game.at(3,11)),
+		new Enemigo(position = game.at(4,11)),
+		new Enemigo(position = game.at(5,11)),
+		new Enemigo(position = game.at(6,11)),
+		new Enemigo(position = game.at(7,11)),
+		new Enemigo(position = game.at(8,11))
+	]
+
+	enemigos.forEach { enemigo => game.addVisual(enemigo) }
+
 	var nivel = 1 
 	
 	keyboard.space().onPressDo { 
 	game.onTick(2000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
-		
-	}
-	
-	keyboard.space().onPressDo { 
+
 	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	
 	}
@@ -39,11 +39,13 @@ program space_warrior {
 		{=> if (nivel == 1 and (nave.muertes() == 8))
 			
 			{
-				
+				game.clear() //ojo porque capaz saca algo mas que los elementos del tablero
+				game.addVisual(nave)
 				game.say(nave, "NIVEL 2")
 				nave.muertes(0)
 				game.removeTickEvent("comenzarDisparos")
 				enemigos.forEach{enemigo => enemigo.pasarDeNivel()}
+					
 					
 			} else if (nivel == 2 and (nave.muertes() == 4)) {game.say(nave, "NIVEL 3")}
 		})	
