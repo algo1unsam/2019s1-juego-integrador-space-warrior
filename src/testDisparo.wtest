@@ -1,6 +1,31 @@
+import disparo.*
+import nave.*
+import enemigos.*
 
-test "Test metodo fin del disparo" {
+describe "Tests del disparo"{
+	
+	const disparo = new Disparo(position = nave.position().up(1))
+	
+
+test "Disparo de la nave avanza correctamente" {
+
+	disparo.desplazarse(nave)
+	disparo.desplazarse(nave)
+	disparo.desplazarse(nave)
+
+	assert.equals(nave.position().up(4), disparo.position())
+
+}
+
+
+
+
+test "Disparo del enemigo avanza correctamente" {
 
 	assert.that(true)
 
 }
+
+}
+
+
