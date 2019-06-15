@@ -7,7 +7,7 @@ import disparo.*
 
 class EnemigoMalo inherits Enemigo{
 	
-	
+	var image = "enem2.png"
 	
 	
 	

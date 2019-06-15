@@ -12,9 +12,11 @@ class Disparo {
 	method image() = image
 
 	method avanzarEnTablero(disparador, msegs) {
+		
 		if (disparador == nave) {
 			game.onTick(500, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador)})
 		} else game.onTick(msegs, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador) })
+	
 	}
 
 	method desplazarse(disparador) {
@@ -28,9 +30,11 @@ class Disparo {
 		game.addVisualIn(self, position) //quitar
 		if (posicionFinal == (game.height() - 1)) {
 			self.terminarDisparo()
-		}	else if (nave.nivel()==2){
+		}	else if (nave.nivel()==2){//esto hay que corregirlo urgente
 			self.terminarDisparo()	
-		}		
+		}
+		//chequeate esto...
+		//game.whenCollideDo(disparador, {disparo => self.impactar(disparador)})		
 		
 	}
 

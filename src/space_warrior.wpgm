@@ -1,6 +1,7 @@
 import wollok.game.*
 import nave.*
 import enemigos.*
+import enemigosMalos.*
 import disparo.*
 
 program space_warrior {
@@ -49,16 +50,20 @@ keyboard.space().onPressDo {
 				nave.muertes(0)
 				game.addVisual(nave)
 				game.say(nave, "NIVEL 2")
+				
+				enemigos.add(new EnemigoMalo(position = game.at(3,11), pasos=1, nivel=2))
+				enemigos.add(new EnemigoMalo(position = game.at(5,11), pasos=1, nivel=2))
+				enemigos.add(new EnemigoMalo(position = game.at(7,11), pasos=1, nivel=2))
+				enemigos.add(new EnemigoMalo(position = game.at(9,11), pasos=1, nivel=2))
+				
+				enemigos.forEach { enemigo => game.addVisual(enemigo) }
 				//nave.terminoNivel(disparo)
 				
 				game.removeTickEvent("comenzarDisparos")
 				game.removeTickEvent("comenzarDesplazamiento") // en realidad, no lo tenes que 
 				//quitar, solo modificar el metodo en enemigoMalo
 				
-				enemigos.add(
-					new Enemigo(position = game.at(2,11), pasos=1, nivel=2)
-				)
-				enemigos.forEach { enemigo => game.addVisual(enemigo) }
+				
 				//enemigos.forEach{ enemigo => enemigo.pasarDeNivel()}
 				
 			} else if (nave.nivel() == 2 and (nave.muertes() == 4)) {
@@ -79,6 +84,10 @@ keyboard.space().onPressDo {
 	game.whenCollideDo(nave, {disparo  => disparo.impactar(nave)})
 	
 	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
+	
+	//remplazar por un solo collide de disparo con disparador
+	
+	
 		
 //------------------------------------------------------------------------------------------------------	
 	game.errorReporter(nave)
