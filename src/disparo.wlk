@@ -24,7 +24,7 @@ class Disparo {
 		if (disparador == nave) {
 			self.position(self.position().up(1))
 		} else {
-			self.position(self.position().down(1))
+			self.position(self.position().down(disparador.pasos()))
 		}
 		game.addVisualIn(self, position)
 		if (posicionFinal == (game.height() - 1)) {

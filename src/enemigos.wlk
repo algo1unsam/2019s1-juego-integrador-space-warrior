@@ -11,7 +11,8 @@ class Enemigo {
 	var property position
 	var property vida=20
 	var property nivel = 1
-	var property msegs = 5000
+	var property msegs = 6000
+	var property pasos = 2
 
 	method image()= "alien.png"
 	
