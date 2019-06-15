@@ -86,6 +86,7 @@ keyboard.space().onPressDo {
 	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
 	
 	//remplazar por un solo collide de disparo con disparador
+
 	
 	
 		
