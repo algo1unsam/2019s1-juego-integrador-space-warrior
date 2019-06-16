@@ -28,6 +28,11 @@ program space_warrior {
 
 	enemigos.forEach { enemigo => game.addVisual(enemigo) }
 	
+	
+	//de estos tres tambien podrias hacer un bloque
+	
+	
+	
 //--------------------------------------------Acciones-----------------------------------------------------
 
 const movimientoNave = { =>
@@ -36,10 +41,15 @@ const movimientoNave = { =>
 	keyboard.up().onPressDo { nave.disparoInicial()}	
 }
 
-
+const colisiones = { =>
+	game.whenCollideDo(nave, {disparo => disparo.impactar(nave)})	
+	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}	
+}
 	
 	
-	
+movimientoNave.apply()
+colisiones.apply()
+game.say(nave, "NIVEL"+nave.nivel())	
 	
 	
 	
@@ -53,82 +63,59 @@ keyboard.space().onPressDo {
 	game.onTick(7000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
 	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
-		
-	//----------------------------------------Nave---------------------------------------------------------	
-	
-	//keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
-	//keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
-	//keyboard.up().onPressDo { nave.disparoInicial()}
 	
 	//--------------------------------------Colisiones------------------------------------------------------
 	
-	game.whenCollideDo(nave, {disparo => disparo.impactar(nave)})	
-	
-	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
+
 	
 		
 //------------------------------------------------------------------------------------------------------	
 	
 //Cambio de nivel	
 
-game.onTick(1000, "pasarDeNivel", {=>
+game.onTick(1000, "pasarANivel2", {=>
 
-
-if (nave.nivel() == 0 and nave.muertes() == 0){
-				
-				movimientoNave.apply()
-				nave.subirNivel()
-				game.say(nave, "NIVEL"+nave.nivel())
-				
-				
-			}			
-		
-		 if (nave.nivel() == 1 and (nave.muertes() == 6)) {				
-			
-			game.clear()
-			movimientoNave.apply()	
-			
-			game.addVisual(nave)
-			
-			
-				nave.subirNivel()
-				nave.muertes(0)
-				
-				game.say(nave, "NIVEL 2")
-				
-				enemigos.add(new EnemigoMalo(position = game.at(3,11), pasos=1, nivel=2))
-				enemigos.add(new EnemigoMalo(position = game.at(5,11), pasos=1, nivel=2))
-				enemigos.add(new EnemigoMalo(position = game.at(7,11), pasos=1, nivel=2))
-				enemigos.add(new EnemigoMalo(position = game.at(9,11), pasos=1, nivel=2))
-				
-				
-				enemigos.forEach { enemigo => game.addVisual(enemigo) }
-				
-				
-				game.removeTickEvent("comenzarDisparos")
-				game.removeTickEvent("comenzarDesplazamiento") // en realidad, no lo tenes que 
-				//quitar, solo modificar el metodo en enemigoMalo
-				
-				
-				//enemigos.forEach{ enemigo => enemigo.pasarDeNivel()}
-				
-			} else if (nave.nivel() == 2 and (nave.muertes() == 4)) {
-				game.clear()
+		 if (nave.nivel() == 1 and (nave.muertes() == 6)) {		
+		 	
+		 		game.clear() //me parece que con este clear matas el on tick original
 				game.addVisual(nave)
-				
-				
-				
 				nave.subirNivel()
 				nave.muertes(0)
-				game.say(nave, "NIVEL 3")
-			}
-		})
-	}
-	
+				game.say(nave, "NIVEL 2")
+				enemigos.add(new EnemigoMalo(position = game.at(3, 11), pasos = 1, nivel = 2))
+				enemigos.add(new EnemigoMalo(position = game.at(5, 11), pasos = 1, nivel = 2))
+				enemigos.add(new EnemigoMalo(position = game.at(7, 11), pasos = 1, nivel = 2))
+				enemigos.add(new EnemigoMalo(position = game.at(9, 11), pasos = 1, nivel = 2))
+				enemigos.forEach{ enemigo => game.addVisual(enemigo)}
+				movimientoNave.apply()
+				colisiones.apply()				
+				//game.removeTickEvent("comenzarDisparos")
+				//game.removeTickEvent("comenzarDesplazamiento") // en realidad, no lo tenes que 
+				// quitar, solo modificar el metodo en enemigoMalo
+			// enemigos.forEach{ enemigo => enemigo.pasarDeNivel()}		
+				pasarANivel3.apply()
+					
 
+		}})
+
+
+}
+
+const pasarANivel3 = {=>
+game.onTick(1000, "pasarANivel3", {=>
+	
+	if (nave.nivel() == 2 and (nave.muertes() == 4)) {
+				//game.clear() 
+				game.addVisual(nave)
+				game.say(nave, "NIVEL 3")
+				nave.subirNivel()
+				nave.muertes(0)
+	
+}})}	
 
 
 	game.errorReporter(nave)
 	
 	game.start()
+
 }
