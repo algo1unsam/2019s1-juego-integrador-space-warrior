@@ -63,6 +63,10 @@ keyboard.space().onPressDo {
 	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 	
+	
+	//FALTA:
+	//HACER UN BLOQUE CON ESTOS TRES
+	//MODIFICAR LOS METODOS EN ENEMIGOSMALOS Y ENEMIGOSMUYMALOS	
 
 //------------------------------------------- Nivel 1------------------------------------------------------
 

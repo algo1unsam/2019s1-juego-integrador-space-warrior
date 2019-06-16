@@ -1,7 +1,7 @@
 import enemigos.*
+import enemigosMalos.*
 
-
-//Metodo desplazarse
+//Metodo desplazarse de las tres clases de enemigos
 
 //armar describe
 

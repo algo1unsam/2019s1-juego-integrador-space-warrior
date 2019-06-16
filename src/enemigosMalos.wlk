@@ -9,7 +9,9 @@ class EnemigoMalo inherits Enemigo{
 	
 	var image = "enem2.png"
 	
-	
+	override method desplazarse(){
+		position = (self.position().down(1))
+	}
 	
 	
 	
@@ -19,7 +21,11 @@ class EnemigoMalo inherits Enemigo{
 class EnemigoMuyMalo inherits Enemigo{
 	
 	var image = "ufo.png"
+	//una posicion arriba en el centro
+	//una posicion abajo en el centro
+	//una posicion a la izquierda en el centro
+	//una posicion a la derecha en el centro
 	
-	
+	override method desplazarse(){}
 	
 }
