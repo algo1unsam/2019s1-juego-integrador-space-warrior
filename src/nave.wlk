@@ -13,13 +13,13 @@ object nave {
 	
 	method image()= "player.png"
 	
-	method recibeDisparo(){
-		vida-=5
-	}
-	
-	method estaMuerto()= (vida<=0)
+	method matarEnemigo() {muertes+=1}
 	
 	method subirNivel() {nivel+=1} 
+	
+	method recibeDisparo() {vida-=5} //Agregar condicion perder juego
+	
+	method estaMuerto()= (vida<=0)
 	
 	method disparoInicial(){
 		
@@ -29,11 +29,7 @@ object nave {
 			disparo.avanzarEnTablero(self, 3000)
 		
 	} 
-	
-	method matarEnemigo(){
-		muertes+=1
-	}
-	
-	}
+		
+}
 	
 
