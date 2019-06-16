@@ -1,8 +1,20 @@
 import enemigos.*
 import enemigosMalos.*
+import wollok.game.*
 
 //Metodo desplazarse de las tres clases de enemigos
 
 //armar describe
+
+const enemigo = new EnemigoMuyMalo(pasos = 1, nivel = 3)
+
+test "Desplazamiento del enemigo nivel 3"{
+	
+	enemigo.position(game.at(6,11))
+	
+	
+	
+	assert.equals(game.at(6,11), enemigo.position())
+}
 
 

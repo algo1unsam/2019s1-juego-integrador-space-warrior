@@ -26,12 +26,38 @@ class EnemigoMalo inherits Enemigo{
 
 class EnemigoMuyMalo inherits Enemigo{
 	
+	var property primeraPosicion = position
+	var property segundaPosicion = game.at(8,5)
+	var property terceraPosicion = game.at(6,6)
+	var property cuartaPosicion = game.at(3,5)
+	
 	var image = "ufo.png"
 	//una posicion arriba en el centro
 	//una posicion abajo en el centro
 	//una posicion a la izquierda en el centro
 	//una posicion a la derecha en el centro
 	
-	override method desplazarse(){}
+	override method desplazarse(){
+		
+		var nuevaPosicion = primeraPosicion
+		
+		if (nuevaPosicion == primeraPosicion){
+			position = segundaPosicion
+			nuevaPosicion = segundaPosicion
+		} else if (nuevaPosicion == segundaPosicion){
+			position = terceraPosicion
+			nuevaPosicion = terceraPosicion
+		} else if (nuevaPosicion == terceraPosicion){
+			position = cuartaPosicion
+			nuevaPosicion = cuartaPosicion
+		} else if (nuevaPosicion == cuartaPosicion){
+			position = primeraPosicion
+			nuevaPosicion = segundaPosicion
+	}
 	
+}
+
+
+
+
 }

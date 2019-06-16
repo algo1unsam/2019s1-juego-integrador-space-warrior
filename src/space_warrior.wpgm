@@ -104,8 +104,10 @@ const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 			pasarDeNivel.apply()
 			enemigos.add(new EnemigoMuyMalo(position = game.at(6, 11), pasos = 1, nivel = 3))
 			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-			//movimientoNave.apply()
+			movimientoNave.apply()
 			//colisiones.apply()
+			game.onTick(8000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
+			
 			//falta agregar un FINDELJUEGO
 		}
 	}) }	
