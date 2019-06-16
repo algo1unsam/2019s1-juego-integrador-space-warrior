@@ -3,16 +3,13 @@ import nave.*
 import enemigos.*
 import disparo.*
 
-//Acordate que los objetos definidos en enemigos.wlk van a tener que heredar de alguno de estos dos s/ corresponda
-
 class EnemigoMalo inherits Enemigo{
 	
 	var property posicionFinal = 0
 	var image = "enem2.png"
 	
 	override method desplazarse(){
-		posicionFinal += 1
-		
+		posicionFinal += 1		
 		position = (self.position().down(1))
 		if (posicionFinal == (game.height() - 2)) {
 			self.perder()
