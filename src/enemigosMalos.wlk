@@ -26,7 +26,6 @@ class EnemigoMalo inherits Enemigo{
 
 class EnemigoMuyMalo inherits Enemigo{
 	
-	var property primeraPosicion = position
 	var property segundaPosicion = game.at(8,5)
 	var property terceraPosicion = game.at(6,6)
 	var property cuartaPosicion = game.at(3,5)
@@ -39,22 +38,14 @@ class EnemigoMuyMalo inherits Enemigo{
 	
 	override method desplazarse(){
 		
-		var nuevaPosicion = primeraPosicion
-		
-		if (nuevaPosicion == primeraPosicion){
-			position = segundaPosicion
-			nuevaPosicion = segundaPosicion
-		} else if (nuevaPosicion == segundaPosicion){
-			position = terceraPosicion
-			nuevaPosicion = terceraPosicion
-		} else if (nuevaPosicion == terceraPosicion){
-			position = cuartaPosicion
-			nuevaPosicion = cuartaPosicion
-		} else if (nuevaPosicion == cuartaPosicion){
-			position = primeraPosicion
-			nuevaPosicion = segundaPosicion
-	}
-	
+		if (self.position() == game.at(6,11)){
+			self.position(game.at(8,5))
+		} else if (self.position() == game.at(8,5)){
+			self.position(game.at(6,6))
+		} else if (self.position() == game.at(6,6)){
+			self.position(game.at(3,5))
+		} else if (self.position() == game.at(3,5)){
+			self.position(game.at(6,11))
 }
 
 
