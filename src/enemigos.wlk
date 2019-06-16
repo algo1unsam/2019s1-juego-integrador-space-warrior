@@ -7,7 +7,7 @@ class Enemigo {
 
 	var property posicionIzq = 1
 	var property posicionDer = 1
-	var property sentido = 0
+	var property sentido = -1
 	var property position = game.at(0,0)
 	var property vida=20
 	var property nivel = 1
@@ -34,14 +34,14 @@ class Enemigo {
 			posicionIzq=1
 			sentido=1
 						 
-		} else if (sentido == 0 and posicionIzq==1){
+		} else if (sentido == -1 and posicionIzq==1){
 			position =  (self.position().left(1))
 			posicionIzq+=1
 		
-		} else if (sentido == 1 and posicionDer==1) {		
+		} else if (sentido == -1 and posicionDer==1) {		
 			position = (self.position().right(2))
 			posicionDer=1
-			sentido = 0
+			sentido = -1
 	
 		} else if (sentido == 1 and posicionDer==1){
 			position =  (self.position().right(1))

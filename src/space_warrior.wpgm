@@ -16,12 +16,12 @@ program space_warrior {
 	
 
 	const enemigos = [
-		new Enemigo(position = game.at(1,11), pasos=1),
-		new Enemigo(position = game.at(3,11)),
-		new Enemigo(position = game.at(5,11)),
-		new Enemigo(position = game.at(7,11), pasos=3),
-		new Enemigo(position = game.at(9,11), pasos=3),
-		new Enemigo(position = game.at(11,11))
+		new Enemigo(position = game.at(2,11), pasos=1),
+		new Enemigo(position = game.at(4,11)),
+		new Enemigo(position = game.at(6,11)),
+		new Enemigo(position = game.at(8,11), pasos=3),
+		new Enemigo(position = game.at(10,11), pasos=3),
+		new Enemigo(position = game.at(12,11))
 	]
 	
 enemigos.forEach { enemigo => game.addVisual(enemigo) }	
@@ -45,7 +45,7 @@ const pasarDeNivel = { =>
 	game.addVisual(nave)
 	nave.subirNivel()
 	nave.muertes(0)
-	game.say(nave, "NIVEL"+nave.nivel())
+	if (nave.nivel() <4){game.say(nave, "NIVEL"+nave.nivel())}
 }
 
 
@@ -95,18 +95,33 @@ game.onTick(1000, "pasarANivel2", {=>
 
 //-------------------------------------------- Nivel 3 -----------------------------------------------------
 const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
+	
 		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
+			enemigos.add(new EnemigoMalo(position = game.at(2, 11), pasos = 1, nivel = 2, msegs=3500))
+			enemigos.add(new EnemigoMalo(position = game.at(7, 11), pasos = 1, nivel = 2, msegs=3500))
 			enemigos.add(new EnemigoMuyMalo(position = game.at(5,9), pasos = 1, nivel = 3))
 			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 			movimientoNave.apply()
-			//colisiones.apply()
+			colisiones.apply()
 			game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
+			//game.onTick(8000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
+			game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
+			finDelJuego.apply()
 			
-			//falta agregar un FINDELJUEGO
 		}
 	}) }	
+	
+const finDelJuego = {=> game.onTick(1000, "finDelJuego", {=>
+	
+	if (nave.nivel() == 3 and (nave.muertes() == 1)){
+		pasarDeNivel.apply()
+		game.say(nave, "GANASTE")
+		game.say(nave, "CHAU!")
+		game.stop()
+	}
 
+}	)}
 
 	game.errorReporter(nave)
 	

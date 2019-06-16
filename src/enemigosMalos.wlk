@@ -26,13 +26,13 @@ class EnemigoMuyMalo inherits Enemigo {
 
 	override method desplazarse() {
 		if (self.position() == game.at(5, 9)) {
-			self.position(game.at(11, 5))
+			position = game.at(11, 5)
 		} else if (self.position() == game.at(11, 5)) {
-			self.position(game.at(5, 3))
+			position = game.at(5, 3)
 		} else if (self.position() == game.at(5, 3)) {
-			self.position(game.at(0, 5))
+			position = game.at(0, 5)
 		} else if (self.position() == game.at(0, 5)) {
-			self.position(game.at(5, 9))
+			position = game.at(5, 9)
 		}
 	}
 

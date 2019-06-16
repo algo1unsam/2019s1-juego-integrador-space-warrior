@@ -2,42 +2,38 @@ import enemigos.*
 import enemigosMalos.*
 import wollok.game.*
 
+describe "Tests Enemigo Nivel 3"{
+	
+	const enemigo = new EnemigoMuyMalo(pasos = 1, nivel = 3)
 
-//armar describe
-
-const enemigo = new EnemigoMuyMalo(pasos = 1, nivel = 3)
-
-//---------------------------Desplazamiento-------------------------------------
 
 test "Desplazamiento desde la primera posición hacia la segunda"{
 	
-	enemigo.position(game.at(6,11))
+	enemigo.position(game.at(5,9))
 	enemigo.desplazarse()
 	
-	assert.equals(game.at(8,5), enemigo.position())
-}
-
-test "Desplazamiento desde la segunda posición hacia la tercera"{
-	
-	enemigo.position(game.at(8,5))
-	enemigo.desplazarse()
-	
-	assert.equals(game.at(6,6), enemigo.position())
-}
-
-test "Desplazamiento desde la tercera posición hacia la cuarta"{
-	
-	enemigo.position(game.at(6,6))
-	enemigo.desplazarse()
-	
-	assert.equals(game.at(3,5), enemigo.position())
+	assert.equals(game.at(11, 5), enemigo.position())
 }
 
 test "Desplazamiento desde la cuarta posición hacia la primera"{
 	
-	enemigo.position(game.at(3,5))
+	enemigo.position(game.at(0, 5))
 	enemigo.desplazarse()
 	
-	assert.equals(game.at(6,11), enemigo.position())
+	assert.equals(game.at(5,9), enemigo.position())
+}
+
+test "Desplazamiento completo (4 posiciones)"{
+	
+	enemigo.position(game.at(5,9))
+	enemigo.desplazarse()
+	enemigo.desplazarse()
+	enemigo.desplazarse()
+	enemigo.desplazarse()
+	
+	assert.equals(game.at(5,9), enemigo.position())
+}
+	
+	
 }
 
