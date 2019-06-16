@@ -49,9 +49,17 @@ const pasarDeNivel = { =>
 	game.say(nave, "NIVEL"+nave.nivel())
 }
 
+const enemigosYDisparos = {=>		
+		
+	game.onTick(7000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
+	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
+	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
+	
+}	
+
 movimientoNave.apply()
 colisiones.apply()	
-	
+enemigosYDisparos.apply()
 
 //------------------------------------------OnTicks--------------------------------------------------------
 	
@@ -59,14 +67,10 @@ keyboard.space().onPressDo {
 		
 //Disparos y enemigos
 		
-	game.onTick(7000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
-	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
-	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
-	
+
 	
 	//FALTA:
-	//HACER UN BLOQUE CON ESTOS TRES
-	//MODIFICAR LOS METODOS EN ENEMIGOSMALOS Y ENEMIGOSMUYMALOS	
+	//MODIFICAR LOS METOOS EN ENEMIGOSMALOS Y ENEMIGOSMUYMALOS	
 
 //------------------------------------------- Nivel 1------------------------------------------------------
 
