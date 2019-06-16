@@ -25,13 +25,8 @@ program space_warrior {
 		//,new Enemigo(position = game.at(8,11)),
 		//new Enemigo(position = game.at(9,11),pasos=1)
 	]
+enemigos.forEach { enemigo => game.addVisual(enemigo) }	
 
-	enemigos.forEach { enemigo => game.addVisual(enemigo) }
-	
-	
-	//de estos tres tambien podrias hacer un bloque
-	
-	
 	
 //--------------------------------------------Acciones-----------------------------------------------------
 
@@ -54,17 +49,8 @@ const pasarDeNivel = { =>
 	game.say(nave, "NIVEL"+nave.nivel())
 }
 
-
-
-
-	
 movimientoNave.apply()
-colisiones.apply()
-
-
-	
-	
-	
+colisiones.apply()	
 	
 
 //------------------------------------------OnTicks--------------------------------------------------------
@@ -77,7 +63,12 @@ keyboard.space().onPressDo {
 	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 	
-//Cambio de nivel	
+
+//------------------------------------------- Nivel 1------------------------------------------------------
+
+
+
+//------------------------------------------- Nivel 2 -----------------------------------------------------
 
 game.onTick(1000, "pasarANivel2", {=>
 
@@ -97,13 +88,13 @@ game.onTick(1000, "pasarANivel2", {=>
 
 }
 
-const pasarANivel3 = {=>
-game.onTick(1000, "pasarANivel3", {=>
-	
-	if (nave.nivel() == 2 and (nave.muertes() == 4)) {
-		pasarDeNivel.apply()
-				
-}})}	
+//-------------------------------------------- Nivel 3 -----------------------------------------------------
+const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
+		if (nave.nivel() == 2 and (nave.muertes() == 4)) {
+			pasarDeNivel.apply()
+			enemigos.add(new EnemigoMuyMalo(position = game.at(6, 11), pasos = 1, nivel = 3))
+		}
+	}) }	
 
 
 	game.errorReporter(nave)
