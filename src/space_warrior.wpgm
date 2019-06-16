@@ -27,6 +27,22 @@ program space_warrior {
 	]
 
 	enemigos.forEach { enemigo => game.addVisual(enemigo) }
+	
+//--------------------------------------------Acciones-----------------------------------------------------
+
+const movimientoNave = { =>
+	keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
+	keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
+	keyboard.up().onPressDo { nave.disparoInicial()}	
+}
+
+
+	
+	
+	
+	
+	
+	
 
 //------------------------------------------OnTicks--------------------------------------------------------
 	
@@ -60,18 +76,18 @@ game.onTick(1000, "pasarDeNivel", {=>
 
 if (nave.nivel() == 0 and nave.muertes() == 0){
 				
-				
+				movimientoNave.apply()
 				nave.subirNivel()
 				game.say(nave, "NIVEL"+nave.nivel())
-				keyboard.left().onPressDo { nave.position(nave.position().left(1)) }
-				keyboard.right().onPressDo { nave.position(nave.position().right(1)) }	
-				keyboard.up().onPressDo { nave.disparoInicial()}
+				
 				
 			}			
 		
 		 if (nave.nivel() == 1 and (nave.muertes() == 6)) {				
-				
+			
 			game.clear()
+			movimientoNave.apply()	
+			
 			game.addVisual(nave)
 			
 			
