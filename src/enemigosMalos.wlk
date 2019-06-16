@@ -7,13 +7,19 @@ import disparo.*
 
 class EnemigoMalo inherits Enemigo{
 	
+	var property posicionFinal = 0
 	var image = "enem2.png"
 	
 	override method desplazarse(){
+		posicionFinal += 1
+		
 		position = (self.position().down(1))
+		if (posicionFinal == (game.height() - 2)) {
+			self.perder()
+			vida=0//esto no se si va
+			game.removeVisual(self)
+		}
 	}
-	
-	
 	
 }
 

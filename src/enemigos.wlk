@@ -60,6 +60,12 @@ class Enemigo {
 			game.removeVisual(self)
 		}
 	}
+	
+	method perder(){
+		game.say(nave,"OH NO! PERDISTE!")
+	}
+	
+	
 		
 } 
 
