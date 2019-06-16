@@ -1,25 +1,30 @@
 import enemigos.*
 import wollok.game.*
 
-describe "Tests Enemigo Nivel 1 / Clase Enemigo"{
-	
-	const enemigo = new Enemigo(position = game.at(5,5), pasos = 1, nivel = 3)
+describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
 
-	test "Desplazamiento: sentido izquierda"{
-	
-	//Por valores default empiezo con sentido = -1 y posicionIzq = 1
-	
-	enemigo.desplazarse()
-	
-	assert.equals(game.at(4, 5), enemigo.position())
-	assert.equals(1, enemigo.posicionIzq())
-	assert.equals(true)
-}
-	
-	
-	
-	
-	
-}
+	const enemigo = new Enemigo(position = game.at(5, 5), pasos = 1, nivel = 3)
 
+	test "Desplazamiento: sentido izquierda" {
+		// Por valores default empiezo con sentido = -1 y posicionIzq = 1
+		enemigo.desplazarse()
+		assert.equals(game.at(4, 5), enemigo.position())
+	}
+
+	test "Desplazamiento: cambio de sentido primera vez" {
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		assert.equals(game.at(7, 5), enemigo.position())
+	}
+
+	test "Desplazamiento: cambio de sentido segunda vez" {
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		assert.equals(game.at(5, 5), enemigo.position())
+	}
+
+
+}
 

@@ -16,12 +16,12 @@ program space_warrior {
 	
 
 	const enemigos = [
-		new Enemigo(position = game.at(2,11), pasos=1),
-		new Enemigo(position = game.at(4,11)),
-		new Enemigo(position = game.at(6,11)),
+		new Enemigo(position = game.at(1,11), pasos=1),
+		new Enemigo(position = game.at(3,11)),
+		new Enemigo(position = game.at(5,11)),
+		new Enemigo(position = game.at(6,11), pasos=3),
 		new Enemigo(position = game.at(8,11), pasos=3),
-		new Enemigo(position = game.at(10,11), pasos=3),
-		new Enemigo(position = game.at(12,11))
+		new Enemigo(position = game.at(10,11))
 	]
 	
 enemigos.forEach { enemigo => game.addVisual(enemigo) }	
