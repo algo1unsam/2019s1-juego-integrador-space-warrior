@@ -16,4 +16,10 @@ class EnemigoMalo inherits Enemigo{
 }
 
 
-class EnemigoMuyMalo inherits Enemigo{}
+class EnemigoMuyMalo inherits Enemigo{
+	
+	var image = "ufo.png"
+	
+	
+	
+}
