@@ -6,7 +6,7 @@ import disparo.*
 
 object nave {
 	
-	var property position = game.at(5,1)
+	var property position = game.at(6,1)
 	var property vida = 10
 	var property muertes = 0
 	var property nivel = 1

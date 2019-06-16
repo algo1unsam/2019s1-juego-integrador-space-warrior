@@ -26,29 +26,21 @@ class EnemigoMalo inherits Enemigo{
 
 class EnemigoMuyMalo inherits Enemigo{
 	
-	var property segundaPosicion = game.at(8,5)
-	var property terceraPosicion = game.at(6,6)
-	var property cuartaPosicion = game.at(3,5)
-	
 	var image = "ufo.png"
-	//una posicion arriba en el centro
-	//una posicion abajo en el centro
-	//una posicion a la izquierda en el centro
-	//una posicion a la derecha en el centro
 	
 	override method desplazarse(){
 		
-		if (self.position() == game.at(6,11)){
-			self.position(game.at(8,5))
-		} else if (self.position() == game.at(8,5)){
-			self.position(game.at(6,6))
-		} else if (self.position() == game.at(6,6)){
-			self.position(game.at(3,5))
-		} else if (self.position() == game.at(3,5)){
-			self.position(game.at(6,11))
+		if (self.position() == game.at(5,9)){
+			self.position(game.at(11,5))
+		} else if (self.position() == game.at(11,5)){
+			self.position(game.at(5,3))
+		} else if (self.position() == game.at(5,3)){
+			self.position(game.at(0,5))
+		} else if (self.position() == game.at(0,5)){
+			self.position(game.at(5,9))
 }
 
 
-
+}
 
 }
