@@ -17,8 +17,6 @@ class Enemigo {
 	method image()= "alien.png"
 	
 	method estaMuerto()= (vida<=0)
-	
-	method pasarDeNivel(){ nivel+=1	}	
 
 	method disparoInicial() {
 		
