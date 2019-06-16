@@ -63,6 +63,8 @@ class Enemigo {
 	
 	method perder(){
 		game.say(nave,"OH NO! PERDISTE!")
+		
+		//a este metodo tambien hay que llamarlo cuando la nave se queda sin vida
 	}
 	
 	

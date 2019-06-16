@@ -86,10 +86,15 @@ game.onTick(1000, "pasarANivel2", {=>
 				colisiones.apply()	
 				game.onTick(10000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})				
 				game.onTick(9000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
-				//game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
-				pasarANivel3.apply()	
+				game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
+				pasarANivel3.apply()			
+				
+				
 
 		}})
+				
+		
+		
 
 }
 
@@ -98,9 +103,9 @@ const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 		if (nave.nivel() == 2 and (nave.muertes() == 4)) {
 			pasarDeNivel.apply()
 			enemigos.add(new EnemigoMuyMalo(position = game.at(6, 11), pasos = 1, nivel = 3))
-			game.addVisual(enemigo)
-			movimientoNave.apply()
-			colisiones.apply()
+			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
+			//movimientoNave.apply()
+			//colisiones.apply()
 			//falta agregar un FINDELJUEGO
 		}
 	}) }	
