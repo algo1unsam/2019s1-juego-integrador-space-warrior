@@ -46,10 +46,23 @@ const colisiones = { =>
 	enemigos.forEach{enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}	
 }
 	
+const pasarDeNivel = { =>
+	game.clear() 
+	game.addVisual(nave)
+	nave.subirNivel()
+	nave.muertes(0)
+	game.say(nave, "NIVEL"+nave.nivel())
+}
+
+
+
+
 	
 movimientoNave.apply()
 colisiones.apply()
-game.say(nave, "NIVEL"+nave.nivel())	
+
+
+	
 	
 	
 	
@@ -64,40 +77,23 @@ keyboard.space().onPressDo {
 	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 	
-	//--------------------------------------Colisiones------------------------------------------------------
-	
-
-	
-		
-//------------------------------------------------------------------------------------------------------	
-	
 //Cambio de nivel	
 
 game.onTick(1000, "pasarANivel2", {=>
 
 		 if (nave.nivel() == 1 and (nave.muertes() == 6)) {		
 		 	
-		 		game.clear() //me parece que con este clear matas el on tick original
-				game.addVisual(nave)
-				nave.subirNivel()
-				nave.muertes(0)
-				game.say(nave, "NIVEL 2")
+		 		pasarDeNivel.apply()
 				enemigos.add(new EnemigoMalo(position = game.at(3, 11), pasos = 1, nivel = 2))
 				enemigos.add(new EnemigoMalo(position = game.at(5, 11), pasos = 1, nivel = 2))
 				enemigos.add(new EnemigoMalo(position = game.at(7, 11), pasos = 1, nivel = 2))
 				enemigos.add(new EnemigoMalo(position = game.at(9, 11), pasos = 1, nivel = 2))
 				enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 				movimientoNave.apply()
-				colisiones.apply()				
-				//game.removeTickEvent("comenzarDisparos")
-				//game.removeTickEvent("comenzarDesplazamiento") // en realidad, no lo tenes que 
-				// quitar, solo modificar el metodo en enemigoMalo
-			// enemigos.forEach{ enemigo => enemigo.pasarDeNivel()}		
-				pasarANivel3.apply()
-					
+				colisiones.apply()					
+				pasarANivel3.apply()	
 
 		}})
-
 
 }
 
@@ -105,12 +101,8 @@ const pasarANivel3 = {=>
 game.onTick(1000, "pasarANivel3", {=>
 	
 	if (nave.nivel() == 2 and (nave.muertes() == 4)) {
-				//game.clear() 
-				game.addVisual(nave)
-				game.say(nave, "NIVEL 3")
-				nave.subirNivel()
-				nave.muertes(0)
-	
+		pasarDeNivel.apply()
+				
 }})}	
 
 
