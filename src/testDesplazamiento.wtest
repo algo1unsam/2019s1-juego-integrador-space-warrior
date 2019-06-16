@@ -11,7 +11,7 @@ const enemigo = new EnemigoMuyMalo(pasos = 1, nivel = 3)
 test "Desplazamiento del enemigo nivel 3"{
 	
 	enemigo.position(game.at(6,11))
-	
+	 
 	
 	
 	assert.equals(game.at(6,11), enemigo.position())
