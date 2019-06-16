@@ -1,5 +1,6 @@
 import enemigos.*
 import wollok.game.*
+import nave.*
 
 describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
 
@@ -25,6 +26,18 @@ describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
 		assert.equals(game.at(5, 5), enemigo.position())
 	}
 
+	test "Recibir disparo con vida > 0 "{
+		//Valor default de vida = 20
+		enemigo.recibeDisparo()
+		assert.that(enemigo.vida()==15)
+	}
+	
+//	test "Recibir disparo con vida = 0 "{
+//		enemigo.vida(0)
+//		enemigo.recibeDisparo()
+//		assert.that()
+//		lo hago con el valor de nave.muertes() ? 
+//	}
 
 }
 
