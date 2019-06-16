@@ -4,11 +4,10 @@ import disparo.*
 
 
 class Enemigo {
-
-	var property posicionIzq = 1
-	var property posicionDer = 1
-	var property sentido = -1
+	
 	var property position = game.at(0,0)
+	var property contador = 1
+	var property sentido = -1
 	var property vida=20
 	var property nivel = 1
 	var property msegs = 6000
@@ -27,28 +26,50 @@ class Enemigo {
 		
 	} 		
 		
-	method desplazarse(){
+//	method desplazarse(){
+//	
+//		if (sentido == 0 and posicionIzq==2){
+//			position = (self.position().left(1))
+//			posicionIzq=1
+//			sentido=1
+//						 
+//		} else if (sentido == -1 and posicionIzq==1){
+//			position =  (self.position().left(1))
+//			posicionIzq+=1
+//		
+//		} else if (sentido == -1 and posicionDer==1) {		
+//			position = (self.position().right(2))
+//			posicionDer=1
+//			sentido = -1
+//	
+//		} else if (sentido == 1 and posicionDer==1){
+//			position =  (self.position().right(1))
+//			posicionDer+=1
+//			
+//		}
+//	}
+
+method desplazarse(){
 	
-		if (sentido == 0 and posicionIzq==2){
-			position = (self.position().left(1))
-			posicionIzq=1
-			sentido=1
-						 
-		} else if (sentido == -1 and posicionIzq==1){
-			position =  (self.position().left(1))
-			posicionIzq+=1
-		
-		} else if (sentido == -1 and posicionDer==1) {		
-			position = (self.position().right(2))
-			posicionDer=1
-			sentido = -1
-	
-		} else if (sentido == 1 and posicionDer==1){
-			position =  (self.position().right(1))
-			posicionDer+=1
-			
-		}
+	if (sentido == -1 and contador == 1){
+		self.position((self.position().left(1)))
+		contador+=1
+	}	else if (sentido == -1 and contador == 2){
+		self.position((self.position().right(3)))
+		sentido = 1
+		contador = 1
+	} else if (sentido == 1 and contador == 1){
+		self.position((self.position().right(1)))
+		contador+=1
+	} else if (sentido == 1 and contador == 2){
+		self.position((self.position().left(3)))
+		sentido = -1
+		contador = 1
 	}
+	
+}
+
+
 	
 	method recibeDisparo() {
 		if (vida > 0) {
