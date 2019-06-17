@@ -36,6 +36,19 @@ describe "Test de la nave" {
 	}
 	
 	
+	test "Method matarEnemigo nivel 1 muertes 6"{
+		
+		nave.muertes(6)	
+		nave.matarEnemigo()
+		
+		assert.notThat(nave.muertes()==7)
+	}
+	
+	
+	
+	
+	
+	
 
 }
 
