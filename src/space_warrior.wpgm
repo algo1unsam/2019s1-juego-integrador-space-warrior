@@ -40,9 +40,13 @@ program space_warrior {
 		}
 	}
 	
-	//const gameStop = { => game.onTick(3000, "gameStop", { => game.stop()}) }
+	const perderJuego = { => 
+		game.onTick(1000, "perderJuego", { => if (nave.estaMuerto()){nave.perder()}}) 
+	}
+
 	movimientoNave.apply()//fijate si esto lo dejas asi, haces una excepcion o lo metes adentro del keyboard
-	colisiones.apply()	
+	colisiones.apply()
+	perderJuego.apply()	
 
 keyboard.space().onPressDo { 
 
@@ -65,6 +69,7 @@ game.onTick(1000, "pasarANivel2", {=>
 				enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 				movimientoNave.apply()
 				colisiones.apply()	
+				perderJuego.apply()	
 				game.onTick(10000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})				
 				game.onTick(6000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
 				game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
@@ -86,6 +91,7 @@ const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 			movimientoNave.apply()
 			colisiones.apply()
+			perderJuego.apply()	
 			game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 			game.onTick(9000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
 			game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})

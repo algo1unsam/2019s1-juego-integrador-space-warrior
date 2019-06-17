@@ -6,8 +6,24 @@ describe "Test de la nave" {
 	test "Valor de vida según nivel" {
 		
 		nave.subirNivel()
-		assert.equals(30, nave.vida())
+		assert.equals(25, nave.vida())
 	}
+	
+	test "Nave recibe disparo cuando vida > 0 y nivel es 1"{
+		
+		nave.recibeDisparo()
+		
+		assert.equals(10, nave.vida())
+	}
+	
+	test "Nave recibe disparo cuando vida == 0"{
+		
+		nave.vida(0)
+		
+		assert.that(nave.estaMuerto())
+	}
+	
+	
 
 }
 

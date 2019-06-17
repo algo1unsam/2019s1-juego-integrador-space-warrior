@@ -13,7 +13,7 @@ object nave {
 	
 	method image()= "player.png"
 	
-	method estaMuerto()= (vida == 0)
+	method estaMuerto()= (vida == 0) //se usa?
 	
 	method matarEnemigo() {
 		if ((nivel == 1 and muertes < 6) or (nivel == 2 and muertes < 5) or (nivel == 3 and muertes < 3)) {
@@ -37,7 +37,7 @@ object nave {
 			vida -= 10
 		} else if (vida > 0 and nivel == 3) {
 			vida -= 15
-		} else self.perder()
+		} 
 	} 
 	
 	method disparoInicial(){
@@ -52,14 +52,13 @@ object nave {
 
 	method perder() {
 		game.say(self, "OH NO! PERDISTE!")
-		self.finDelJuego()
+		//self.finDelJuego()
 	// a este metodo tambien hay que llamarlo cuando la nave se queda sin vida
 	}
 	
 	method finDelJuego() {
 		game.onTick(3000, "gameStop", { => game.stop()})
 	}
-	
 	
 		
 }
