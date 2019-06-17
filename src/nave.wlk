@@ -49,8 +49,6 @@ object nave {
 			disparo.avanzarEnTablero(self, 3000)
 		
 	} 
-	
-	
 		
 }
 	
