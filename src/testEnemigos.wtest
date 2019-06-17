@@ -5,6 +5,7 @@ import nave.*
 describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
 
 	const enemigo = new Enemigo(position = game.at(5, 5), pasos = 1)
+	const enemigos = [enemigo]
 
 	test "Desplazamiento: sentido izquierda" {
 		// Por valores default empiezo con sentido = -1 y posicionIzq = 1
@@ -32,12 +33,7 @@ describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
 		assert.that(enemigo.vida()==15)
 	}
 	
-//	test "Recibir disparo con vida = 0 "{
-//		enemigo.vida(0)
-//		enemigo.recibeDisparo()
-//		assert.that()
-//		lo hago con el valor de nave.muertes() ? 
-//	}
+
 
 }
 

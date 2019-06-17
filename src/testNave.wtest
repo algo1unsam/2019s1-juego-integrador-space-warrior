@@ -41,7 +41,8 @@ describe "Test de la nave" {
 		nave.muertes(6)	
 		nave.matarEnemigo()
 		
-		assert.notThat(nave.muertes()==7)
+		assert.equals(6, nave.muertes())
+
 	}
 	
 	

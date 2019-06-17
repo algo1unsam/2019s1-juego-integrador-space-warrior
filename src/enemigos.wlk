@@ -41,12 +41,14 @@ class Enemigo{
 	}
 
 	method recibeDisparo() {
+		
 		if (vida > 0) {
 			vida -= 5
 		} else {
 			nave.matarEnemigo()
 			game.removeVisual(self)
 		}
+		
 	}
 
 } 
