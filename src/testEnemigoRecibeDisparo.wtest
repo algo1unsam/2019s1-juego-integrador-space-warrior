@@ -2,7 +2,7 @@ import enemigos.*
 import wollok.game.*
 import nave.*
 
-describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
+describe "Enemigo Nivel 1 Recibe Disparo" {
 
 	const enemigo = new Enemigo(position = game.at(5, 5), posiciones = 1)
 
