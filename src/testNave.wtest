@@ -2,17 +2,17 @@ import nave.*
 import wollok.game.*
 
 describe "Test de la nave" {	
+	
+//fixture {
+//	nave.recibeDisparo()
+//}
+//	
+//---------------------------------------------------------------------------------------------------------------------
 
 	test "Valor de vida según nivel" {
 		
 		nave.subirNivel()
 		assert.equals(25, nave.vida())
-	}
-	
-	test "Nave recibe disparo cuando vida > 0 y nivel es 1"{
-		
-		nave.recibeDisparo()
-		assert.equals(10, nave.vida())
 	}
 	
 	test "Nave recibe disparo cuando vida > 0 y nivel = 2, sube de nivel y recibe disparo cuando vida > 0 y nivel = 3"{
@@ -26,17 +26,10 @@ describe "Test de la nave" {
 		assert.equals(15, nave.vida())
 		
 	}
+
+//---------------------------------------------------------------------------------------------------------------------
 	
-	test "Nave recibe disparo cuando vida = 0 y nivel = 1"{
-		
-		nave.vida(0)	
-		nave.recibeDisparo()
-		
-		assert.notThat(nave.vida()== -5)
-	}
-	
-	
-	test "Method matarEnemigo nivel 1 muertes 6"{
+	test "Nave tiene nivel = 1 y muertes = 6 cuando mata un enemigo"{
 		
 		nave.muertes(6)	
 		nave.matarEnemigo()
@@ -45,10 +38,69 @@ describe "Test de la nave" {
 
 	}
 	
+	test "Nave tiene vida = 5 y nivel = 1 cuando recibe disparo"{
+		
+		nave.vida(5)
+		nave.recibeDisparo()
+		
+		assert.equals(0, nave.vida())
+	}
+	
+
+	test "Nave tiene vida = 0 y nivel = 1 cuando recibe disparo"{
+		
+		nave.vida(0)	
+		nave.recibeDisparo()
+		
+		assert.equals(0, nave.vida())
+	}
+
+
+	test "Nave tiene vida = 10 y nivel = 2 cuando rec1ibe disparo"{
+		
+		nave.vida(10)
+		nave.nivel(2)	
+		nave.recibeDisparo()
+		
+		assert.equals(0, nave.vida())
+	}
+	
+		test "Nave tiene vida = 5 y nivel = 2 cuando recibe disparo"{
+		
+		nave.vida(5)
+		nave.nivel(2)	
+		nave.recibeDisparo()
+		
+		assert.equals(-5, nave.vida())
+	}
 	
 	
+	test "Nave tiene vida = 0 y nivel = 2 cuando recibe disparo"{
+		
+		nave.vida(0)
+		nave.nivel(2)	
+		nave.recibeDisparo()
+		
+		assert.equals(0, nave.vida())
+	}
 	
+	test "Nave tiene vida = 15 y nivel = 3 cuando recibe disparo"{
+		
+		nave.vida(15)
+		nave.nivel(3)	
+		nave.recibeDisparo()
+		
+		assert.equals(0, nave.vida())
+	}
 	
+	test "Nave tiene vida = 10 y nivel = 3 cuando recibe disparo"{
+		
+		nave.vida(10)
+		nave.nivel(3)	
+		nave.recibeDisparo()
+		
+		assert.equals(-5, nave.vida())
+	}
 	
 
 }

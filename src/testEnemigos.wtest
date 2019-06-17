@@ -5,7 +5,7 @@ import nave.*
 describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
 
 	const enemigo = new Enemigo(position = game.at(5, 5), pasos = 1)
-	const enemigos = [enemigo]
+
 
 	test "Desplazamiento: sentido izquierda" {
 		// Por valores default empiezo con sentido = -1 y posicionIzq = 1
