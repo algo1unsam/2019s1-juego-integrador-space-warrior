@@ -3,24 +3,12 @@ import wollok.game.*
 
 describe "Test de la nave" {	
 	
-	test "Valor de vida según nivel" {
+	test "Nave sube de nivel 1 a 2 y su vida incrementa en 10" {
 		
 		nave.subirNivel()
 		assert.equals(25, nave.vida())
 	}
-	
-	test "Nave recibe disparo cuando vida > 0 y nivel = 2, sube de nivel y recibe disparo cuando vida > 0 y nivel = 3"{
 		
-		nave.vida(10)
-		nave.subirNivel() 
-		nave.recibeDisparo() 
-		nave.subirNivel() 
-		nave.recibeDisparo() 
-		
-		assert.equals(15, nave.vida())
-		
-	}
-	
 	test "Nave tiene nivel = 1 y muertes = 6 cuando mata un enemigo"{
 		
 		nave.muertes(6)	
@@ -29,5 +17,37 @@ describe "Test de la nave" {
 		assert.equals(6, nave.muertes())
 
 	}
+	
+	test "Nave tiene nivel = 2 y muertes = 5 cuando mata un enemigo"{
+		
+		nave.nivel(2)
+		nave.muertes(5)	
+		nave.matarEnemigo()
+		
+		assert.equals(5, nave.muertes())
+
+	}
+	
+	test "Nave tiene nivel = 3 y muertes = 2 cuando mata un enemigo"{
+		
+		nave.nivel(3)
+		nave.muertes(2)	
+		nave.matarEnemigo()
+		
+		assert.equals(3, nave.muertes())
+
+	}
+	
+	test "Nave muere y pierde el juego"{
+
+		nave.vida(0)
+		
+		assert.that(nave.estaMuerto())
+
+	}
+	
+	
+	
+	
 	
 }
