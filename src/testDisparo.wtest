@@ -52,6 +52,7 @@ test "Disparo del enemigo avanza correctamente (con valor de posiciones=1)" {
 test "Disparo del enemigo impacta la nave"{
 	
 	disparoE.avanzarEnTablero(enemigo, 8000)
+
 	disparoE.impactar(nave)
 	
 	assert.equals(10, nave.vida())
