@@ -21,28 +21,19 @@ program space_warrior {
 	]
 	enemigos.forEach{ enemigo => game.addVisual(enemigo) }
 	
-	
-//--------------------------------------------------------	
 const colisiones = { => 
-//	
 	const jugadores=[]
 	jugadores.addAll(enemigos)
 	jugadores.add(nave)
 	jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
 
 }	
-//-------------------------------------------------------	
+
 	const movimientoNave = { =>
 		keyboard.left().onPressDo{ nave.position(nave.position().left(1))}
 		keyboard.right().onPressDo{ nave.position(nave.position().right(1))}
 		keyboard.up().onPressDo{ nave.disparoInicial()}
-	}
-	
-//	const colisiones = { =>
-//		game.whenCollideDo(nave, { disparo => disparo.impactar(nave)})
-//		enemigos.forEach{ enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
-//	}
-	
+	}	
 	
 	const acciones = { =>
 		movimientoNave.apply()
