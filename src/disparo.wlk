@@ -34,7 +34,7 @@ class Disparo {
 		if (disparador == nave) {
 			self.position(self.position().up(1))
 		} else {
-			self.position(self.position().down(disparador.pasos()))
+			self.position(self.position().down(disparador.posiciones()))
 		}
 	
 		if (posicionFinal == (game.height() - 1)) {

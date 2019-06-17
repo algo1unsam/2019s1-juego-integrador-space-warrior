@@ -9,7 +9,7 @@ class Enemigo{
 	var property sentido = -1
 	var property vida = (20*nave.nivel())
 	var property msegs = 6000
-	var property pasos = 2
+	var property posiciones = 2
 
 	method image() = "alien.png"
 
@@ -17,7 +17,7 @@ class Enemigo{
 
 	method disparoInicial() {
 		const disparo = new Disparo()
-		disparo.position(self.position().down(pasos))
+		disparo.position(self.position().down(posiciones))
 		game.addVisual(disparo)
 		disparo.avanzarEnTablero(self, msegs)
 	}

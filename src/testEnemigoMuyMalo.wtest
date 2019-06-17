@@ -4,7 +4,7 @@ import wollok.game.*
 
 describe "Tests Enemigo Nivel 3"{
 	
-	const enemigo = new EnemigoMuyMalo(pasos = 1)
+	const enemigo = new EnemigoMuyMalo(posiciones = 1)
 
 
 test "Desplazamiento desde la primera posición hacia la segunda"{

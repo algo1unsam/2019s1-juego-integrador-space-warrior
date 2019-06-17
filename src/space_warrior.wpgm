@@ -14,11 +14,11 @@ program space_warrior {
 	game.say(nave, "HOLA!")
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
 	
-	const enemigos = [ new Enemigo(position = game.at(1,11), pasos=1), 
+	const enemigos = [ new Enemigo(position = game.at(1,11), posiciones=1), 
 		new Enemigo(position = game.at(3,11)), 
 		new Enemigo(position = game.at(5,11)), 
-		new Enemigo(position = game.at(6,11), pasos=3), 
-		new Enemigo(position = game.at(8,11), pasos=3), 
+		new Enemigo(position = game.at(6,11), posiciones=3), 
+		new Enemigo(position = game.at(8,11), posiciones=3), 
 		new Enemigo(position = game.at(10,11))
 	]
 	
@@ -71,11 +71,11 @@ program space_warrior {
 		game.onTick(1000, "pasarANivel2", {=>
 			if (nave.nivel() == 1 and (nave.muertes() == 6)) {
 				pasarDeNivel.apply()
-				enemigos.add(new EnemigoMalo(position = game.at(2, 11), pasos = 1, msegs = 3000))
-				enemigos.add(new EnemigoMalo(position = game.at(4, 11), pasos = 2, msegs = 3000))
-				enemigos.add(new EnemigoMalo(position = game.at(6, 11), pasos = 3, msegs = 3000))
-				enemigos.add(new EnemigoMalo(position = game.at(8, 11), pasos = 2, msegs = 3000))
-				enemigos.add(new EnemigoMalo(position = game.at(10, 11), pasos = 1, msegs = 3000))
+				enemigos.add(new EnemigoMalo(position = game.at(2, 11), posiciones = 1, msegs = 3000))
+				enemigos.add(new EnemigoMalo(position = game.at(4, 11), posiciones = 2, msegs = 3000))
+				enemigos.add(new EnemigoMalo(position = game.at(6, 11), posiciones = 3, msegs = 3000))
+				enemigos.add(new EnemigoMalo(position = game.at(8, 11), posiciones = 2, msegs = 3000))
+				enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 3000))
 				enemigosEnPantalla.apply()
 				accionesNave.apply()
 				accionesEnemigos.apply(10000, 6000)
@@ -87,9 +87,9 @@ program space_warrior {
 	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
-			enemigos.add(new EnemigoMalo(position = game.at(2, 11), pasos = 1, msegs = 3000))
-			enemigos.add(new EnemigoMalo(position = game.at(9, 11), pasos = 1, msegs = 3000))
-			enemigos.add(new EnemigoMuyMalo(position = game.at(5, 9), pasos = 1, msegs = 3000))
+			enemigos.add(new EnemigoMalo(position = game.at(2, 11), posiciones = 1, msegs = 3000))
+			enemigos.add(new EnemigoMalo(position = game.at(9, 11), posiciones = 1, msegs = 3000))
+			enemigos.add(new EnemigoMuyMalo(position = game.at(5, 9), posiciones = 1, msegs = 3000))
 			enemigosEnPantalla.apply()
 			accionesNave.apply()
 			accionesEnemigos.apply(5000, 9000)
