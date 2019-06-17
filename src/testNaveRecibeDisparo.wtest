@@ -1,49 +1,52 @@
 import nave.*
 import wollok.game.*
 
-describe "Test de la nave" {
-
-	fixture {
-		nave.recibeDisparo()
-	}
+describe "Test Nave Recibe Disparo" {
 
 	test "Nave tiene vida = 5 y nivel = 1 cuando recibe disparo" {
 		nave.vida(5)
+		nave.recibeDisparo()
 		assert.equals(0, nave.vida())
 	}
 
 	test "Nave tiene vida = 0 y nivel = 1 cuando recibe disparo" {
 		nave.vida(0)
+		nave.recibeDisparo()
 		assert.equals(0, nave.vida())
 	}
 
 	test "Nave tiene vida = 10 y nivel = 2 cuando rec1ibe disparo" {
 		nave.vida(10)
 		nave.nivel(2)
+		nave.recibeDisparo()
 		assert.equals(0, nave.vida())
 	}
 
 	test "Nave tiene vida = 5 y nivel = 2 cuando recibe disparo" {
 		nave.vida(5)
 		nave.nivel(2)
+		nave.recibeDisparo()
 		assert.equals(-5, nave.vida())
 	}
 
 	test "Nave tiene vida = 0 y nivel = 2 cuando recibe disparo" {
 		nave.vida(0)
 		nave.nivel(2)
+		nave.recibeDisparo()
 		assert.equals(0, nave.vida())
 	}
 
 	test "Nave tiene vida = 15 y nivel = 3 cuando recibe disparo" {
 		nave.vida(15)
 		nave.nivel(3)
+		nave.recibeDisparo()
 		assert.equals(0, nave.vida())
 	}
 
 	test "Nave tiene vida = 10 y nivel = 3 cuando recibe disparo" {
 		nave.vida(10)
 		nave.nivel(3)
+		nave.recibeDisparo()
 		assert.equals(-5, nave.vida())
 	}
 

@@ -6,10 +6,22 @@ describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
 
 	const enemigo = new Enemigo(position = game.at(5, 5), posiciones = 1)
 
-	test "Recibir disparo con vida > 0 " {
-		// Valor default de vida = 20
+	test "Recibir disparo con vida = 20" {
+		enemigo.recibeDisparo()	
+		assert.equals(15, enemigo.vida())
+	}
+	
+	test "Recibir disparo con vida = 5" {
+		enemigo.vida(5)
 		enemigo.recibeDisparo()
-		assert.that(enemigo.vida() == 15)
+		assert.equals(0, enemigo.vida())
+	}
+	
+	test "Recibir disparo con vida = 0" {
+		enemigo.vida(0)
+		game.addVisual(enemigo)
+		enemigo.recibeDisparo()
+		assert.equals(0, enemigo.vida())
 	}
 
 }
