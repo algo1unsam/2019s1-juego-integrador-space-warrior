@@ -1,8 +1,6 @@
 import disparo.*
 import nave.*
 import enemigos.*
-import wollok.game.*
-
 
 describe "Tests del disparo"{
 	
