@@ -2,9 +2,9 @@ import wollok.game.*
 import nave.*
 import disparo.*
 
-class Enemigo {
-
-	var property position = game.at(0, 0)
+class Enemigo{
+	
+	var property position = game.at(0,0)
 	var property contador = 1
 	var property sentido = -1
 	var property vida = (20*nave.nivel())
