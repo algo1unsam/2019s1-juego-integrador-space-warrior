@@ -8,14 +8,42 @@ class EnemigoMalo inherits Enemigo {
 	var property posicionFinal = 0
 	var image = "enem2.png"
 
-	override method desplazarse() {
-		posicionFinal += 1
-		position = (self.position().down(1))
-		if (posicionFinal == (game.height() - 2)) {
-			self.perder()
-			game.removeVisual(self)
-		}
+//	override method desplazarse() {
+//		posicionFinal += 1
+//		position = (self.position().down(1))
+//		if (posicionFinal == (game.height() - 2)) {
+//			self.perder()
+//			game.removeVisual(self)
+//		}
+//		
+//	}
+
+
+override method desplazarse(){
+	
+	posicionFinal += 1
+	self.position(self.position().down(1))
+	if (posicionFinal == 1){
+		self.position(self.position().left(1))
+	} else if (posicionFinal%2 == 0){
+		self.position(self.position().right(2))
+	} else if ((not posicionFinal%2 == 0) and (not posicionFinal == 1)){
+		self.position(self.position().left(2))
 	}
+	
+	
+	if (posicionFinal == (game.height() - 2)) {
+	self.perder()
+	game.removeVisual(self)
+	
+}	
+	
+	
+
+
+}
+
+
 
 }
 
