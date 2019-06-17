@@ -12,14 +12,27 @@ describe "Test de la nave" {
 	test "Nave recibe disparo cuando vida > 0 y nivel es 1"{
 		
 		nave.recibeDisparo()
-		
 		assert.equals(10, nave.vida())
 	}
 	
-	test "Nave recibe disparo cuando vida == 0"{
+	test "Nave recibe disparo cuando vida > 0 y nivel = 2, sube de nivel y recibe disparo cuando vida > 0 y nivel = 3"{
+		
+		nave.vida(10)
+		nave.subirNivel() 
+		nave.recibeDisparo() 
+		nave.subirNivel() 
+		nave.recibeDisparo() 
+		
+		assert.equals(15, nave.vida())
+		
+	}
+	
+	test "Nave recibe disparo cuando vida = 0 y nivel = 1"{
 		
 		nave.vida(0)	
-		assert.that(nave.estaMuerto())
+		nave.recibeDisparo()
+		
+		assert.notThat(nave.vida()== -5)
 	}
 	
 	
