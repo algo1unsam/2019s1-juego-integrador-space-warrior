@@ -7,7 +7,9 @@ class Enemigo {
 	var property position = game.at(0, 0)
 	var property contador = 1
 	var property sentido = -1
-	var property vida = 20
+	var property vida = {
+		if (nave.nivel() == 1){20} else if (nave.nivel() == 1){25}
+	}
 	var property msegs = 6000
 	var property pasos = 2
 
