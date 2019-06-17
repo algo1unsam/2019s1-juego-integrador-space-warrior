@@ -1,6 +1,13 @@
+import nave.*
+import wollok.game.*
 
-test "testX" {
+describe "Test de la nave" {	
 
-	assert.that(true)
+	test "Valor de vida según nivel" {
+		
+		nave.subirNivel()
+		assert.equals(30, nave.vida())
+	}
 
 }
+

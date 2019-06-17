@@ -46,7 +46,7 @@ program space_warrior {
 
 keyboard.space().onPressDo { 
 
-	game.onTick(7500, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
+	game.onTick(7000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
 	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 
