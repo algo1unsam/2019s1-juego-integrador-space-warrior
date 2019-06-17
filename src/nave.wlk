@@ -49,6 +49,12 @@ object nave {
 			disparo.avanzarEnTablero(self, 3000)
 		
 	} 
+	
+
+	method perder() {
+		game.say(self, "OH NO! PERDISTE!")
+	// a este metodo tambien hay que llamarlo cuando la nave se queda sin vida
+	}
 		
 }
 	
