@@ -75,11 +75,11 @@ game.onTick(1000, "pasarANivel2", {=>
 		 if (nave.nivel() == 1 and (nave.muertes() == 6)) {		
 		 	
 		 		pasarDeNivel.apply()
-				enemigos.add(new EnemigoMalo(position = game.at(2, 11), pasos = 1, nivel = 2, msegs=3500))
-				enemigos.add(new EnemigoMalo(position = game.at(4, 11), pasos = 2, nivel = 2, msegs=3500))
-				enemigos.add(new EnemigoMalo(position = game.at(6, 11), pasos = 3, nivel = 2, msegs=3500))
-				enemigos.add(new EnemigoMalo(position = game.at(8, 11), pasos = 2, nivel = 2, msegs=3500))
-				enemigos.add(new EnemigoMalo(position = game.at(10, 11), pasos = 1, nivel = 2, msegs=3500))
+				enemigos.add(new EnemigoMalo(position = game.at(2, 11), pasos = 1, msegs=3500))
+				enemigos.add(new EnemigoMalo(position = game.at(4, 11), pasos = 2, msegs=3500))
+				enemigos.add(new EnemigoMalo(position = game.at(6, 11), pasos = 3, msegs=3500))
+				enemigos.add(new EnemigoMalo(position = game.at(8, 11), pasos = 2, msegs=3500))
+				enemigos.add(new EnemigoMalo(position = game.at(10, 11),pasos = 1, msegs=3500))
 				enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 				movimientoNave.apply()
 				colisiones.apply()	
@@ -98,9 +98,9 @@ const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 	
 		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
-			enemigos.add(new EnemigoMalo(position = game.at(2, 11), pasos = 1, nivel = 2, msegs=3500))
-			enemigos.add(new EnemigoMalo(position = game.at(7, 11), pasos = 1, nivel = 2, msegs=3500))
-			enemigos.add(new EnemigoMuyMalo(position = game.at(5,9), pasos = 1, nivel = 3))
+			enemigos.add(new EnemigoMalo(position = game.at(2, 11), pasos = 1, msegs=3500))
+			enemigos.add(new EnemigoMalo(position = game.at(7, 11), pasos = 1, msegs=3500))
+			enemigos.add(new EnemigoMuyMalo(position = game.at(5,9), pasos = 1, msegs=3500))
 			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 			movimientoNave.apply()
 			colisiones.apply()

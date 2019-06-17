@@ -8,7 +8,6 @@ class Enemigo {
 	var property contador = 1
 	var property sentido = -1
 	var property vida = 20
-	var property nivel = 1
 	var property msegs = 6000
 	var property pasos = 2
 
