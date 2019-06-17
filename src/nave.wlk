@@ -13,7 +13,11 @@ object nave {
 	
 	method image()= "player.png"
 	
-	method matarEnemigo() {muertes+=1} //las condiciones son necesarias?
+	method matarEnemigo() {
+		if ((nivel == 1 and muertes < 6) or (nivel == 2 and muertes < 5) or (nivel == 3 and muertes < 3)) {
+			muertes += 1
+		}
+	}
 	
 	method subirNivel() { nivel+=1 } //las condiciones son necesarias? cuando sube nivel gana vida
 	
