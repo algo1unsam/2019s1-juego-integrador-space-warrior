@@ -1,13 +1,20 @@
 import disparo.*
 import nave.*
 import enemigos.*
+import wollok.game.*
 
 describe "Tests del disparo"{
 	
 	const enemigo = new Enemigo()
 	const disparoN = new Disparo(position = nave.position().up(1))
 	const disparoE = new Disparo(position = enemigo.position().down(1))
-
+	
+fixture {
+	game.addVisual(enemigo)
+	game.addVisual(nave)
+	game.addVisual(disparoN)
+	game.addVisual(disparoE)
+}
 
 test "Disparo de la nave avanza correctamente" {
 
@@ -20,7 +27,7 @@ test "Disparo de la nave avanza correctamente" {
 }
 
 
-test "Disparo del enemigo avanza correctamente (con valor de pasos=2 default)" {
+test "Disparo del enemigo avanza correctamente (con valor de posiciones=2 default)" {
 
 	disparoE.desplazarse(enemigo)
 	disparoE.desplazarse(enemigo)
@@ -30,9 +37,9 @@ test "Disparo del enemigo avanza correctamente (con valor de pasos=2 default)" {
 
 }
 
-test "Disparo del enemigo avanza correctamente (con valor de pasos=1)" {
+test "Disparo del enemigo avanza correctamente (con valor de posiciones=1)" {
 
-	enemigo.pasos(1)
+	enemigo.posiciones(1)
 	disparoE.desplazarse(enemigo)
 	disparoE.desplazarse(enemigo)
 	disparoE.desplazarse(enemigo)
@@ -41,6 +48,41 @@ test "Disparo del enemigo avanza correctamente (con valor de pasos=1)" {
 
 }
 
+
+test "Disparo del enemigo impacta la nave"{
+	
+	disparoE.avanzarEnTablero(enemigo, 8000)
+	disparoE.impactar(nave)
+	
+	assert.equals(10, nave.vida())
+	
+}
+
+test "Disparo de la nave impacta al enemigo"{
+	
+	disparoN.avanzarEnTablero(nave, 8000)
+	disparoN.impactar(enemigo)
+	
+	assert.equals(15, enemigo.vida())
+	
+}
+
+test "Disparo de la nave no impacta y es eliminado del tablero"{
+	
+	disparoN.avanzarEnTablero(nave, 8000)
+	
+	assert.that(game.removeTickEvent("avanzarEnTablero" + disparoN.identity()))
+
+}
+
+
+test "Disparo del enemigo no impacta y es eliminado del tablero"{
+	
+	disparoE.avanzarEnTablero(nave, 8000)
+	
+	assert.that(game.removeTickEvent("avanzarEnTablero" + disparoE.identity()))
+	
+}
 
 
 }
