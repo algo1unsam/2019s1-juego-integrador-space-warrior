@@ -40,7 +40,7 @@ program space_warrior {
 		}
 	}
 	
-	const gameStop = { => game.onTick(3000, "gameStop", { => game.stop()}) }
+	//const gameStop = { => game.onTick(3000, "gameStop", { => game.stop()}) }
 	movimientoNave.apply()//fijate si esto lo dejas asi, haces una excepcion o lo metes adentro del keyboard
 	colisiones.apply()	
 
@@ -102,7 +102,7 @@ const finDelJuego = {=> game.onTick(1000, "finDelJuego", {=>
 		pasarDeNivel.apply()
 		game.say(nave, "GANASTE")
 		game.say(nave, "CHAU!")
-		gameStop.apply()
+		nave.finDelJuego()
 	}
 
 }	)}
