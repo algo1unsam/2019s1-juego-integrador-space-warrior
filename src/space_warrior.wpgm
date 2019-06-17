@@ -26,10 +26,20 @@ program space_warrior {
 		keyboard.right().onPressDo{ nave.position(nave.position().right(1))}
 		keyboard.up().onPressDo{ nave.disparoInicial()}
 	}
+	
 	const colisiones = { =>
 		game.whenCollideDo(nave, { disparo => disparo.impactar(nave)})
 		enemigos.forEach{ enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
 	}
+	
+	
+	const acciones = { =>
+		movimientoNave.apply()
+		colisiones.apply()
+		perderJuego.apply()
+	}
+	
+	
 	const pasarDeNivel = { =>
 		game.clear()
 		game.addVisual(nave)
@@ -46,14 +56,11 @@ program space_warrior {
 		}
 	}) }
 
-	movimientoNave.apply()//fijate si esto lo dejas asi, haces una excepcion o lo metes adentro del keyboard
-	colisiones.apply()
-	perderJuego.apply()	
-
 keyboard.space().onPressDo { 
 
 	game.onTick(7000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
 	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
+	acciones.apply()
 	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 
 //------------------------------------------- Nivel 2 -----------------------------------------------------
@@ -69,11 +76,9 @@ game.onTick(1000, "pasarANivel2", {=>
 				enemigos.add(new EnemigoMalo(position = game.at(8, 11), pasos = 2, msegs=3000))
 				enemigos.add(new EnemigoMalo(position = game.at(10, 11),pasos = 1, msegs=3000))
 				enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-				movimientoNave.apply()
-				colisiones.apply()	
-				perderJuego.apply()	
 				game.onTick(10000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})				
 				game.onTick(6000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
+				acciones.apply()
 				game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 				pasarANivel3.apply()			
 
@@ -91,11 +96,9 @@ const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 			enemigos.add(new EnemigoMalo(position = game.at(9, 11), pasos = 1, msegs=3000))
 			enemigos.add(new EnemigoMuyMalo(position = game.at(5,9), pasos = 1, msegs=3000))
 			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-			movimientoNave.apply()
-			colisiones.apply()
-			perderJuego.apply()	
 			game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
 			game.onTick(9000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
+			acciones.apply()
 			game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 			finDelJuego.apply()
 			
@@ -105,15 +108,13 @@ const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 //------------------------------------------- Fin del juego ---------------------------------------------
 	
 const finDelJuego = {=> game.onTick(1000, "finDelJuego", {=>
-	
-	if (nave.nivel() == 3 and (nave.muertes() == 3)){
-		pasarDeNivel.apply()
-		game.say(nave, "GANASTE")
-		game.say(nave, "CHAU!")
-		nave.finDelJuego()
-	}
-
-}	)}
+		if (nave.nivel() == 3 and (nave.muertes() == 3)) {
+			pasarDeNivel.apply()
+			game.say(nave, "GANASTE")
+			game.say(nave, "CHAU!")
+			nave.finDelJuego()
+		}
+	}) }
 
 	game.errorReporter(nave)
 	
