@@ -19,7 +19,10 @@ object nave {
 		}
 	}
 	
-	method subirNivel() { nivel+=1 } //las condiciones son necesarias? cuando sube nivel gana vida
+	method subirNivel() { 
+		nivel+=1
+		if (nivel==2) {vida+=10} else if (nivel==3) {vida+=20}  
+	} //las condiciones son necesarias? cuando sube nivel gana vida
 	
 	method recibeDisparo() { if (vida >= 0) vida-=5} //Agregar condicion perder juego -- Tambien tiene que perder vida s/quien le dispare
 	
