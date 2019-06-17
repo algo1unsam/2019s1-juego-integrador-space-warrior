@@ -13,7 +13,7 @@ class Enemigo{
 
 	method image() = "alien.png"
 
-	method estaMuerto() = (vida == 0)
+	method estaMuerto() = (vida <= 0)
 
 	method disparoInicial() {
 		const disparo = new Disparo()
@@ -41,15 +41,14 @@ class Enemigo{
 	}
 
 	method recibeDisparo() {
-		
 		if (vida > 0) {
 			vida -= 5
 		} else {
 			nave.matarEnemigo()
 			game.removeVisual(self)
 		}
-		
 	}
+
 
 } 
 
