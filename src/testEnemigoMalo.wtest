@@ -2,27 +2,33 @@ import enemigos.*
 import enemigosMalos.*
 import wollok.game.*
 
-describe "Tests Enemigo Nivel 2"{
-	
-	const enemigo = new EnemigoMalo(pasos = 1)
+describe "Tests Enemigo Nivel 2" {
 
-test "Desplazamiento inicial" {
+	const enemigo = new EnemigoMalo(position = game.at(5,5))
 
-	assert.that(true)
+	test "Desplazamiento inicial" {
+		
+		enemigo.desplazarse()
+		
+		assert.equals(game.at(4,4),enemigo.position())
+	}
+
+	test "Desplazamiento izquierda" {
+		
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		
+		assert.equals(game.at(4,2),enemigo.position())
+	}
+
+	test "Desplazamiento derecha" {
+		
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		
+		assert.equals(game.at(6,3),enemigo.position())
+	}
 
 }
 
-test "Desplazamiento izquierda" {
-
-	assert.that(true)
-
-}
-
-test "Desplazamiento derecha" {
-
-	assert.that(true)
-
-}
-
-
-}

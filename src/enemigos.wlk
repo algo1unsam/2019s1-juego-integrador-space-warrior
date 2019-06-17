@@ -8,8 +8,10 @@ class Enemigo {
 	var property contador = 1
 	var property sentido = -1
 	var property vida = {
-		if (nave.nivel() == 1){20} else if (nave.nivel() == 2){25} if (nave.nivel() == 3){30}
+		
+		20
 	}
+	
 	var property msegs = 6000
 	var property pasos = 2
 
