@@ -11,6 +11,8 @@ program space_warrior {
 	game.width(14)
 	game.ground("ground.png")
 	game.addVisual(nave)
+	game.say(nave, "HOLA!")
+	game.say(nave,"PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
 	
 	const enemigos = [ new Enemigo(position = game.at(1,11), pasos=1),
 		new Enemigo(position = game.at(3,11)), 
@@ -19,15 +21,17 @@ program space_warrior {
 		new Enemigo(position = game.at(8,11), pasos=3), 
 		new Enemigo(position = game.at(10,11))
 	]
-	enemigos.forEach{ enemigo => game.addVisual(enemigo) }
 	
-const colisiones = { => 
-	const jugadores=[]
-	jugadores.addAll(enemigos)
-	jugadores.add(nave)
-	jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
-
-}	
+	enemigos.forEach{ enemigo => game.addVisual(enemigo) }
+	enemigos.forEach{ enemigo => game.hideAttributes(enemigo) }
+	
+	const colisiones = { => 
+		const jugadores=[]
+		jugadores.addAll(enemigos)
+		jugadores.add(nave)
+		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
+	
+	}	
 
 	const movimientoNave = { =>
 		keyboard.left().onPressDo{ nave.position(nave.position().left(1))}
@@ -35,6 +39,14 @@ const colisiones = { =>
 		keyboard.up().onPressDo{ nave.disparoInicial()}
 	}	
 	
+
+	const perderJuego = { => game.onTick(1000, "perderJuego", { =>
+		if (nave.estaMuerto()) {
+			nave.finDelJuego()
+		}
+	}) }
+
+
 	const acciones = { =>
 		movimientoNave.apply()
 		colisiones.apply()
@@ -52,16 +64,15 @@ const colisiones = { =>
 		}
 	}
 	
-	const perderJuego = { => game.onTick(1000, "perderJuego", { =>
-		if (nave.estaMuerto()) {
-			nave.finDelJuego()
-		}
-	}) }
+	const accionesEnemigos = { segs_desplazamiento , segs_disparos =>
+		game.onTick(segs_desplazamiento, "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
+		game.onTick(segs_disparos, "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
+	}
+
 
 keyboard.space().onPressDo { 
 
-	game.onTick(7000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})	
-	game.onTick(4000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
+	accionesEnemigos.apply(4000, 7000)
 	acciones.apply()	
 	game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 
@@ -78,12 +89,10 @@ game.onTick(1000, "pasarANivel2", {=>
 				enemigos.add(new EnemigoMalo(position = game.at(8, 11), pasos = 2, msegs=3000))
 				enemigos.add(new EnemigoMalo(position = game.at(10, 11),pasos = 1, msegs=3000))
 				enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-				game.onTick(10000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})				
-				game.onTick(6000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
 				acciones.apply()
+				accionesEnemigos.apply(10000,6000)	
 				game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 				pasarANivel3.apply()			
-
 
 		}})
 
@@ -98,9 +107,8 @@ const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 			enemigos.add(new EnemigoMalo(position = game.at(9, 11), pasos = 1, msegs=3000))
 			enemigos.add(new EnemigoMuyMalo(position = game.at(5,9), pasos = 1, msegs=3000))
 			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-			game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
-			game.onTick(9000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
 			acciones.apply()
+			accionesEnemigos.apply(5000,9000)	
 			game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 			finDelJuego.apply()
 			

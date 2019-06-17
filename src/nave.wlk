@@ -52,7 +52,7 @@ object nave {
 		if (self.estaMuerto()){
 			game.say(self, "OH NO! PERDISTE!")	
 		}
-		game.onTick(3000, "gameStop", { => game.stop()})
+		//game.onTick(3000, "gameStop", { => game.stop()})
 	}
 	
 	
