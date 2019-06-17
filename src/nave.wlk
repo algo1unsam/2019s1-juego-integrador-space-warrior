@@ -49,16 +49,13 @@ object nave {
 		
 	} 
 	
-
-	method perder() {
-		game.say(self, "OH NO! PERDISTE!")
-		//self.finDelJuego()
-	// a este metodo tambien hay que llamarlo cuando la nave se queda sin vida
-	}
-	
 	method finDelJuego() {
+		if (self.estaMuerto()){
+			game.say(self, "OH NO! PERDISTE!")	
+		}
 		game.onTick(3000, "gameStop", { => game.stop()})
 	}
+	
 	
 		
 }

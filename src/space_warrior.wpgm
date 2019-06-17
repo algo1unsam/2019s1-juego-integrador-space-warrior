@@ -40,9 +40,11 @@ program space_warrior {
 		}
 	}
 	
-	const perderJuego = { => 
-		game.onTick(1000, "perderJuego", { => if (nave.estaMuerto()){nave.perder()}}) 
-	}
+	const perderJuego = { => game.onTick(1000, "perderJuego", { =>
+		if (nave.estaMuerto()) {
+			nave.finDelJuego()
+		}
+	}) }
 
 	movimientoNave.apply()//fijate si esto lo dejas asi, haces una excepcion o lo metes adentro del keyboard
 	colisiones.apply()
