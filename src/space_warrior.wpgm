@@ -105,7 +105,7 @@ const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 			movimientoNave.apply()
 			colisiones.apply()
 			game.onTick(5000, "comenzarDesplazamiento", { => enemigos.forEach{enemigo => enemigo.desplazarse()}})
-			//game.onTick(8000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
+			game.onTick(8000, "comenzarDisparos", { => enemigos.forEach{enemigo => enemigo.disparoInicial()}})
 			game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat { enemigo => enemigo.estaMuerto()}})
 			finDelJuego.apply()
 			
