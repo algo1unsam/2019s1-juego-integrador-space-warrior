@@ -37,8 +37,7 @@ object nave {
 			vida -= 10
 		} else if (vida > 0 and nivel == 3) {
 			vida -= 15
-		}
-		//ELSE IF VIDA >=0 PERDER
+		} else self.perder()
 	} 
 	
 	method disparoInicial(){
