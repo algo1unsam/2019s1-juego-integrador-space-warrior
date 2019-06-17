@@ -28,7 +28,7 @@ override method desplazarse(){
 			self.position(self.position().left(1))
 		} else if (posicionFinal % 2 == 0) {
 			self.position(self.position().right(2))
-		} //else {self.position(self.position().left(2))}
+		} else {self.position(self.position().left(2))}
 		if (posicionFinal == (game.height() - 2)) {
 			self.perder()
 			game.removeVisual(self)

@@ -7,17 +7,13 @@ class Enemigo {
 	var property position = game.at(0, 0)
 	var property contador = 1
 	var property sentido = -1
-	var property vida = {
-		
-		20
-	}
-	
+	var property vida = 20
 	var property msegs = 6000
 	var property pasos = 2
 
 	method image() = "alien.png"
 
-	method estaMuerto() = (vida <= 0)
+	method estaMuerto() = (vida == 0)
 
 	method disparoInicial() {
 		const disparo = new Disparo()
