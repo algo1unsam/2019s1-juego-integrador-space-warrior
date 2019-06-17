@@ -18,8 +18,7 @@ describe "Test de la nave" {
 	
 	test "Nave recibe disparo cuando vida == 0"{
 		
-		nave.vida(0)
-		
+		nave.vida(0)	
 		assert.that(nave.estaMuerto())
 	}
 	
