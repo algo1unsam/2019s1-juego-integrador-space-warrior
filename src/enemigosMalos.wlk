@@ -13,7 +13,6 @@ class EnemigoMalo inherits Enemigo {
 		position = (self.position().down(1))
 		if (posicionFinal == (game.height() - 2)) {
 			self.perder()
-			vida = 0 // esto no se si va
 			game.removeVisual(self)
 		}
 	}
