@@ -12,12 +12,12 @@ program space_warrior {
 	game.addVisual(nave)
 	game.say(nave, "HOLA!")
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
-	const enemigos = [ new Enemigo(position = game.at(2,11), msegs = 3000, posiciones = 1),
+	const enemigos = [ new Enemigo(position = game.at(2,11), msegs = 4000),
 		new Enemigo(position = game.at(3,11), msegs = 2000),
 		new Enemigo(position = game.at(5,11), msegs = 1000),
 		new Enemigo(position = game.at(7,11), msegs = 1000), 
 		new Enemigo(position = game.at(9,11), msegs = 2000), 
-		new Enemigo(position = game.at(10, 11), msegs = 3000, posiciones = 1)
+		new Enemigo(position = game.at(10, 11), msegs = 4000)
 	]
 	const enemigosEnPantalla = { =>
 		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
