@@ -5,7 +5,6 @@ import enemigosMalos.*
 import disparo.*
 
 program space_warrior {
-	
 	game.title("SpaceWarrior")
 	game.height(12)
 	game.width(14)
@@ -13,15 +12,7 @@ program space_warrior {
 	game.addVisual(nave)
 	game.say(nave, "HOLA!")
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
-	
-	const enemigos = [ new Enemigo(position = game.at(1,11), posiciones=1), 
-		new Enemigo(position = game.at(3,11)), 
-		new Enemigo(position = game.at(5,11)), 
-		new Enemigo(position = game.at(6,11), posiciones=3), 
-		new Enemigo(position = game.at(8,11), posiciones=3), 
-		new Enemigo(position = game.at(10,11))
-	]
-	
+	const enemigos = [ new Enemigo(position = game.at(1,11), posiciones=1), new Enemigo(position = game.at(3,11)), new Enemigo(position = game.at(5,11)), new Enemigo(position = game.at(6,11), posiciones=3), new Enemigo(position = game.at(8,11), posiciones=3), new Enemigo(position = game.at(10,11)) ]
 	const enemigosEnPantalla = { =>
 		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
@@ -33,7 +24,6 @@ program space_warrior {
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
 	}
 	const movimientoNave = { =>
-		
 		keyboard.left().onPressDo{ nave.position(nave.position().left(1))}
 		keyboard.right().onPressDo{ nave.position(nave.position().right(1))}
 		keyboard.up().onPressDo{ nave.disparoInicial()}
@@ -62,12 +52,8 @@ program space_warrior {
 		game.onTick(segs_disparos, "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 	}
-	
 	enemigosEnPantalla.apply()
-	
-keyboard.space().onPressDo{ 
-		
-		accionesEnemigos.apply(4000, 7000)
+	keyboard.space().onPressDo{ accionesEnemigos.apply(4000, 7000)
 		accionesNave.apply()
 		game.onTick(1000, "pasarANivel2", {=>
 			if (nave.nivel() == 1 and (nave.muertes() == 6)) {
@@ -84,7 +70,6 @@ keyboard.space().onPressDo{
 			}
 		})
 	}
-	
 	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
@@ -97,7 +82,6 @@ keyboard.space().onPressDo{
 			finDelJuego.apply()
 		}
 	}) }
-	
 	const finDelJuego = {=> game.onTick(2000, "finDelJuego", {=>
 		if (nave.nivel() == 3 and (nave.muertes() == 3)) {
 			pasarDeNivel.apply()
@@ -106,7 +90,6 @@ keyboard.space().onPressDo{
 			nave.finDelJuego()
 		}
 	}) }
-	
 	game.errorReporter(nave)
 	game.start()
 }
