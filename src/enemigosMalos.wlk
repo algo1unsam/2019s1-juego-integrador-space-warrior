@@ -19,6 +19,7 @@ override method desplazarse(){
 			self.position(self.position().right(2))
 		} else {self.position(self.position().left(2))}
 		if (posicionFinal == (game.height() - 2)) {
+			nave.vida(0)
 			nave.finDelJuego()
 			game.removeVisual(self)
 	

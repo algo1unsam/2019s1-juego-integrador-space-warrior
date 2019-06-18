@@ -72,14 +72,14 @@ program space_warrior {
 		game.onTick(1000, "pasarANivel2", {=>
 			if (nave.nivel() == 1 and (nave.muertes() == 6)) {
 				pasarDeNivel.apply()
-				enemigos.add(new EnemigoMalo(position = game.at(2, 11), posiciones = 1, msegs = 3000))
-				enemigos.add(new EnemigoMalo(position = game.at(4, 11), posiciones = 2, msegs = 3000))
-				enemigos.add(new EnemigoMalo(position = game.at(6, 11), posiciones = 3, msegs = 3000))
-				enemigos.add(new EnemigoMalo(position = game.at(8, 11), posiciones = 2, msegs = 3000))
-				enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 3000))
+				enemigos.add(new EnemigoMalo(position = game.at(2, 11), posiciones = 1, msegs = 1000))
+				enemigos.add(new EnemigoMalo(position = game.at(4, 11), posiciones = 2, msegs = 1000))
+				enemigos.add(new EnemigoMalo(position = game.at(6, 11), posiciones = 3, msegs = 1000))
+				enemigos.add(new EnemigoMalo(position = game.at(8, 11), posiciones = 2, msegs = 1000))
+				enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 1000))
 				enemigosEnPantalla.apply()
 				accionesNave.apply()
-				accionesEnemigos.apply(10000, 6000)
+				accionesEnemigos.apply(5500, 5500)
 				pasarANivel3.apply()
 			}
 		})
