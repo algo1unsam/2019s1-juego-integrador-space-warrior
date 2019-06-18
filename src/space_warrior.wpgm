@@ -88,12 +88,12 @@ program space_warrior {
 	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
-			enemigos.add(new EnemigoMalo(position = game.at(2, 11), posiciones = 1, msegs = 3000))
-			enemigos.add(new EnemigoMalo(position = game.at(9, 11), posiciones = 1, msegs = 3000))
-			enemigos.add(new EnemigoMuyMalo(position = game.at(5, 9), posiciones = 1, msegs = 3000))
+			enemigos.add(new EnemigoMalo(position = game.at(4, 11), posiciones = 1, msegs = 1000))
+			enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 1000))
+			enemigos.add(new EnemigoMuyMalo(position = game.at(5, 9), posiciones = 1, msegs = 1000))
 			enemigosEnPantalla.apply()
 			accionesNave.apply()
-			accionesEnemigos.apply(5000, 9000)
+			accionesEnemigos.apply(5000, 5500)
 			finDelJuego.apply()
 		}
 	}) }
