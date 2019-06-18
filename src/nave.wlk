@@ -44,6 +44,7 @@ object nave {
 			const disparo = new Disparo(position=self.position(),image="bullet.png")
 			disparo.position(self.position().up(1))
 			game.addVisual(disparo)
+			game.hideAttributes(disparo)
 			disparo.avanzarEnTablero(self, 3000)
 		
 	} 

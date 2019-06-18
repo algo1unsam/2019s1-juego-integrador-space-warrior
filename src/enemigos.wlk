@@ -19,6 +19,7 @@ class Enemigo{
 		const disparo = new Disparo()
 		disparo.position(self.position().down(posiciones))
 		game.addVisual(disparo)
+		game.hideAttributes(disparo)
 		disparo.avanzarEnTablero(self, msegs)
 	}
 
