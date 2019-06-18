@@ -29,8 +29,14 @@ program space_warrior {
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
 	}
 	const movimientoNave = { =>
-		keyboard.left().onPressDo{ nave.position(nave.position().left(1))}
-		keyboard.right().onPressDo{ nave.position(nave.position().right(1))}
+		keyboard.left().onPressDo{
+			if (nave.position().x() > 0) 
+				nave.position(nave.position().left(1))
+		}
+		keyboard.right().onPressDo{ 
+			if (nave.position().x() < game.width() - 1) 
+				nave.position(nave.position().right(1))
+		}
 		keyboard.up().onPressDo{ nave.disparoInicial()}
 	}
 	const perderJuego = { => game.onTick(1000, "perderJuego", { =>
@@ -58,8 +64,9 @@ program space_warrior {
 		game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 	}
 	enemigosEnPantalla.apply()
-	keyboard.space().onPressDo{ accionesEnemigos.apply(6000, 6000)
+	keyboard.space().onPressDo{ accionesEnemigos.apply(6000, 5000)
 		accionesNave.apply()
+		
 		game.onTick(1000, "pasarANivel2", {=>
 			if (nave.nivel() == 1 and (nave.muertes() == 6)) {
 				pasarDeNivel.apply()
@@ -76,10 +83,10 @@ program space_warrior {
 		})
 	}
 	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
-		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
+		if (nave.nivel() == 2 and (nave.muertes() == 6)) {
 			pasarDeNivel.apply()
-			//enemigos.add(new EnemigoMalo(position = game.at(3, 11), posiciones = 1, msegs = 950))
-			//enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 950))
+			enemigos.add(new EnemigoMalo(position = game.at(3, 11), posiciones = 1, msegs = 950))
+			enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 950))
 			enemigos.add(new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000))
 			enemigosEnPantalla.apply()
 			accionesNave.apply()

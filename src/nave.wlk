@@ -15,9 +15,7 @@ object nave {
 	method estaMuerto()= (vida <= 0)
 	
 	method matarEnemigo() {
-		if ((nivel == 1 and muertes < 6) or (nivel == 2 and muertes < 5) or (nivel == 3 and muertes < 3)) {
-			muertes += 1
-		}
+		muertes += 1
 	}
 	
 	method subirNivel() {
