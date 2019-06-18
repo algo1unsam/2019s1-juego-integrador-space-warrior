@@ -33,14 +33,14 @@ class EnemigoMuyMalo inherits Enemigo {
 	var image = "ufo.png"
 
 	override method desplazarse() {
-		if (self.position() == game.at(6, 9)) {
-			position = game.at(11, 5)
-		} else if (self.position() == game.at(11, 5)) {
-			position = game.at(5, 3)
-		} else if (self.position() == game.at(5, 3)) {
-			position = game.at(0, 5)
-		} else if (self.position() == game.at(0, 5)) {
-			position = game.at(6, 9)
+		if (self.position() == game.at(6, 10)) {
+			position = game.at(11, 8)
+		} else if (self.position() == game.at(11, 8)) {
+			position = game.at(6, 5)
+		} else if (self.position() == game.at(6, 5)) {
+			position = game.at(1, 8)
+		} else if (self.position() == game.at(1, 8)) {
+			position = game.at(6, 10)
 		}
 	}
 

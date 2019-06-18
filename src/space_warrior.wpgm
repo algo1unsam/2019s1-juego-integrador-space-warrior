@@ -10,14 +10,13 @@ program space_warrior {
 	game.width(14)
 	game.ground("ground.png")
 	game.addVisual(nave)
-	game.say(nave, "HOLA!")
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
-	const enemigos = [ new Enemigo(position = game.at(2,11), msegs = 4000),
+	const enemigos = [ new Enemigo(position = game.at(2,11), msegs = 2000),
 		new Enemigo(position = game.at(3,11), msegs = 2000),
-		new Enemigo(position = game.at(5,11), msegs = 1000),
-		new Enemigo(position = game.at(7,11), msegs = 1000), 
+		new Enemigo(position = game.at(5,11), msegs = 2000),
+		new Enemigo(position = game.at(7,11), msegs = 2000), 
 		new Enemigo(position = game.at(9,11), msegs = 2000), 
-		new Enemigo(position = game.at(10, 11), msegs = 4000)
+		new Enemigo(position = game.at(10, 11), msegs = 2000)
 	]
 	const enemigosEnPantalla = { =>
 		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
@@ -79,17 +78,17 @@ program space_warrior {
 	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
-			enemigos.add(new EnemigoMalo(position = game.at(4, 11), posiciones = 1, msegs = 950))
-			enemigos.add(new EnemigoMalo(position = game.at(9, 11), posiciones = 1, msegs = 950))
-			enemigos.add(new EnemigoMuyMalo(position = game.at(6, 9), posiciones = 1, msegs = 950))
+			//enemigos.add(new EnemigoMalo(position = game.at(3, 11), posiciones = 1, msegs = 950))
+			//enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 950))
+			enemigos.add(new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000))
 			enemigosEnPantalla.apply()
 			accionesNave.apply()
-			accionesEnemigos.apply(4500, 5500)
+			accionesEnemigos.apply(4000, 4000)
 			finDelJuego.apply()
 		}
 	}) }
 	const finDelJuego = {=> game.onTick(2000, "finDelJuego", {=>
-		if (nave.nivel() == 3 and (nave.muertes() == 3)) {
+		if (nave.nivel() == 3 and (nave.muertes() == 1)) {
 			pasarDeNivel.apply()
 			game.say(nave, "GANASTE")
 			game.say(nave, "CHAU!")
