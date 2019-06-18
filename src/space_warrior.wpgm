@@ -65,7 +65,7 @@ program space_warrior {
 	
 	enemigosEnPantalla.apply()
 	
-	keyboard.space().onPressDo{ 
+keyboard.space().onPressDo{ 
 		
 		accionesEnemigos.apply(4000, 7000)
 		accionesNave.apply()
@@ -98,7 +98,7 @@ program space_warrior {
 		}
 	}) }
 	
-	const finDelJuego = {=> game.onTick(1000, "finDelJuego", {=>
+	const finDelJuego = {=> game.onTick(2000, "finDelJuego", {=>
 		if (nave.nivel() == 3 and (nave.muertes() == 3)) {
 			pasarDeNivel.apply()
 			game.say(nave, "GANASTE")
@@ -106,6 +106,7 @@ program space_warrior {
 			nave.finDelJuego()
 		}
 	}) }
+	
 	game.errorReporter(nave)
 	game.start()
 }
