@@ -6,7 +6,7 @@ import enemigos.*
 class Disparo {
 	
 	var property position
-	var property posicionFinal = 0
+	//var property posicionFinal = 0
 	
 
 	method image() = "shoot.png"
@@ -34,7 +34,7 @@ class Disparo {
 
 	method desplazarse(disparador) {
 		
-		posicionFinal += 1
+		//posicionFinal += 1
 		
 		if (disparador == nave) {
 			self.position(self.position().up(1))
@@ -42,9 +42,9 @@ class Disparo {
 			self.position(self.position().down(disparador.posiciones()))
 		}
 	
-		if (posicionFinal == (game.height() - 1)) {
-			self.terminarDisparo()
-		}
+//		if (posicionFinal == (game.height() - 1)) {
+//			self.terminarDisparo()
+//		}
 
 		
 	}

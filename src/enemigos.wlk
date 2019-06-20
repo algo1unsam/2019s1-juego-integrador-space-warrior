@@ -11,6 +11,7 @@ class Enemigo{
 	var property vida = (20*nave.nivel())
 	var property msegs = 6000
 	var property posiciones = 2
+	var property posicionFinal = 0
 
 	method image() = "alien.png"
 
@@ -41,6 +42,14 @@ class Enemigo{
 			sentido = -1
 			contador = 1
 		}
+	}
+
+
+	method desplazarDisparo(disparo){
+		posicionFinal += 1
+		disparo.position(disparo.position().down(posiciones))
+		if (posicionFinal == (game.height() - 1)) {
+			disparo.terminarDisparo()}
 	}
 
 	method recibeDisparo() {

@@ -12,6 +12,7 @@ object nave {
 	var property muertes = 0
 	var property nivel = 1
 	var property danio = 0
+	var property posicionFinal = 0
 	
 	method image()= "player.png"
 	
@@ -47,6 +48,16 @@ object nave {
 			disparo.avanzarEnTablero(self, 3000)
 		
 	} 
+	
+	method desplazarDisparo(disparo){
+		posicionFinal += 1
+		disparo.position(disparo.position().up(1))
+		if (posicionFinal == (game.height() - 1)) {
+			disparo.terminarDisparo()
+		}
+	}
+	
+	
 	
 	method finDelJuego() {
 		
