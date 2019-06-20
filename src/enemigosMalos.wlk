@@ -38,7 +38,6 @@ override method desplazarse(){
 }
 
 
-
 class EnemigoMuyMalo inherits Enemigo {
 
 	var image = "ufo.png"

@@ -83,7 +83,7 @@ program space_warrior {
 		})
 	}
 	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
-		if (nave.nivel() == 2 and (nave.muertes() == 6)) {
+		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
 			enemigos.add(new EnemigoMalo(position = game.at(3, 11), posiciones = 1, msegs = 950))
 			enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 950))
