@@ -20,10 +20,10 @@ object nave {
 		muertes += 1
 	}
 	
-	method subirNivel(nivel) {
-		muertes=0
-		nivel.setearVidaNave()
-	} 
+//	method subirNivel(nivel) {
+//		muertes=0
+//		nivel.setearVidaNave()
+//	} 
 	
 	method recibeDisparo(){
 		if (vida>0){

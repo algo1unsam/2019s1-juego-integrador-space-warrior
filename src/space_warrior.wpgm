@@ -52,7 +52,7 @@ program space_warrior {
 	const pasarDeNivel = { nivel =>
 		game.clear()
 		game.addVisual(nave)
-		nave.subirNivel(nivel)
+		nivel.subirNivelNave()
 		if ((nivel.proximoNivel() - 1) < 4) {
 			game.say(nave, "NIVEL" + (nivel.proximoNivel() - 1))
 		}
