@@ -13,6 +13,11 @@ class Nivel{
 	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
+	method setearVidaNave(){
+		var vida = nave.vida() + 10
+		nave.vida(vida)		
+	}
+	
 }
 
 object nivel1 inherits Nivel{
@@ -43,6 +48,11 @@ object nivel2 inherits Nivel{
 
 	override method muertesNivel() = 5
 	
+	override method setearVidaNave(){
+		var vida = nave.vida() + 15
+		nave.vida(vida)		
+	}
+	
 }
 
 
@@ -63,6 +73,11 @@ object finalDelJuego inherits Nivel {
 		new EnemigoMalo(position = game.at(4, 11), posiciones = 2, msegs = 1000),
 		new EnemigoMalo(position = game.at(8, 11), posiciones = 2, msegs = 1000)
 	]
+	
+	override method setearVidaNave(){
+		var vida = nave.vida() + 20
+		nave.vida(vida)		
+	}
 		
 }
 

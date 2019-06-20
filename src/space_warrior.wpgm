@@ -15,10 +15,8 @@ program space_warrior {
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
 	const enemigos = []
 //--------------------------------------------------------------------------------------------------------------------
-
 	const enemigosEnPantalla = { nivel =>
 		enemigos.addAll(nivel.enemigos())
-		console.println(enemigos)
 		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
 	}
@@ -50,12 +48,12 @@ program space_warrior {
 		colisiones.apply()
 		perderJuego.apply()
 	}
-	const pasarDeNivel = { =>
+	const pasarDeNivel = { nivel =>
 		game.clear()
 		game.addVisual(nave)
-		nave.subirNivel()
-		if (nave.nivel() < 4) {
-			game.say(nave, "NIVEL" + nave.nivel())
+		nave.subirNivel(nivel)
+		if ((nivel.proximoNivel() - 1) < 4) {
+			game.say(nave, "NIVEL" + (nivel.proximoNivel() - 1))
 		}
 	}
 	const accionesEnemigos = { segs_desplazamiento , segs_disparos =>
@@ -73,7 +71,7 @@ program space_warrior {
 		
 		game.onTick(600, "pasarANivel2", {=>
 			if (nivel1.nivelCompleto()) {
-				pasarDeNivel.apply()
+				pasarDeNivel.apply(nivel2)
 				enemigosEnPantalla.apply(nivel2)
 				accionesNave.apply()
 				accionesEnemigos.apply(5500, 5500)
@@ -83,7 +81,7 @@ program space_warrior {
 	}
 	const pasarANivel3 = {=> game.onTick(600, "pasarANivel3", {=>
 		if (nivel2.nivelCompleto()) {
-			pasarDeNivel.apply()
+			pasarDeNivel.apply(nivel3)
 			enemigosEnPantalla.apply(nivel3)
 			accionesNave.apply()
 			accionesEnemigos.apply(4000, 4000)
@@ -96,7 +94,7 @@ program space_warrior {
 	
 	const finDelJuego = {=> game.onTick(600, "finDelJuego", {=>
 		if (nivel3.nivelCompleto()) {			
-			pasarDeNivel.apply()
+			pasarDeNivel.apply(finalDelJuego)
 			game.say(nave, "GANASTE")
 			game.say(nave, "CHAU!")
 			nave.finDelJuego()
