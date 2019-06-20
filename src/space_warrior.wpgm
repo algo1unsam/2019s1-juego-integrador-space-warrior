@@ -13,19 +13,8 @@ program space_warrior {
 	game.ground("ground.png")
 	game.addVisual(nave)
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
-	const enemigos = [ 
-//		new Enemigo(position = game.at(2,11), msegs = 2000),
-//		new Enemigo(position = game.at(3,11), msegs = 2000),
-//		new Enemigo(position = game.at(5,11), msegs = 2000),
-//		new Enemigo(position = game.at(7,11), msegs = 2000), 
-//		new Enemigo(position = game.at(9,11), msegs = 2000), 
-//		new Enemigo(position = game.at(10, 11), msegs = 2000)
-	]
+	const enemigos = []
 //--------------------------------------------------------------------------------------------------------------------
-//	const enemigosEnPantalla = { =>
-//		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-//		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-//	}
 
 	const enemigosEnPantalla = { nivel =>
 		enemigos.addAll(nivel.enemigos())
