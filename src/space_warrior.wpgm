@@ -60,7 +60,7 @@ program space_warrior {
 	const accionesEnemigos = { segs_desplazamiento , segs_disparos =>
 		game.onTick(segs_desplazamiento, "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
 		game.onTick(segs_disparos, "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
-		game.onTick(1000, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
+		game.onTick(200, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 	}
 	enemigosEnPantalla.apply()
 	keyboard.space().onPressDo{ accionesEnemigos.apply(6000, 5000)
@@ -94,7 +94,7 @@ program space_warrior {
 		}
 	}) }
 	const finDelJuego = {=> game.onTick(2000, "finDelJuego", {=>
-		if (nave.nivel() == 3 and (nave.muertes() == 1)) {
+		if (nave.nivel() == 3 and (nave.muertes() == 3)) {			
 			pasarDeNivel.apply()
 			game.say(nave, "GANASTE")
 			game.say(nave, "CHAU!")
