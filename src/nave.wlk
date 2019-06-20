@@ -21,6 +21,7 @@ object nave {
 	}
 	
 	method subirNivel() {
+		muertes=0
 		nivel += 1
 		if (nivel == 2) {
 			vida += 10
@@ -34,7 +35,6 @@ object nave {
 			vida -= danio
 		}
 	}
-	
 	
 	
 	method disparoInicial(){

@@ -53,7 +53,6 @@ program space_warrior {
 		game.clear()
 		game.addVisual(nave)
 		nave.subirNivel()
-		nave.muertes(0)
 		if (nave.nivel() < 4) {
 			game.say(nave, "NIVEL" + nave.nivel())
 		}
