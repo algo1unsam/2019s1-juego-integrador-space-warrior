@@ -19,6 +19,7 @@ describe "Tests del disparo" {
 	}
 
 	test "Disparo del enemigo impacta la nave" {
+		enemigo.disparoInicial()
 		disparoE.impactar(nave)
 		assert.equals(10, nave.vida())
 	}
