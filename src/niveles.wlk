@@ -17,7 +17,8 @@ class Nivel{
 
 object nivel1 inherits Nivel{
 
-	const property enemigos = [ new Enemigo(position = game.at(2,11), msegs = 2000),
+	const property enemigos = [ 
+		new Enemigo(position = game.at(2,11), msegs = 2000),
 		new Enemigo(position = game.at(3,11), msegs = 2000),
 		new Enemigo(position = game.at(5,11), msegs = 2000),
 		new Enemigo(position = game.at(7,11), msegs = 2000), 

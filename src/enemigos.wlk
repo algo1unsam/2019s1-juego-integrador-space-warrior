@@ -2,6 +2,7 @@ import wollok.game.*
 import nave.*
 import disparo.*
 import otrosDisparos.*
+import niveles.*
 
 class Enemigo{
 	
@@ -12,8 +13,10 @@ class Enemigo{
 	var property msegs = 6000
 	var property posiciones = 2
 	//var property posicionFinal = 0
-
-	method image() = "alien.png"
+	
+	var image = "alien.png"
+	
+	method image() = image
 
 	method estaMuerto() = (vida <= 0)
 
