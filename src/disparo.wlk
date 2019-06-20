@@ -5,14 +5,6 @@ import enemigos.*
 
 class Disparo {
 	
-//	var image = if (nave.nivel() == 1) {
-//		"shoot.png"
-//	} else if (nave.nivel() == 2) {
-//		"shootmalo.png"
-//	} else if (nave.nivel() == 3) {
-//		"shootfinal.png"
-//	}
-	
 	var property position
 	var property posicionFinal = 0
 	
