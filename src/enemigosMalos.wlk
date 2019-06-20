@@ -6,7 +6,7 @@ import otrosDisparos.*
 
 class EnemigoMalo inherits Enemigo {
 
-	var property posicionFinal = 0
+	var property posicionFinalDesp = 0
 	var image = "enem2.png"
 	
 override method disparoInicial(){
@@ -20,15 +20,15 @@ override method disparoInicial(){
 	
 override method desplazarse(){
 	
-	posicionFinal += 1
+	posicionFinalDesp += 1
 		self.position(self.position().down(1))
 		
-		if (posicionFinal == 1) {
+		if (posicionFinalDesp == 1) {
 			self.position(self.position().left(1))
-		} else if (posicionFinal % 2 == 0) {
+		} else if (posicionFinalDesp % 2 == 0) {
 			self.position(self.position().right(2))
 		} else {self.position(self.position().left(2))}
-		if (posicionFinal == (game.height() - 2)) {
+		if (posicionFinalDesp == (game.height() - 2)) {
 			nave.vida(0)
 			nave.finDelJuego()
 			game.removeVisual(self)
