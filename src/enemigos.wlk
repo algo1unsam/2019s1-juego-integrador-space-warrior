@@ -9,10 +9,14 @@ class Enemigo{
 	var property position = game.at(0,0)
 	var property contador = 1
 	var property sentido = -1
-	var property vida = (20)
+	var property vida = 20
 	var property msegs = 6000
 	var property posiciones = 2
 
+	method aumentarVida(nivel){
+		var vidaNivel = vida * (nivel.proximoNivel() - 1)
+		self.vida(vidaNivel)
+	}
 	
 	method image() = "alien.png"
 
