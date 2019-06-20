@@ -2,12 +2,21 @@ import wollok.game.*
 import nave.*
 import enemigos.*
 import disparo.*
+import otrosDisparos.*
 
 class EnemigoMalo inherits Enemigo {
 
 	var property posicionFinal = 0
 	var image = "enem2.png"
-
+	
+override method disparoInicial(){
+	const disparo = new DisparoMalo()
+	disparo.position(self.position().down(posiciones))
+	game.addVisual(disparo)
+	game.hideAttributes(disparo)
+	disparo.avanzarEnTablero(self, msegs)
+}
+	
 override method desplazarse(){
 	
 	posicionFinal += 1
@@ -28,9 +37,19 @@ override method desplazarse(){
 }
 }
 
+
+
 class EnemigoMuyMalo inherits Enemigo {
 
 	var image = "ufo.png"
+	
+	override method disparoInicial(){
+	const disparo = new DisparoMuyMalo()
+	disparo.position(self.position().down(posiciones))
+	game.addVisual(disparo)
+	game.hideAttributes(disparo)
+	disparo.avanzarEnTablero(self, msegs)
+}
 
 	override method desplazarse() {
 		if (self.position() == game.at(6, 10)) {
