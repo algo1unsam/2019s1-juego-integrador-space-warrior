@@ -6,6 +6,7 @@ import otrosDisparos.*
 
 object nave {
 	
+	
 	var property position = game.at(6,1)
 	var property vida = 15
 	var property muertes = 0
