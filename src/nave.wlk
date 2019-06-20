@@ -21,8 +21,8 @@ object nave {
 	}
 	
 	method subirNivel() {
-		muertes=0
 		nivel += 1
+		muertes=0
 		if (nivel == 2) {
 			vida += 10
 		} else if (nivel == 3) {
