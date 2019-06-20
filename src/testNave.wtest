@@ -9,25 +9,7 @@ describe "Test de la nave" {
 		assert.equals(25, nave.vida())
 	}
 		
-	test "Nave tiene nivel = 1 y muertes = 6 cuando mata un enemigo"{
-		
-		nave.muertes(6)	
-		nave.matarEnemigo()
-		
-		assert.equals(6, nave.muertes())
 
-	}
-	
-	test "Nave tiene nivel = 2 y muertes = 5 cuando mata un enemigo"{
-		
-		nave.nivel(2)
-		nave.muertes(5)	
-		nave.matarEnemigo()
-		
-		assert.equals(5, nave.muertes())
-
-	}
-	
 	test "Nave tiene nivel = 3 y muertes = 2 cuando mata un enemigo"{
 		
 		nave.nivel(3)
