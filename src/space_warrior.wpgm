@@ -84,15 +84,20 @@ program space_warrior {
 	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
 		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
-			enemigos.add(new EnemigoMalo(position = game.at(3, 11), posiciones = 1, msegs = 950))
-			enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 950))
+			//enemigos.add(new EnemigoMalo(position = game.at(3, 11), posiciones = 1, msegs = 950))
+			//enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 950))
 			enemigos.add(new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000))
+			
 			enemigosEnPantalla.apply()
 			accionesNave.apply()
 			accionesEnemigos.apply(4000, 4000)
+			nivel3.apply()
 			finDelJuego.apply()
 		}
 	}) }
+	
+	
+	
 	const finDelJuego = {=> game.onTick(2000, "finDelJuego", {=>
 		if (nave.nivel() == 3 and (nave.muertes() == 3)) {			
 			pasarDeNivel.apply()
@@ -101,6 +106,16 @@ program space_warrior {
 			nave.finDelJuego()
 		}
 	}) }
+	
+	const nivel3 = {=> game.onTick(30000, "sumarEnemigos", {=>
+		enemigos.add(new EnemigoMalo(position = game.at(6, 11), posiciones = 1, msegs = 950))
+		enemigosEnPantalla.apply()
+	}
+	
+	)
+	}
+		
+	
 	game.errorReporter(nave)
 	game.start()
 }
