@@ -39,7 +39,8 @@ object nave {
 	
 	method disparoInicial(){
 		
-			const disparo = new Disparo(position=self.position(),image="bullet.png")
+			const disparo = new Disparo(position=self.position())
+			//const disparo = new Disparo(position=self.position(), image="bullet.png")
 			disparo.position(self.position().up(1))
 			game.addVisual(disparo)
 			game.hideAttributes(disparo)
