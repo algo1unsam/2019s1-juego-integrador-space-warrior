@@ -87,7 +87,7 @@ program space_warrior {
 			enemigosEnPantalla.apply(nivel3)
 			accionesNave.apply()
 			accionesEnemigos.apply(4000, 4000)
-			//nivelFinal.apply()
+			nivelFinal.apply()
 			finDelJuego.apply()
 		}
 	}) }

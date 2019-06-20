@@ -55,3 +55,17 @@ object nivel3 inherits Nivel{
 	override method proximoNivel() = 4
 	
 }
+
+
+object finalDelJuego inherits Nivel {
+	
+	const property enemigos = [
+		new EnemigoMalo(position = game.at(4, 11), posiciones = 2, msegs = 1000),
+		new EnemigoMalo(position = game.at(8, 11), posiciones = 2, msegs = 1000)
+	]
+		
+}
+
+
+
+
