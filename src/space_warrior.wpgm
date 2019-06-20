@@ -3,6 +3,7 @@ import nave.*
 import enemigos.*
 import enemigosMalos.*
 import disparo.*
+import niveles.*
 
 program space_warrior {
 	game.title("SpaceWarrior")
@@ -18,10 +19,18 @@ program space_warrior {
 		new Enemigo(position = game.at(9,11), msegs = 2000), 
 		new Enemigo(position = game.at(10, 11), msegs = 2000)
 	]
-	const enemigosEnPantalla = { =>
+//--------------------------------------------------------------------------------------------------------------------
+//	const enemigosEnPantalla = { =>
+//		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
+//		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
+//	}
+
+	const enemigosEnPantalla = { nivel =>
+		enemigos.add(nivel.enemigos())
 		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
 	}
+
 	const colisiones = { =>
 		const jugadores = []
 		jugadores.addAll(enemigos)
@@ -62,8 +71,12 @@ program space_warrior {
 		game.onTick(segs_disparos, "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(200, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 	}
-	enemigosEnPantalla.apply()
-	keyboard.space().onPressDo{ accionesEnemigos.apply(6000, 5000)
+	
+//--------------------------------------------------------------------------------------------------------------------
+
+	enemigosEnPantalla.apply(nivel1)
+	keyboard.space().onPressDo{ 
+		accionesEnemigos.apply(6000, 5000)
 		accionesNave.apply()
 		
 		game.onTick(1000, "pasarANivel2", {=>
@@ -74,7 +87,7 @@ program space_warrior {
 				enemigos.add(new EnemigoMalo(position = game.at(6, 11), posiciones = 3, msegs = 1000))
 				enemigos.add(new EnemigoMalo(position = game.at(8, 11), posiciones = 2, msegs = 1000))
 				enemigos.add(new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 1000))
-				enemigosEnPantalla.apply()
+				enemigosEnPantalla.apply(nivel2)
 				accionesNave.apply()
 				accionesEnemigos.apply(5500, 5500)
 				pasarANivel3.apply()
@@ -85,7 +98,7 @@ program space_warrior {
 		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
 			pasarDeNivel.apply()
 			enemigos.add(new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000))		
-			enemigosEnPantalla.apply()
+			enemigosEnPantalla.apply(nivel3)
 			accionesNave.apply()
 			accionesEnemigos.apply(4000, 4000)
 			nivel3.apply()
@@ -105,8 +118,8 @@ program space_warrior {
 	}) }
 	
 	const nivel3 = {=> game.onTick(30000, "sumarEnemigos", {=>
-		enemigos.add(new EnemigoMalo(position = game.at(6, 11), posiciones = 1, msegs = 950))
-		enemigosEnPantalla.apply()
+		//enemigos.add(new EnemigoMalo(position = game.at(6, 11), posiciones = 1, msegs = 950))
+		//enemigosEnPantalla.apply()
 	}
 	
 	)
