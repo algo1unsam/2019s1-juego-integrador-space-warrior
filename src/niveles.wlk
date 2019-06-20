@@ -7,7 +7,9 @@ import otrosDisparos.*
 
 class Nivel{
 	
-	method muertesNivel() = 0
+	method proximoNivel() = 2
+	
+	method muertesNivel() = 6
 	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
@@ -15,12 +17,13 @@ class Nivel{
 
 object nivel1 inherits Nivel{
 	
-	override method muertesNivel() = 6
 	
 }
 
 
 object nivel2 inherits Nivel{
+
+	override method proximoNivel() = 3
 
 	override method muertesNivel() = 5
 	
