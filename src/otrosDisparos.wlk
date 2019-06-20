@@ -27,5 +27,6 @@ class DisparoMuyMalo inherits Disparo{
 
 class DisparoNave inherits Disparo {
 	
+	var image = "bullet.png"
 	
 }
