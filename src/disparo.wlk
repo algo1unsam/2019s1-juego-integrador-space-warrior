@@ -5,28 +5,40 @@ import enemigos.*
 
 class Disparo {
 	
-	var image = if (nave.nivel() == 1) {
-		"shoot.png"
-	} else if (nave.nivel() == 2) {
-		"shootmalo.png"
-	} else if (nave.nivel() == 3) {
-		"shootfinal.png"
-	}
+//	var image = if (nave.nivel() == 1) {
+//		"shoot.png"
+//	} else if (nave.nivel() == 2) {
+//		"shootmalo.png"
+//	} else if (nave.nivel() == 3) {
+//		"shootfinal.png"
+//	}
 	
 	var property position
 	var property posicionFinal = 0
 	
 
-	method image() = image
+	method image() = "shoot.png"
 
 	method avanzarEnTablero(disparador, msegs) {
-		game.onTick(500, "avanzarEnTablero" + self.identity(), { => disparador.desplazarDisparo(self)})
+		//game.onTick(500, "avanzarEnTablero" + self.identity(), { => disparador.desplazarDisparo(self)})
 		
-//		if (disparador == nave) {
+	if (disparador == nave) {
 			game.onTick(500, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador)})
-//		} else game.onTick(msegs, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador) })
+		} else game.onTick(msegs, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador) })
 	
 	}
+
+
+//	method avanzarEnTablero(disparador, msegs) {
+//		game.onTick(500, "avanzarEnTablero" + self.identity(), { => disparador.desplazarDisparo(self)})
+//		
+//		if (disparador == nave) {
+//			game.onTick(500, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador)})
+//	} else game.onTick(msegs, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador) })
+//	
+//	}
+
+
 
 	method desplazarse(disparador) {
 		
