@@ -29,27 +29,11 @@ object nave {
 		}
 	} 
 	
-		
-//	method recibeDisparo() {
-//		if (vida > 0 and nivel == 1) {
-//			vida -= 5
-//		} else if (vida > 0 and nivel == 2) {
-//			vida -= 10
-//		} else if (vida > 0 and nivel == 3) {
-//			vida -= 15
-//		} 
-//	} 
-	
-	
 	method recibeDisparo(){
 		if (vida>0){
 			vida -= danio
 		}
 	}
-	
-	
-	
-	
 	
 	
 	
