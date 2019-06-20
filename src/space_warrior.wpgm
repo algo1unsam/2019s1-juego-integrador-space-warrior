@@ -71,7 +71,7 @@ program space_warrior {
 		accionesEnemigos.apply(6000, 5000)
 		accionesNave.apply()
 		
-		game.onTick(1000, "pasarANivel2", {=>
+		game.onTick(600, "pasarANivel2", {=>
 			if (nivel1.nivelCompleto()) {
 				pasarDeNivel.apply()
 				enemigosEnPantalla.apply(nivel2)
@@ -81,7 +81,7 @@ program space_warrior {
 			}
 		})
 	}
-	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
+	const pasarANivel3 = {=> game.onTick(600, "pasarANivel3", {=>
 		if (nivel2.nivelCompleto()) {
 			pasarDeNivel.apply()
 			enemigosEnPantalla.apply(nivel3)
@@ -94,7 +94,7 @@ program space_warrior {
 	
 	
 	
-	const finDelJuego = {=> game.onTick(2000, "finDelJuego", {=>
+	const finDelJuego = {=> game.onTick(600, "finDelJuego", {=>
 		if (nivel3.nivelCompleto()) {			
 			pasarDeNivel.apply()
 			game.say(nave, "GANASTE")
@@ -103,9 +103,8 @@ program space_warrior {
 		}
 	}) }
 	
-	const nivelFinal = {=> game.onTick(30000, "sumarEnemigos", {=>
-		//enemigos.add(new EnemigoMalo(position = game.at(6, 11), posiciones = 1, msegs = 950))
-		//enemigosEnPantalla.apply()
+	const nivelFinal = {=> game.onTick(5000, "sumarEnemigos", {=>
+		enemigosEnPantalla.apply(finalDelJuego)
 	}
 	
 	)
