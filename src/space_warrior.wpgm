@@ -72,7 +72,7 @@ program space_warrior {
 		accionesNave.apply()
 		
 		game.onTick(1000, "pasarANivel2", {=>
-			if (nave.nivel() == 1 and (nave.muertes() == 6)) {
+			if (nivel1.nivelCompleto()) {
 				pasarDeNivel.apply()
 				enemigosEnPantalla.apply(nivel2)
 				accionesNave.apply()
@@ -82,12 +82,12 @@ program space_warrior {
 		})
 	}
 	const pasarANivel3 = {=> game.onTick(1000, "pasarANivel3", {=>
-		if (nave.nivel() == 2 and (nave.muertes() == 5)) {
+		if (nivel2.nivelCompleto()) {
 			pasarDeNivel.apply()
 			enemigosEnPantalla.apply(nivel3)
 			accionesNave.apply()
 			accionesEnemigos.apply(4000, 4000)
-			//nivel3.apply()
+			//nivelFinal.apply()
 			finDelJuego.apply()
 		}
 	}) }
@@ -95,7 +95,7 @@ program space_warrior {
 	
 	
 	const finDelJuego = {=> game.onTick(2000, "finDelJuego", {=>
-		if (nave.nivel() == 3 and (nave.muertes() == 3)) {			
+		if (nivel3.nivelCompleto()) {			
 			pasarDeNivel.apply()
 			game.say(nave, "GANASTE")
 			game.say(nave, "CHAU!")
