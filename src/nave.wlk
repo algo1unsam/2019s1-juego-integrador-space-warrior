@@ -12,7 +12,6 @@ object nave {
 	var property muertes = 0
 	var property nivel = 1
 	var property danio = 0
-	var property posicionFinal = 0
 	
 	method image()= "player.png"
 	
@@ -50,9 +49,10 @@ object nave {
 	} 
 	
 	method desplazarDisparo(disparo){
-		posicionFinal += 1
+		var posFinal = (disparo.posicionFinal() + 1)
+		disparo.posicionFinal(posFinal)
 		disparo.position(disparo.position().up(1))
-		if (posicionFinal == (game.height() - 1)) {
+		if (disparo.posicionFinal() == (game.height() - 1)) {
 			disparo.terminarDisparo()
 		}
 	}

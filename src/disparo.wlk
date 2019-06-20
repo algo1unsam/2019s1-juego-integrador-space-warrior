@@ -6,17 +6,17 @@ import enemigos.*
 class Disparo {
 	
 	var property position
-	//var property posicionFinal = 0
+	var property posicionFinal = 0
 	
 
 	method image() = "shoot.png"
 
 	method avanzarEnTablero(disparador, msegs) {
-		//game.onTick(500, "avanzarEnTablero" + self.identity(), { => disparador.desplazarDisparo(self)})
+		game.onTick(500, "avanzarEnTablero" + self.identity(), { => disparador.desplazarDisparo(self)})
 		
-	if (disparador == nave) {
-			game.onTick(500, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador)})
-		} else game.onTick(msegs, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador) })
+//	if (disparador == nave) {
+//			game.onTick(500, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador)})
+//		} else game.onTick(msegs, "avanzarEnTablero" + self.identity(), { => self.desplazarse(disparador) })
 	
 	}
 
