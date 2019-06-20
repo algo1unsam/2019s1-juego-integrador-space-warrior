@@ -1,6 +1,7 @@
 import wollok.game.*
 import nave.*
 import disparo.*
+import otrosDisparos.*
 
 class Enemigo{
 	
@@ -16,7 +17,8 @@ class Enemigo{
 	method estaMuerto() = (vida <= 0)
 
 	method disparoInicial() {
-		const disparo = new Disparo()
+		const disparo = new DisparoEnemigo()
+		nave.danio(disparo.danio())
 		disparo.position(self.position().down(posiciones))
 		game.addVisual(disparo)
 		game.hideAttributes(disparo)

@@ -11,6 +11,7 @@ class EnemigoMalo inherits Enemigo {
 	
 override method disparoInicial(){
 	const disparo = new DisparoMalo()
+	nave.danio(disparo.danio())
 	disparo.position(self.position().down(posiciones))
 	game.addVisual(disparo)
 	game.hideAttributes(disparo)
@@ -44,6 +45,7 @@ class EnemigoMuyMalo inherits Enemigo {
 	
 	override method disparoInicial(){
 	const disparo = new DisparoMuyMalo()
+	nave.danio(disparo.danio())
 	disparo.position(self.position().down(posiciones))
 	game.addVisual(disparo)
 	game.hideAttributes(disparo)

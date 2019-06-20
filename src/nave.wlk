@@ -9,6 +9,7 @@ object nave {
 	var property vida = 15
 	var property muertes = 0
 	var property nivel = 1
+	var property danio = 0
 	
 	method image()= "player.png"
 	
@@ -27,20 +28,33 @@ object nave {
 		}
 	} 
 	
-	method recibeDisparo() {
-		if (vida > 0 and nivel == 1) {
-			vida -= 5
-		} else if (vida > 0 and nivel == 2) {
-			vida -= 10
-		} else if (vida > 0 and nivel == 3) {
-			vida -= 15
-		} 
-	} 
+		
+//	method recibeDisparo() {
+//		if (vida > 0 and nivel == 1) {
+//			vida -= 5
+//		} else if (vida > 0 and nivel == 2) {
+//			vida -= 10
+//		} else if (vida > 0 and nivel == 3) {
+//			vida -= 15
+//		} 
+//	} 
+	
+	
+	method recibeDisparo(){
+		if (vida>0){
+			vida -= danio
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	method disparoInicial(){
 		
 			const disparo = new DisparoNave (position=self.position())
-			//const disparo = new Disparo(position=self.position(), image="bullet.png")
 			disparo.position(self.position().up(1))
 			game.addVisual(disparo)
 			game.hideAttributes(disparo)
