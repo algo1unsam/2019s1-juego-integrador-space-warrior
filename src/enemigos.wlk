@@ -12,11 +12,8 @@ class Enemigo{
 	var property vida = (20*nave.nivel())
 	var property msegs = 6000
 	var property posiciones = 2
-	//var property posicionFinal = 0
 	
-	var image = "alien.png"
-	
-	method image() = image
+	method image() = "alien.png"
 
 	method estaMuerto() = (vida <= 0)
 

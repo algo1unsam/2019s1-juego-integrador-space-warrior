@@ -52,4 +52,6 @@ object nivel3 inherits Nivel{
 	
 	override method muertesNivel() = 3
 	
+	override method proximoNivel() = 4
+	
 }
