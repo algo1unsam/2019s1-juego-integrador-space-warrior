@@ -5,13 +5,7 @@ import disparo.*
 
 
 class DisparoEnemigo inherits Disparo {
-	
-	
-	
-	
-	
-	
-	
+		
 }
 
 

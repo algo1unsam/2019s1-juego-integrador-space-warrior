@@ -2,7 +2,7 @@ import wollok.game.*
 import nave.*
 import enemigos.*
 import disparo.*
-
+import otrosDisparos.*
 
 object nave {
 	var property position = game.at(6,1)
@@ -39,7 +39,7 @@ object nave {
 	
 	method disparoInicial(){
 		
-			const disparo = new Disparo(position=self.position())
+			const disparo = new DisparoNave (position=self.position())
 			//const disparo = new Disparo(position=self.position(), image="bullet.png")
 			disparo.position(self.position().up(1))
 			game.addVisual(disparo)
