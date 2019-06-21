@@ -77,7 +77,7 @@ program space_warrior {
 			enemigosEnPantalla.apply(nivel3)
 			accionesNave.apply()
 			accionesEnemigos.apply(4000, 4000)
-				// nivelFinal.apply()
+			//nivelFinal.apply()
 			finDelJuego.apply()
 		}
 	}) }
@@ -88,7 +88,7 @@ program space_warrior {
 			nave.finDelJuego()
 		}
 	}) }
-//	const nivelFinal = {=> game.onTick(30000, "sumarEnemigos", {=>
+//	const nivelFinal = {=> game.onTick(20000, "sumarEnemigos", {=>
 //		enemigosEnPantalla.apply(finalDelJuego)
 //		colisiones.apply()
 //}
