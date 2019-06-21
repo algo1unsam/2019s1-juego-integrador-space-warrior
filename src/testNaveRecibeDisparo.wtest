@@ -1,9 +1,10 @@
+import wollok.game.*
 import nave.*
 import enemigos.*
 import enemigosMalos.*
 import disparo.*
 import otrosDisparos.*
-import wollok.game.*
+import niveles.*
 
 describe "Test Nave Recibe Disparo" {
 
@@ -41,8 +42,8 @@ describe "Test Nave Recibe Disparo" {
 	}
 
 	test "Nave tiene vida = 0 y nivel = 2 cuando recibe disparo" {
+		nivel2.subirNivelNave()
 		nave.vida(0)
-		nave.nivel(2)
 		nave.recibeDisparo()
 		assert.equals(0, nave.vida())
 	}
