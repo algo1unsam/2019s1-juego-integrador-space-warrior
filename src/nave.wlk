@@ -11,8 +11,10 @@ object nave {
 	var property vida = 15
 	var property muertes = 0
 	var property danio = 0
+	var property imagen = "player.png"
+	var property imagenColision = "ufo.png"
 	
-	method image()= "player.png"
+	method image()= imagen
 	
 	method estaMuerto()= (vida <= 0)
 	
@@ -20,15 +22,15 @@ object nave {
 		muertes += 1
 	}
 	
-//	method subirNivel(nivel) {
-//		muertes=0
-//		nivel.setearVidaNave()
-//	} 
-	
 	method recibeDisparo(){
+		imagen = imagenColision
 		if (vida>0){
 			vida -= danio
 		}
+	}
+	
+	method imagenOriginal(){
+		imagen="player.png"
 	}
 	
 	
@@ -50,7 +52,6 @@ object nave {
 			disparo.terminarDisparo()
 		}
 	}
-	
 	
 	
 	method finDelJuego() {

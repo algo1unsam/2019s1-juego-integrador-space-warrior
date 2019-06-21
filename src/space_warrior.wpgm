@@ -27,6 +27,7 @@ program space_warrior {
 		jugadores.addAll(enemigos)
 		jugadores.add(nave)
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
+		game.onTick(2000, "quitarEnemigosMuertos", { => jugadores.forEach{ jugador => jugador.imagenOriginal()}})
 	}
 	const movimientoNave = { =>
 		keyboard.left().onPressDo{
@@ -95,17 +96,16 @@ program space_warrior {
 	
 	const finDelJuego = {=> game.onTick(600, "finDelJuego", {=>
 		if (nivel3.nivelCompleto()) {			
-			pasarDeNivel.apply(finalDelJuego)
 			game.say(nave, "GANASTE")
 			game.say(nave, "CHAU!")
 			nave.finDelJuego()
 		}
 	}) }
 	
-	const nivelFinal = {=> game.onTick(5000, "sumarEnemigos", {=>
+	const nivelFinal = {=> game.onTick(30000, "sumarEnemigos", {=>
 		enemigosEnPantalla.apply(finalDelJuego)
 	}
-	
+
 	)
 	}
 		

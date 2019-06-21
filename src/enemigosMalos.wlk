@@ -8,15 +8,27 @@ class EnemigoMalo inherits Enemigo {
 
 	var property posicionFinalDesp = 0
 	
-	override method image() = "enem2.png"
+	var property imagen2 = "enem2.png"
+	var property imagenColision2="ufo.png"
 	
-override method disparoInicial(){
-	const disparo = new DisparoMalo()
-	nave.danio(disparo.danio())
-	disparo.position(self.position().down(posiciones))
-	game.addVisual(disparo)
-	game.hideAttributes(disparo)
-	disparo.avanzarEnTablero(self, msegs)
+	override method image() = imagen2
+	
+	override method imagenOriginal(){
+		imagen2="enem2.png"
+	}
+	
+	override method recibeDisparo() {
+		super()
+		imagen2 = imagenColision2
+	}
+	
+	override method disparoInicial() {
+			const disparo = new DisparoMalo()
+			nave.danio(disparo.danio())
+			disparo.position(self.position().down(posiciones))
+			game.addVisual(disparo)
+			game.hideAttributes(disparo)
+			disparo.avanzarEnTablero(self, msegs)
 }
 	
 override method desplazarse(){
@@ -41,10 +53,21 @@ override method desplazarse(){
 
 
 class EnemigoMuyMalo inherits Enemigo {
-
-
-	override method image() = "ufo.png"
 	
+	var property imagen2 = "ufo.png"
+	var property imagenColision2="player.png"
+	
+	override method image() = imagen2
+	
+	override method imagenOriginal(){
+		imagen2="ufo.png"
+	}
+	
+	override method recibeDisparo() {
+		super()
+		imagen2 = imagenColision2
+	}
+		
 	override method disparoInicial(){
 	const disparo = new DisparoMuyMalo()
 	nave.danio(disparo.danio())

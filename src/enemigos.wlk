@@ -12,13 +12,19 @@ class Enemigo{
 	var property vida = 20
 	var property msegs = 6000
 	var property posiciones = 2
+	var property imagen = "alien.png"
+	var property imagenColision="ufo.png"
 
 	method aumentarVida(nivel){
 		var vidaNivel = vida * (nivel.proximoNivel() - 1)
 		self.vida(vidaNivel)
 	}
 	
-	method image() = "alien.png"
+	method imagenOriginal(){
+		imagen="alien.png"
+	}
+	
+	method image() = imagen
 
 	method estaMuerto() = (vida <= 0)
 
@@ -29,7 +35,7 @@ class Enemigo{
 		game.addVisual(disparo)
 		game.hideAttributes(disparo)
 		disparo.avanzarEnTablero(self, msegs)
-	}
+	} 
 
 	method desplazarse() {
 		if (sentido == -1 and contador == 1) {
@@ -66,6 +72,7 @@ class Enemigo{
 			nave.matarEnemigo()
 			game.removeVisual(self)
 		}
+		imagen = imagenColision
 	}
 
 
