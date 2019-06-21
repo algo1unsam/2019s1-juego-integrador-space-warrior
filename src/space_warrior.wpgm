@@ -104,10 +104,9 @@ program space_warrior {
 	
 	const nivelFinal = {=> game.onTick(30000, "sumarEnemigos", {=>
 		enemigosEnPantalla.apply(finalDelJuego)
+		accionesEnemigos.apply(5500, 5500)
 		colisiones.apply()
-		
-
-		
+				
 		
 	}
 

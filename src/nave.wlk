@@ -12,7 +12,6 @@ object nave {
 	var property muertes = 0
 	var property danio = 0
 	var property imagen = "player.png"
-	var property imagenColision = "skull.png"
 	
 	method image()= imagen
 	
