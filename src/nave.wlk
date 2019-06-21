@@ -57,8 +57,10 @@ object nave {
 	method finDelJuego() {
 		
 		if  (self.estaMuerto()){
+			imagen="ufo.png"
 			game.say(self, "OH NO! PERDISTE!")
 		}	
+			imagen="alien.png"
 			game.onTick(3000, "gameStop", { => game.stop()})
 		}
 		
