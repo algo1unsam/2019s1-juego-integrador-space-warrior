@@ -27,10 +27,6 @@ object nave {
 		}
 	}
 	
-	method imagenOriginal(){
-		imagen="player.png"
-	}
-	
 	
 	method disparoInicial(){
 		

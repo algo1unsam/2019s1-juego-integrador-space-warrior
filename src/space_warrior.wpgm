@@ -21,22 +21,16 @@ program space_warrior {
 		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
 		enemigos.forEach{ enemigo => enemigo.aumentarVida(nivel)}
 	}
-
 	const colisiones = { =>
 		const jugadores = []
 		jugadores.addAll(enemigos)
 		jugadores.add(nave)
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
-		game.onTick(2000, "quitarEnemigosMuertos", { => jugadores.forEach{ jugador => jugador.imagenOriginal()}})
 	}
 	const movimientoNave = { =>
-		keyboard.left().onPressDo{
-			if (nave.position().x() > 0) 
-				nave.position(nave.position().left(1))
+		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))
 		}
-		keyboard.right().onPressDo{ 
-			if (nave.position().x() < game.width() - 1) 
-				nave.position(nave.position().right(1))
+		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))
 		}
 		keyboard.up().onPressDo{ nave.disparoInicial()}
 	}
@@ -63,14 +57,10 @@ program space_warrior {
 		game.onTick(segs_disparos, "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(200, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 	}
-	
 //--------------------------------------------------------------------------------------------------------------------
-
 	enemigosEnPantalla.apply(nivel1)
-	keyboard.space().onPressDo{ 
-		accionesEnemigos.apply(6000, 5000)
+	keyboard.space().onPressDo{ accionesEnemigos.apply(6000, 5000)
 		accionesNave.apply()
-		
 		game.onTick(600, "pasarANivel2", {=>
 			if (nivel1.nivelCompleto()) {
 				pasarDeNivel.apply(nivel2)
@@ -87,31 +77,23 @@ program space_warrior {
 			enemigosEnPantalla.apply(nivel3)
 			accionesNave.apply()
 			accionesEnemigos.apply(4000, 4000)
-			nivelFinal.apply()
+				// nivelFinal.apply()
 			finDelJuego.apply()
 		}
 	}) }
-	
-	
-	
 	const finDelJuego = {=> game.onTick(600, "finDelJuego", {=>
-		if (nivel3.nivelCompleto()) {			
+		if (nivel3.nivelCompleto()) {
 			game.say(nave, "GANASTE")
 			game.say(nave, "CHAU!")
 			nave.finDelJuego()
 		}
 	}) }
-	
-	const nivelFinal = {=> game.onTick(30000, "sumarEnemigos", {=>
-		enemigosEnPantalla.apply(finalDelJuego)
-		accionesEnemigos.apply(5500, 5500)
-		colisiones.apply()
-				
-		
-	}
-
-	)
-	}
+//	const nivelFinal = {=> game.onTick(30000, "sumarEnemigos", {=>
+//		enemigosEnPantalla.apply(finalDelJuego)
+//		colisiones.apply()
+//}
+//)
+//	}
 		
 	
 	game.errorReporter(nave)

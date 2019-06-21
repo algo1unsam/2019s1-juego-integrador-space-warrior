@@ -19,10 +19,6 @@ class Enemigo{
 		self.vida(vidaNivel)
 	}
 	
-	method imagenOriginal(){
-		imagen="alien.png"
-	}
-	
 	method image() = imagen
 
 	method estaMuerto() = (vida <= 0)

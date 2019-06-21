@@ -78,8 +78,8 @@ object nivel3 inherits Nivel{
 object finalDelJuego inherits Nivel {
 	
 	const property enemigos = [
-		new EnemigoMalo(position = game.at(4, 11), posiciones = 2, msegs = 1000),
-		new EnemigoMalo(position = game.at(8, 11), posiciones = 2, msegs = 1000)
+		new EnemigoMalo(position = game.at(5, 11), posiciones = 2, msegs = 1000),
+		new EnemigoMalo(position = game.at(9, 11), posiciones = 2, msegs = 1000)
 	]
 		
 }
