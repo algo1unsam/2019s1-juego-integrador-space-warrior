@@ -1,0 +1,28 @@
+import enemigos.*
+import wollok.game.*
+import nave.*
+
+describe "Tests Enemigo Nivel 1 / Clase Enemigo" {
+
+	const enemigo = new Enemigo(position = game.at(5, 5), posiciones = 1)
+	fixture {enemigo.desplazarse()}
+
+// Por valores default empiezo con sentido = -1 y posicionIzq = 1
+	test "Desplazamiento: sentido izquierda" {
+		assert.equals(game.at(4, 5), enemigo.position())
+	}
+
+	test "Desplazamiento: cambio de sentido primera vez" {
+		enemigo.desplazarse()
+		assert.equals(game.at(7, 5), enemigo.position())
+	}
+
+	test "Desplazamiento: cambio de sentido segunda vez" {
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		assert.equals(game.at(5, 5), enemigo.position())
+	}	
+
+}
+

@@ -1,0 +1,56 @@
+import enemigos.*
+import enemigosMalos.*
+import nave.*
+import wollok.game.*
+
+describe "Tests Enemigo Nivel 2" {
+
+	const enemigo = new EnemigoMalo(position = game.at(6,11))
+
+	test "Desplazamiento inicial" {
+		
+		enemigo.desplazarse()
+		
+		assert.equals(game.at(5,10),enemigo.position())
+	}
+
+	test "Desplazamiento izquierda" {
+		
+		game.addVisual(nave)
+		game.addVisual(enemigo)
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		
+		assert.equals(game.at(5, 8), enemigo.position())
+	}
+
+	test "Desplazamiento derecha" {
+		
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		
+		assert.equals(game.at(7,9),enemigo.position())
+	}
+	
+	
+	test "Llega al final del tablero y pierde el juego"{
+		
+		game.addVisual(nave)
+		game.addVisual(enemigo)
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		enemigo.desplazarse()
+		
+		assert.equals(0, nave.vida())
+		
+	}
+
+}
+

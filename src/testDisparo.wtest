@@ -1,0 +1,43 @@
+import disparo.*
+import nave.*
+import enemigos.*
+import wollok.game.*
+
+describe "Tests del disparo" {
+
+	const enemigo = new Enemigo(position = game.at(5, 12))
+	const enemigo2 = new Enemigo(position = game.at(6, 12), posiciones = 1)
+	const disparoN = new Disparo(position = nave.position().up(1))
+	const disparoE = new Disparo(position = enemigo.position().down(1))
+	const disparoE2 = new Disparo(position = enemigo2.position().down(1))
+
+	fixture {
+		game.addVisual(enemigo)
+		game.addVisual(nave)
+		game.addVisual(disparoN)
+		game.addVisual(disparoE)
+		nave.desplazarDisparo(disparoN)		
+		nave.desplazarDisparo(disparoN)	
+		nave.desplazarDisparo(disparoN)		
+		enemigo.desplazarDisparo(disparoE)
+		enemigo.desplazarDisparo(disparoE)
+		enemigo.desplazarDisparo(disparoE)
+		enemigo2.desplazarDisparo(disparoE2)
+		enemigo2.desplazarDisparo(disparoE2)
+		enemigo2.desplazarDisparo(disparoE2)
+	}
+
+	test "Disparo de la nave avanza correctamente" {
+		assert.equals(nave.position().up(4), disparoN.position())
+	}
+
+	test "Disparo del enemigo avanza correctamente (con valor de posiciones=2 default)" {
+		assert.equals(enemigo.position().down(7), disparoE.position())
+	}
+
+	test "Disparo del enemigo2 avanza correctamente (con valor de posiciones=1)" {
+		assert.equals(enemigo2.position().down(4), disparoE2.position())
+	}
+
+}
+
