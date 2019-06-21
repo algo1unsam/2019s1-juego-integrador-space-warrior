@@ -13,10 +13,6 @@ class EnemigoMalo inherits Enemigo {
 	
 	override method image() = imagen2
 	
-	override method imagenOriginal(){
-		imagen2="enem2.png"
-	}
-	
 	
 	override method disparoInicial() {
 			const disparo = new DisparoMalo()
@@ -54,10 +50,6 @@ class EnemigoMuyMalo inherits Enemigo {
 	var property imagenColision2="player.png"
 	
 	override method image() = imagen2
-	
-	override method imagenOriginal(){
-		imagen2="ufo.png"
-	}
 	
 		
 	override method disparoInicial(){
