@@ -47,7 +47,6 @@ override method desplazarse(){
 class EnemigoMuyMalo inherits Enemigo {
 	
 	var property imagen2 = "ufo.png"
-	var property imagenColision2="player.png"
 	
 	override method image() = imagen2
 	
