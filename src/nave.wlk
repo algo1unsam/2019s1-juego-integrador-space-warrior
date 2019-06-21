@@ -23,7 +23,6 @@ object nave {
 	}
 	
 	method recibeDisparo(){
-		imagen = imagenColision
 		if (vida>0){
 			vida -= danio
 		}
@@ -57,7 +56,6 @@ object nave {
 	method finDelJuego() {
 		
 		if  (self.estaMuerto()){
-			imagen="skull.png"
 			game.say(self, "OH NO! PERDISTE!")
 		}	
 			game.onTick(3000, "gameStop", { => game.stop()})

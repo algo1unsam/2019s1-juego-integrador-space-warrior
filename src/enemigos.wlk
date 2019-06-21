@@ -72,7 +72,6 @@ class Enemigo{
 			nave.matarEnemigo()
 			game.removeVisual(self)
 		}
-		imagen = imagenColision
 	}
 
 
