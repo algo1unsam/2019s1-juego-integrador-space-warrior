@@ -1,18 +1,23 @@
-import nave.*
 import wollok.game.*
+import nave.*
+import enemigos.*
+import enemigosMalos.*
+import disparo.*
+import otrosDisparos.*
+import niveles.*
 
 describe "Test de la nave" {	
 	
 	test "Nave sube de nivel 1 a 2 y su vida incrementa en 10" {
 		
-		nave.subirNivel()
+		nivel2.subirNivelNave()
 		assert.equals(25, nave.vida())
 	}
 		
 
 	test "Nave tiene nivel = 3 y muertes = 2 cuando mata un enemigo"{
 		
-		nave.nivel(3)
+		nivel3.subirNivelNave()
 		nave.muertes(2)	
 		nave.matarEnemigo()
 		
