@@ -12,7 +12,7 @@ object nave {
 	var property muertes = 0
 	var property danio = 0
 	var property imagen = "player.png"
-	var property imagenColision = "ufo.png"
+	var property imagenColision = "skull.png"
 	
 	method image()= imagen
 	
@@ -57,10 +57,9 @@ object nave {
 	method finDelJuego() {
 		
 		if  (self.estaMuerto()){
-			imagen="ufo.png"
+			imagen="skull.png"
 			game.say(self, "OH NO! PERDISTE!")
 		}	
-			imagen="alien.png"
 			game.onTick(3000, "gameStop", { => game.stop()})
 		}
 		

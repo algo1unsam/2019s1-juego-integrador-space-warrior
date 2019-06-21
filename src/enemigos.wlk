@@ -13,7 +13,7 @@ class Enemigo{
 	var property msegs = 6000
 	var property posiciones = 2
 	var property imagen = "alien.png"
-	var property imagenColision="ufo.png"
+	var property imagenColision="skull.png"
 
 	method aumentarVida(nivel){
 		var vidaNivel = vida * (nivel.proximoNivel() - 1)

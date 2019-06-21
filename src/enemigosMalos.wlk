@@ -9,7 +9,7 @@ class EnemigoMalo inherits Enemigo {
 	var property posicionFinalDesp = 0
 	
 	var property imagen2 = "enem2.png"
-	var property imagenColision2="ufo.png"
+	var property imagenColision2="skull.png"
 	
 	override method image() = imagen2
 	
@@ -54,7 +54,7 @@ override method desplazarse(){
 
 class EnemigoMuyMalo inherits Enemigo {
 	
-	var property imagen2 = "ufo.png"
+	var property imagen2 = "skull.png"
 	var property imagenColision2="player.png"
 	
 	override method image() = imagen2
