@@ -15,7 +15,7 @@ class Enemigo{
 	var property imagen = "alien.png"
 
 	method aumentarVida(nivel){
-		var vidaNivel = vida * (nivel.proximoNivel() - 1)
+		var vidaNivel = vida
 		self.vida(vidaNivel)
 	}
 	
@@ -61,9 +61,8 @@ class Enemigo{
 	}
 
 	method recibeDisparo() {
-		if (vida > 0) {
-			vida -= 5
-		} else {
+		vida -= 5
+		if (vida <= 0) {
 			nave.matarEnemigo()
 			game.removeVisual(self)
 		}

@@ -13,90 +13,61 @@ program space_warrior {
 	game.ground("ground.png")
 	game.addVisual(nave)
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
-	const enemigos = []
+	
+	var nivelActual = nivel3
 
-	const enemigosEnPantalla = { nivel =>
-		enemigos.addAll(nivel.enemigos())
-		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-		enemigos.forEach{ enemigo => enemigo.aumentarVida(nivel)}
-	}
-	const colisiones = { =>
-		const jugadores = []
-		jugadores.addAll(enemigos)
-		jugadores.add(nave)
-		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
-	}
-	const movimientoNave = { =>
-		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))
-		}
-		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))
-		}
-		keyboard.up().onPressDo{ nave.disparoInicial()}
-	}
-	const perderJuego = { => game.onTick(1000, "perderJuego", { =>
-		if (nave.estaMuerto()) {
-			nave.finDelJuego()
-		}
-	}) }
-	const accionesNave = { =>
-		movimientoNave.apply()
-		colisiones.apply()
-		perderJuego.apply()
-	}
 	const pasarDeNivel = { nivel =>
 		game.clear()
 		game.addVisual(nave)
-		nivel.subirNivelNave()
-		if ((nivel.proximoNivel() - 1) < 4) {
-			game.say(nave, "NIVEL" + (nivel.proximoNivel() - 1))
-		}
-	}
-	const accionesEnemigos = { segs_desplazamiento , segs_disparos =>
-		game.onTick(segs_desplazamiento, "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
-		game.onTick(segs_disparos, "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
-		game.onTick(200, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
-	}
-//--------------------------------------------------------------------------------------------------------------------
-	enemigosEnPantalla.apply(nivel1)
-	keyboard.space().onPressDo{ accionesEnemigos.apply(6000, 5000)
-		accionesNave.apply()
-		game.onTick(600, "pasarANivel2", {=>
-			if (nivel1.nivelCompleto()) {
-				pasarDeNivel.apply(nivel2)
-				enemigosEnPantalla.apply(nivel2)
-				accionesNave.apply()
-				accionesEnemigos.apply(5500, 5500)
-				pasarANivel3.apply()
-			}
-		})
+		setearNivel.apply(nivel)
 	}
 	
-	//cambio
-	const pasarANivel3 = {=> game.onTick(600, "pasarANivel3", {=>
-		if (nivel2.nivelCompleto()) {
-			pasarDeNivel.apply(nivel3)
-			enemigosEnPantalla.apply(nivel3)
-			accionesNave.apply()
-			accionesEnemigos.apply(4000, 4000)
-			//nivelFinal.apply()
-			finDelJuego.apply()
-		}
-	}) }
-	const finDelJuego = {=> game.onTick(600, "finDelJuego", {=>
-		if (nivel3.nivelCompleto()) {
-			game.say(nave, "GANASTE")
-			game.say(nave, "CHAU!")
-			nave.finDelJuego()
-		}
-	}) }
-//	const nivelFinal = {=> game.onTick(20000, "sumarEnemigos", {=>
-//		enemigosEnPantalla.apply(finalDelJuego)
-//		colisiones.apply()
-//}
-//)
-//	}
+	const accionesEnemigos = { nivel =>
+			const enemigos = []
+			const jugadores = []
+			enemigos.addAll(nivel.enemigos())
+			jugadores.addAll(enemigos)
+			jugadores.add(nave)
+			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
+			enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
+			enemigos.forEach{ enemigo => enemigo.aumentarVida(nivel)} // corregir este metodo, ahora trae siempre el mismo valor
+			game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
+			game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
+			jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
+			game.onTick(100, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
+			game.onTick(20000, "agregarDificultad", { => nivel.agregarDificultad()})
+		}	
+	
+	
+	const setearNivel = { nivel =>
 		
+//Movimiento de la nave-------------------------------------------------------------------------------------------------		
+		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))}
+		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))}
+		keyboard.up().onPressDo{ nave.disparoInicial()}			
+//----------------------------------------------------------------------------------------------------------------------		
+		if (nivel == ganarJuego) {nave.finDelJuego()}
+		game.say(nave, nivel.nombreDelNivel())
+		nave.subirNivel()
+		accionesEnemigos.apply(nivel)
+		game.onTick(2000, "proximoNivel", { =>
+			if (nivel.nivelCompleto()) {
+				nivelActual = nivel.proximoNivel()
+				pasarDeNivel.apply(nivelActual)
+			}
+		})
+	}	
+
+
+
+
+
+
+
+	keyboard.space().onPressDo{ 	
+		
+		setearNivel.apply(nivelActual)
+	}
 	
 	game.errorReporter(nave)
 	game.start()
