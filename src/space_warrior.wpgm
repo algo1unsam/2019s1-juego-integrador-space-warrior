@@ -14,7 +14,7 @@ program space_warrior {
 	game.addVisual(nave)
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
 	const enemigos = []
-//--------------------------------------------------------------------------------------------------------------------
+
 	const enemigosEnPantalla = { nivel =>
 		enemigos.addAll(nivel.enemigos())
 		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
@@ -71,6 +71,8 @@ program space_warrior {
 			}
 		})
 	}
+	
+	//cambio
 	const pasarANivel3 = {=> game.onTick(600, "pasarANivel3", {=>
 		if (nivel2.nivelCompleto()) {
 			pasarDeNivel.apply(nivel3)

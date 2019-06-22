@@ -62,7 +62,7 @@ object nivel3 inherits Nivel{
 	
 	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
 	
-	override method muertesNivel() = 3
+	override method muertesNivel() = 1
 	
 	override method proximoNivel() = 4
 	
