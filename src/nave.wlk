@@ -28,6 +28,10 @@ object nave {
 		}
 	}
 	
+	method subirNivel(){
+		muertes = 0
+		vida += 10
+	}
 	
 	method disparoInicial(){
 		

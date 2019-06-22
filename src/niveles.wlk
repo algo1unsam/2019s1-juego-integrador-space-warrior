@@ -25,13 +25,25 @@ class Nivel{
 	
 }
 
+object ganarJuego{
+	
+	method nombreDelNivel() = "GANASTE!"
+	
+	method subirNivelNave(){
+		nave.muertes(0)
+		var vida = nave.vida() + 10
+		nave.vida(vida)	
+	}
+
+}
+
 object nivel3 inherits Nivel{
 	
 	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
 	
 	override method muertesNivel() = 1
 	
-	override method proximoNivel() = nivel2 // acordate de modificar esto
+	override method proximoNivel() = ganarJuego // acordate de modificar esto
 	
 	override method velocidadDisparo() = 4000
 	
