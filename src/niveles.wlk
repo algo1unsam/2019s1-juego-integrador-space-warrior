@@ -17,12 +17,6 @@ class Nivel{
 	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
-	method subirNivelNave(){
-		nave.muertes(0)
-		var vida = nave.vida() + 10
-		nave.vida(vida)	
-	}
-	
 }
 
 object ganarJuego{
