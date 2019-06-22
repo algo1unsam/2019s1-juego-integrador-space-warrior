@@ -104,6 +104,7 @@ program space_warrior {
 			if (nivel.nivelCompleto()) {
 				nivelActual = nivel.proximoNivel()
 				pasarDeNivel.apply(nivelActual)
+				
 			}
 		})
 	}
