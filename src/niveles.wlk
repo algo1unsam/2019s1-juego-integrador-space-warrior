@@ -19,12 +19,7 @@ class Nivel{
 	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
-	method visuales(){
-		
-//		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-//		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-	
-	}	
+	method visuales()
 }
 
 object ganarJuego{}

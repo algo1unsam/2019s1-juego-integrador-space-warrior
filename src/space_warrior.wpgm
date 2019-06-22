@@ -28,8 +28,7 @@ program space_warrior {
 			enemigos.addAll(nivel.enemigos())
 			jugadores.addAll(enemigos)
 			jugadores.add(nave)
-			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-			enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
+			nivel.visuales()
 			enemigos.forEach{ enemigo => enemigo.aumentarVida(nivel)} // corregir este metodo, ahora trae siempre el mismo valor
 			game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
 			game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
