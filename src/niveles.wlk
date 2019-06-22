@@ -7,7 +7,7 @@ import otrosDisparos.*
 
 class Nivel{
 	
-	method proximoNivel() = 2
+	method proximoNivel() = nivel2
 	
 	method muertesNivel() = 6
 	
@@ -18,6 +18,8 @@ class Nivel{
 		var vida = nave.vida() + 10
 		nave.vida(vida)	
 	}
+	
+	method nombreDelNivel() = "NIVEL 1"
 	
 }
 
@@ -45,7 +47,9 @@ object nivel2 inherits Nivel{
 		new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 1000)
 	]
 
-	override method proximoNivel() = 3
+	//override method proximoNivel() = nivel3
+	
+	override method nombreDelNivel() = "NIVEL 2"
 
 	override method muertesNivel() = 5
 	
@@ -58,31 +62,33 @@ object nivel2 inherits Nivel{
 }
 
 
-object nivel3 inherits Nivel{
-	
-	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
-	
-	override method muertesNivel() = 1
-	
-	override method proximoNivel() = 4
-	
-	override method subirNivelNave(){
-		nave.muertes(0)
-		var vida = nave.vida() + 15
-		nave.vida(vida)	
-	}
-	
-}
-
-
-object finalDelJuego inherits Nivel {
-	
-	const property enemigos = [
-		new EnemigoMalo(position = game.at(5, 11), posiciones = 2, msegs = 1000),
-		new EnemigoMalo(position = game.at(9, 11), posiciones = 2, msegs = 1000)
-	]
-		
-}
+//object nivel3 inherits Nivel{
+//	
+//	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
+//	
+//	override method muertesNivel() = 1
+//	
+//	override method proximoNivel() = nivel4
+//	
+//	override method nombreDelNivel() = "NIVEL 3"
+//
+//	override method subirNivelNave(){
+//		nave.muertes(0)
+//		var vida = nave.vida() + 15
+//		nave.vida(vida)	
+//	}
+//	
+//}
+//
+//
+//object finalDelJuego inherits Nivel {
+//	
+//	const property enemigos = [
+//		new EnemigoMalo(position = game.at(5, 11), posiciones = 2, msegs = 1000),
+//		new EnemigoMalo(position = game.at(9, 11), posiciones = 2, msegs = 1000)
+//	]
+//		
+//}
 
 
 

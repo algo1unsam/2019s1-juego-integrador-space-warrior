@@ -15,7 +15,7 @@ class Enemigo{
 	var property imagen = "alien.png"
 
 	method aumentarVida(nivel){
-		var vidaNivel = vida * (nivel.proximoNivel() - 1)
+		var vidaNivel = vida
 		self.vida(vidaNivel)
 	}
 	
