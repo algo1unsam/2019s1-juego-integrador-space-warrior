@@ -21,11 +21,6 @@ program space_warrior {
 		jugadores.add(nave)
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
 	}
-//	const movimientoNave = { =>
-//		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))}
-//		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))}
-//		keyboard.up().onPressDo{ nave.disparoInicial()}
-//	}
 
 	const pasarDeNivel = { nivel =>
 		game.clear()
@@ -41,17 +36,22 @@ program space_warrior {
 			enemigos.forEach{ enemigo => enemigo.aumentarVida(nivel)} // corregir este metodo, ahora trae siempre el mismo valor
 			game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
 			game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
-			game.onTick(500, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
+			game.onTick(100, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 			game.onTick(20000, "agregarDificultad", { => nivel.agregarDificultad()})
 		}	
 	
 	
 	const setearNivel = { nivel =>
+		
+//Movimiento de la nave-------------------------------------------------------------------------------------------------		
+		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))}
+		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))}
+		keyboard.up().onPressDo{ nave.disparoInicial()}			
+//----------------------------------------------------------------------------------------------------------------------		
 		if (nivel == ganarJuego) {nave.finDelJuego()}
 		game.say(nave, nivel.nombreDelNivel())
 		nave.subirNivel()
 		accionesEnemigos.apply(nivel)
-//		movimientoNave.apply()
 		colisiones.apply(nivel)
 		game.onTick(2000, "proximoNivel", { =>
 			if (nivel.nivelCompleto()) {
@@ -61,11 +61,13 @@ program space_warrior {
 		})
 	}	
 
-	keyboard.space().onPressDo{ 
-		
-		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))}
-		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))}
-		keyboard.up().onPressDo{ nave.disparoInicial()}		
+
+
+
+
+
+
+	keyboard.space().onPressDo{ 	
 		
 		setearNivel.apply(nivelActual)
 	}
