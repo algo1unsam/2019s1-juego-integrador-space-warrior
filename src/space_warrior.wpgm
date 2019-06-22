@@ -15,13 +15,6 @@ program space_warrior {
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
 	var nivelActual = nivel3
 
-	const colisiones = { nivel =>
-		const jugadores = []
-		jugadores.addAll(nivel.enemigos())
-		jugadores.add(nave)
-		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
-	}
-
 	const pasarDeNivel = { nivel =>
 		game.clear()
 		game.addVisual(nave)
@@ -30,12 +23,16 @@ program space_warrior {
 	
 	const accionesEnemigos = { nivel =>
 			const enemigos = []
+			const jugadores = []
 			enemigos.addAll(nivel.enemigos())
+			jugadores.addAll(enemigos)
+			jugadores.add(nave)
 			enemigos.forEach{ enemigo => game.addVisual(enemigo)}
 			enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
 			enemigos.forEach{ enemigo => enemigo.aumentarVida(nivel)} // corregir este metodo, ahora trae siempre el mismo valor
 			game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
 			game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
+			jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
 			game.onTick(100, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 			game.onTick(20000, "agregarDificultad", { => nivel.agregarDificultad()})
 		}	
@@ -52,7 +49,6 @@ program space_warrior {
 		game.say(nave, nivel.nombreDelNivel())
 		nave.subirNivel()
 		accionesEnemigos.apply(nivel)
-		colisiones.apply(nivel)
 		game.onTick(2000, "proximoNivel", { =>
 			if (nivel.nivelCompleto()) {
 				nivelActual = nivel.proximoNivel()
