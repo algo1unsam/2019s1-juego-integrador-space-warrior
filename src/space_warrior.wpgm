@@ -13,6 +13,7 @@ program space_warrior {
 	game.ground("ground.png")
 	game.addVisual(nave)
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
+	
 	var nivelActual = nivel3
 
 	const pasarDeNivel = { nivel =>
