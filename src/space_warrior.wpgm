@@ -29,22 +29,11 @@ program space_warrior {
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
 	}
 	const movimientoNave = { =>
-		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))
-		}
-		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))
-		}
+		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))}
+		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))}
 		keyboard.up().onPressDo{ nave.disparoInicial()}
 	}
-	const perderJuego = { => game.onTick(1000, "perderJuego", { =>
-		if (nave.estaMuerto()) {
-			nave.finDelJuego()
-		}
-	}) }
-	const accionesNave = { =>
-		movimientoNave.apply()
-		colisiones.apply()
-		//perderJuego.apply()
-	}
+
 	const pasarDeNivel = { nivel =>
 		game.clear()
 		game.addVisual(nave)
@@ -57,14 +46,11 @@ program space_warrior {
 		game.onTick(200, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 	}
 //--------------------------------------------------------------------------------------------------------------------
-//	enemigosEnPantalla.apply(nivelActual)
+
 	keyboard.space().onPressDo{ 
 		
 		setearNivel.apply(nivelActual)
-		accionesNave.apply()
-		//accionesEnemigos.apply(6000, 5000)
-		
-		
+	
 //		game.onTick(600, "pasarANivel2", {=>
 //			if (nivel1.nivelCompleto()) {
 //				pasarDeNivel.apply(nivel2)
@@ -98,7 +84,9 @@ program space_warrior {
 	
 	const setearNivel = { nivel =>
 		enemigosEnPantalla.apply(nivelActual)
-		accionesEnemigos.apply(6000, 5000)
+		accionesEnemigos.apply(nivel.velocidadDesplazamiento(), nivel.velocidadDisparo())
+		movimientoNave.apply()
+		colisiones.apply()
 		game.say(nave, nivel.nombreDelNivel())
 		game.onTick(1000, "proximoNivel", { =>
 			if (nivel.nivelCompleto()) {

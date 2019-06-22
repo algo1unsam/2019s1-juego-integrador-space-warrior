@@ -26,27 +26,25 @@ class Nivel{
 }
 
 object nivel3 inherits Nivel{
-//	
-//	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
-//	
+	
+	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
+	
 	override method muertesNivel() = 1
-//	
+	
 	override method proximoNivel() = nivel2 // acordate de modificar esto
 	
 	override method velocidadDisparo() = 4000
 	
 	override method velocidadDesplazamiento() = 4000
+		
+	method nombreDelNivel() = "NIVEL 3"
+
+	override method subirNivelNave(){
+		nave.muertes(0)
+		var vida = nave.vida() + 15
+		nave.vida(vida)	
+	}
 	
-	
-//	
-//	override method nombreDelNivel() = "NIVEL 3"
-//
-//	override method subirNivelNave(){
-//		nave.muertes(0)
-//		var vida = nave.vida() + 15
-//		nave.vida(vida)	
-//	}
-//	
 }
 
 object nivel2 inherits Nivel{

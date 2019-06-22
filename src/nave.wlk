@@ -21,9 +21,10 @@ object nave {
 		muertes += 1
 	}
 	
-	method recibeDisparo(){
-		if (vida>0){
-			vida -= danio
+	method recibeDisparo() {
+		vida -= danio
+		if (vida <= 0) {
+			self.finDelJuego()
 		}
 	}
 	
