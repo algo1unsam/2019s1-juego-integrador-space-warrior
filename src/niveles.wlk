@@ -15,34 +15,40 @@ class Nivel{
 	
 	method velocidadDisparo()
 	
+	method agregarDificultad()
+	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
 }
 
-object ganarJuego{
-	
-	method nombreDelNivel() = "GANASTE!"
-	
-	method subirNivelNave(){
-		nave.muertes(0)
-		var vida = nave.vida() + 10
-		nave.vida(vida)	
-	}
-
-}
+object ganarJuego{}
 
 object nivel3 inherits Nivel{
 	
 	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
 	
-	override method muertesNivel() = 1
+	const property enemigosDificultad = [
+		new EnemigoMalo(position = game.at(2, 11), posiciones = 1, msegs = 1000),
+		new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 1000)
+	]
 	
-	override method proximoNivel() = ganarJuego // acordate de modificar esto
+	override method muertesNivel() = 3
+	
+	override method proximoNivel() =  ganarJuego
 	
 	override method velocidadDisparo() = 4000
 	
 	override method velocidadDesplazamiento() = 4000
-		
+	
+	override method agregarDificultad(){
+	
+		enemigosDificultad.forEach{ enemigo => game.addVisual(enemigo)}
+		enemigosDificultad.forEach{ enemigo => game.hideAttributes(enemigo)}
+		game.onTick(self.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigosDificultad.forEach{ enemigo => enemigo.desplazarse()}})
+		game.onTick(self.velocidadDisparo(), "comenzarDisparos", { => enemigosDificultad.forEach{ enemigo => enemigo.disparoInicial()}})
+		enemigosDificultad.forEach{ enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
+	}
+	
 	method nombreDelNivel() = "NIVEL 3"
 	
 }
@@ -56,6 +62,8 @@ object nivel2 inherits Nivel{
 		new EnemigoMalo(position = game.at(8, 11), posiciones = 2, msegs = 1000),
 		new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 1000)
 	]
+
+	override method agregarDificultad(){}
 
 	override method proximoNivel() = nivel3
 	
@@ -81,6 +89,8 @@ object nivel1 inherits Nivel{
 	]
 	
 	method nombreDelNivel() = "NIVEL 1"
+	
+	override method agregarDificultad(){}
 	
 	override method velocidadDesplazamiento() = 6000
 	
