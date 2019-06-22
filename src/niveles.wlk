@@ -28,8 +28,8 @@ object nivel3 inherits Nivel{
 	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
 	
 	const property enemigosDificultad = [
-		new EnemigoMalo(position = game.at(2, 11), posiciones = 1, msegs = 1000),
-		new EnemigoMalo(position = game.at(10, 11), posiciones = 1, msegs = 1000)
+		new EnemigoMalo(position = game.at(4, 11), posiciones = 1, msegs = 1000),
+		new EnemigoMalo(position = game.at(8, 11), posiciones = 1, msegs = 1000)
 	]
 	
 	override method muertesNivel() = 3
@@ -47,6 +47,7 @@ object nivel3 inherits Nivel{
 		game.onTick(self.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigosDificultad.forEach{ enemigo => enemigo.desplazarse()}})
 		game.onTick(self.velocidadDisparo(), "comenzarDisparos", { => enemigosDificultad.forEach{ enemigo => enemigo.disparoInicial()}})
 		enemigosDificultad.forEach{ enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
+		game.removeTickEvent("agregarDificultad")
 	}
 	
 	method nombreDelNivel() = "NIVEL 3"
