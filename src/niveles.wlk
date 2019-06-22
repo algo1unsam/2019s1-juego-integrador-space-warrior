@@ -50,12 +50,6 @@ object nivel3 inherits Nivel{
 	override method velocidadDesplazamiento() = 4000
 		
 	method nombreDelNivel() = "NIVEL 3"
-
-	override method subirNivelNave(){
-		nave.muertes(0)
-		var vida = nave.vida() + 15
-		nave.vida(vida)	
-	}
 	
 }
 
@@ -103,20 +97,4 @@ object nivel1 inherits Nivel{
 	override method muertesNivel() = 6
 	
 }
-
-
-
-//
-//
-//object finalDelJuego inherits Nivel {
-//	
-//	const property enemigos = [
-//		new EnemigoMalo(position = game.at(5, 11), posiciones = 2, msegs = 1000),
-//		new EnemigoMalo(position = game.at(9, 11), posiciones = 2, msegs = 1000)
-//	]
-//		
-//}
-
-
-
 

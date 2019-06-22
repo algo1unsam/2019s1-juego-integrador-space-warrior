@@ -62,36 +62,7 @@ program space_warrior {
 
 //--------------------------------------------------------------------------------------------------------------------
 
-	keyboard.space().onPressDo{ 
-		
-		setearNivel.apply(nivelActual)
-//
-//	const pasarANivel3 = {=> game.onTick(600, "pasarANivel3", {=>
-//		if (nivel2.nivelCompleto()) {
-//			pasarDeNivel.apply(nivel3)
-//			enemigosEnPantalla.apply(nivel3)
-//			accionesNave.apply()
-//			accionesEnemigos.apply(4000, 4000)
-//			//nivelFinal.apply()
-//			finDelJuego.apply()
-//		}
-//	}) }
-//	const finDelJuego = {=> game.onTick(600, "finDelJuego", {=>
-//		if (nivel3.nivelCompleto()) {
-//			game.say(nave, "GANASTE")
-//			game.say(nave, "CHAU!")
-//			nave.finDelJuego()
-//		}
-//	}) 
-	}
-	
-//	const nivelFinal = {=> game.onTick(20000, "sumarEnemigos", {=>
-//		enemigosEnPantalla.apply(finalDelJuego)
-//		colisiones.apply()
-//}
-//)
-//	}
-		
+	keyboard.space().onPressDo{ setearNivel.apply(nivelActual)}
 	
 	game.errorReporter(nave)
 	game.start()
