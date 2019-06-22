@@ -49,7 +49,7 @@ program space_warrior {
 		game.clear()
 		game.addVisual(nave)
 		nivel.subirNivelNave()
-		setearNivel.apply(nivel.proximoNivel())
+		setearNivel.apply(nivel)
 	}
 	const accionesEnemigos = { segs_desplazamiento , segs_disparos =>
 		game.onTick(segs_desplazamiento, "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
@@ -57,12 +57,12 @@ program space_warrior {
 		game.onTick(200, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 	}
 //--------------------------------------------------------------------------------------------------------------------
-enemigosEnPantalla.apply(nivelActual)
+//	enemigosEnPantalla.apply(nivelActual)
 	keyboard.space().onPressDo{ 
 		
 		setearNivel.apply(nivelActual)
 		accionesNave.apply()
-		accionesEnemigos.apply(6000, 5000)
+		//accionesEnemigos.apply(6000, 5000)
 		
 		
 //		game.onTick(600, "pasarANivel2", {=>
@@ -97,10 +97,13 @@ enemigosEnPantalla.apply(nivelActual)
 	
 	
 	const setearNivel = { nivel =>
+		enemigosEnPantalla.apply(nivelActual)
+		accionesEnemigos.apply(6000, 5000)
 		game.say(nave, nivel.nombreDelNivel())
-		game.onTick(600, "proximoNivel", { =>
+		game.onTick(1000, "proximoNivel", { =>
 			if (nivel.nivelCompleto()) {
-				pasarDeNivel.apply(nivel.proximoNivel())
+				nivelActual = nivel.proximoNivel()
+				pasarDeNivel.apply(nivelActual)
 			}
 		})
 	}
