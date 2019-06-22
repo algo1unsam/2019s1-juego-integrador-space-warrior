@@ -14,14 +14,7 @@ program space_warrior {
 	game.addVisual(nave)
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
 	var nivelActual = nivel2
-//	const enemigos = []
 
-//	const enemigosEnPantalla = { nivel =>
-//		enemigos.addAll(nivel.enemigos())
-//		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-//		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-//		enemigos.forEach{ enemigo => enemigo.aumentarVida(nivel)}
-//	}
 	const colisiones = { nivel =>
 		const jugadores = []
 		jugadores.addAll(nivel.enemigos())
@@ -40,12 +33,6 @@ program space_warrior {
 		nivel.subirNivelNave()
 		setearNivel.apply(nivel)
 	}
-//	const accionesEnemigos = { segs_desplazamiento , segs_disparos =>
-//		game.onTick(segs_desplazamiento, "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
-//		game.onTick(segs_disparos, "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
-//		game.onTick(200, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
-//	}
-	
 	
 const accionesEnemigos = { nivel =>
 		const enemigos = []
