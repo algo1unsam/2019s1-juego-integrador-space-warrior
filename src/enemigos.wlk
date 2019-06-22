@@ -17,6 +17,11 @@ class Enemigo{
 	method image() = imagen
 
 	method estaMuerto() = (vida <= 0)
+	
+	method setearEnemigo(){
+		game.addVisual(self)
+		game.hideAttributes(self)	
+	}
 
 	method disparoInicial() {
 		const disparo = new DisparoEnemigo()
