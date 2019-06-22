@@ -7,9 +7,13 @@ import otrosDisparos.*
 
 class Nivel{
 	
-	method proximoNivel() = nivel2
+	method proximoNivel()
 	
-	method muertesNivel() = 6
+	method muertesNivel()
+	
+	method velocidadDesplazamiento()
+	
+	method velocidadDisparo()
 	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
@@ -19,23 +23,31 @@ class Nivel{
 		nave.vida(vida)	
 	}
 	
-	method nombreDelNivel() = "NIVEL 1"
-	
 }
 
-object nivel1 inherits Nivel{
-
-	const property enemigos = [ 
-		new Enemigo(position = game.at(2,11), msegs = 2000),
-		new Enemigo(position = game.at(3,11), msegs = 2000),
-		new Enemigo(position = game.at(5,11), msegs = 2000),
-		new Enemigo(position = game.at(7,11), msegs = 2000), 
-		new Enemigo(position = game.at(9,11), msegs = 2000), 
-		new Enemigo(position = game.at(10, 11), msegs = 2000)
-	]
+object nivel3 inherits Nivel{
+//	
+//	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
+//	
+	override method muertesNivel() = 1
+//	
+	override method proximoNivel() = nivel2 // acordate de modificar esto
 	
+	override method velocidadDisparo() = 4000
+	
+	override method velocidadDesplazamiento() = 4000
+	
+	
+//	
+//	override method nombreDelNivel() = "NIVEL 3"
+//
+//	override method subirNivelNave(){
+//		nave.muertes(0)
+//		var vida = nave.vida() + 15
+//		nave.vida(vida)	
+//	}
+//	
 }
-
 
 object nivel2 inherits Nivel{
 	
@@ -49,30 +61,41 @@ object nivel2 inherits Nivel{
 
 	override method proximoNivel() = nivel3
 	
-	override method nombreDelNivel() = "NIVEL 2"
+	method nombreDelNivel() = "NIVEL 2"
 
 	override method muertesNivel() = 5
+	
+	override method velocidadDisparo() = 5500
+	
+	override method velocidadDesplazamiento() = 5500
+}
+
+
+object nivel1 inherits Nivel{
+	
+	const property enemigos = [ 
+		new Enemigo(position = game.at(2,11), msegs = 2000),
+		new Enemigo(position = game.at(3,11), msegs = 2000),
+		new Enemigo(position = game.at(5,11), msegs = 2000),
+		new Enemigo(position = game.at(7,11), msegs = 2000), 
+		new Enemigo(position = game.at(9,11), msegs = 2000), 
+		new Enemigo(position = game.at(10, 11), msegs = 2000)
+	]
+	
+	method nombreDelNivel() = "NIVEL 1"
+	
+	override method velocidadDesplazamiento() = 6000
+	
+	override method velocidadDisparo() = 5000
+	
+	override method proximoNivel() = nivel2
+	
+	override method muertesNivel() = 6
 	
 }
 
 
-object nivel3 inherits Nivel{
-//	
-//	const property enemigos = [new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000)]
-//	
-//	override method muertesNivel() = 1
-//	
-//	override method proximoNivel() = nivel4
-//	
-//	override method nombreDelNivel() = "NIVEL 3"
-//
-//	override method subirNivelNave(){
-//		nave.muertes(0)
-//		var vida = nave.vida() + 15
-//		nave.vida(vida)	
-//	}
-//	
-}
+
 //
 //
 //object finalDelJuego inherits Nivel {

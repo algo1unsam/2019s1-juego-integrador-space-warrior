@@ -9,7 +9,6 @@ class EnemigoMalo inherits Enemigo {
 	var property posicionFinalDesp = 0
 	
 	var property imagen2 = "enem2.png"
-
 	
 	override method image() = imagen2
 	
