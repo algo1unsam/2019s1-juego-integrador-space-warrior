@@ -14,11 +14,6 @@ class Enemigo{
 	var property posiciones = 2
 	var property imagen = "alien.png"
 
-	method aumentarVida(nivel){
-		var vidaNivel = vida
-		self.vida(vidaNivel)
-	}
-	
 	method image() = imagen
 
 	method estaMuerto() = (vida <= 0)
