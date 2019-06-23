@@ -42,8 +42,7 @@ object nivel3 inherits Nivel{
 	
 	override method agregarDificultad(){
 	
-		enemigosDificultad.forEach{ enemigo => game.addVisual(enemigo)}
-		enemigosDificultad.forEach{ enemigo => game.hideAttributes(enemigo)}
+		enemigosDificultad.forEach{ enemigo => enemigo.setearEnemigo()}
 		game.onTick(self.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigosDificultad.forEach{ enemigo => enemigo.desplazarse()}})
 		game.onTick(self.velocidadDisparo(), "comenzarDisparos", { => enemigosDificultad.forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(500, "quitarEnemigosMuertos", { => enemigosDificultad.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})

@@ -51,7 +51,6 @@ program space_warrior {
 	
 	keyboard.space().onPressDo{ 
 		setearNivel.apply(nivelActual)
-
 	}
 	game.errorReporter(nave)
 	game.start()
