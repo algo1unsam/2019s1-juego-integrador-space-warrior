@@ -29,7 +29,6 @@ program space_warrior {
 			nave.finDelJuego()
 		}
 		game.say(nave, nivel.nombreDelNivel())
-		nave.subirNivel()
 		enemigos.addAll(nivel.enemigos())
 		enemigos.forEach{ enemigo => enemigo.setearEnemigo()}
 		jugadores.addAll(enemigos)
@@ -44,12 +43,16 @@ program space_warrior {
 				nivelActual = nivel.proximoNivel()
 				game.clear()
 				game.addVisual(nave)
+				nave.subirNivel()
 				setearNivel.apply(nivelActual)
 			}
 		})
 	}	
 	
-	keyboard.space().onPressDo{ setearNivel.apply(nivelActual) }
+	keyboard.space().onPressDo{ 
+		setearNivel.apply(nivelActual)
+
+	}
 	game.errorReporter(nave)
 	game.start()
 }

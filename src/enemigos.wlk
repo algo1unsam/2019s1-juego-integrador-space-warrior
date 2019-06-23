@@ -20,7 +20,7 @@ class Enemigo{
 	
 	method setearEnemigo(){
 		game.addVisual(self)
-		game.hideAttributes(self)	
+		game.hideAttributes(self)
 	}
 
 	method disparoInicial() {
