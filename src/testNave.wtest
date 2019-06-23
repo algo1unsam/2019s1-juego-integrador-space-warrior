@@ -8,33 +8,19 @@ import niveles.*
 
 describe "Test de la nave" {	
 	
-	test "Nave sube de nivel 1 a 2 y su vida incrementa en 10" {
+	const enemigo = new Enemigo(vida=5, position = game.at(5, 5), posiciones = 1)
+	
+	test "Nave sube de nivel y su vida incrementa en 10" {
 		
-		nivel2.subirNivelNave()
-		assert.equals(25, nave.vida())
+		nave.subirNivel()
+		assert.equals(30, nave.vida())
 	}
 		
-
-	test "Nave tiene nivel = 3 y muertes = 2 cuando mata un enemigo"{
+	test "Nave mata a un enemigo y muertes se incrementa en 1" {
+		game.addVisual(enemigo)
+		enemigo.recibeDisparo()
+		assert.equals(1, nave.muertes())
+	}	
 		
-		nivel3.subirNivelNave()
-		nave.muertes(2)	
-		nave.matarEnemigo()
-		
-		assert.equals(3, nave.muertes())
-
-	}
-	
-	test "Nave muere y pierde el juego"{
-
-		nave.vida(0)
-		
-		assert.that(nave.estaMuerto())
-
-	}
-	
-	
-	
-	
 	
 }
