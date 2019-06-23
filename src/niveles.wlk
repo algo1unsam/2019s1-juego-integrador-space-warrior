@@ -19,12 +19,6 @@ class Nivel{
 	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
-	method visuales(){
-		
-//		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-//		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-	
-	}	
 }
 
 object ganarJuego{}
@@ -48,8 +42,7 @@ object nivel3 inherits Nivel{
 	
 	override method agregarDificultad(){
 	
-		enemigosDificultad.forEach{ enemigo => game.addVisual(enemigo)}
-		enemigosDificultad.forEach{ enemigo => game.hideAttributes(enemigo)}
+		enemigosDificultad.forEach{ enemigo => enemigo.setearEnemigo()}
 		game.onTick(self.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigosDificultad.forEach{ enemigo => enemigo.desplazarse()}})
 		game.onTick(self.velocidadDisparo(), "comenzarDisparos", { => enemigosDificultad.forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(500, "quitarEnemigosMuertos", { => enemigosDificultad.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
@@ -58,11 +51,6 @@ object nivel3 inherits Nivel{
 	}
 	
 	method nombreDelNivel() = "NIVEL 3"
-	
-	override method visuales(){
-		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-	}
 	
 }
 
@@ -88,10 +76,6 @@ object nivel2 inherits Nivel{
 	
 	override method velocidadDesplazamiento() = 5500
 	
-	override method visuales(){
-		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-	}
 }
 
 
@@ -117,11 +101,6 @@ object nivel1 inherits Nivel{
 	override method proximoNivel() = nivel2
 	
 	override method muertesNivel() = 6
-	
-	override method visuales(){
-		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-	}
 	
 }
 

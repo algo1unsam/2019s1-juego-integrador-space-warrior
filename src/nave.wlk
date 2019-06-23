@@ -5,10 +5,9 @@ import disparo.*
 import otrosDisparos.*
 
 object nave {
-	
-	
+		
 	var property position = game.at(6,1)
-	var property vida = 15
+	var property vida = 20
 	var property muertes = 0
 	var property danio = 0
 	var property imagen = "player.png"

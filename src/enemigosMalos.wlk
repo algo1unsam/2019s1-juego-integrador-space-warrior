@@ -12,6 +12,11 @@ class EnemigoMalo inherits Enemigo {
 	
 	override method image() = imagen2
 	
+	override method setearEnemigo() {
+		super()
+		vida=40
+	}
+	
 	
 	override method disparoInicial() {
 			const disparo = new DisparoMalo()
@@ -49,6 +54,10 @@ class EnemigoMuyMalo inherits Enemigo {
 	
 	override method image() = imagen2
 	
+	override method setearEnemigo() {
+		super()
+		vida=60
+	}
 		
 	override method disparoInicial(){
 	const disparo = new DisparoMuyMalo()
