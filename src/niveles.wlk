@@ -19,8 +19,6 @@ class Nivel{
 	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
-	method setEnemigos()
-	
 }
 
 object ganarJuego{}
@@ -55,12 +53,6 @@ object nivel3 inherits Nivel{
 	
 	method nombreDelNivel() = "NIVEL 3"
 	
-	override method setEnemigos(){
-		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-//		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-		enemigos.forEach{ enemigo => enemigo.vida(60)}
-	}
-	
 }
 
 object nivel2 inherits Nivel{
@@ -85,11 +77,6 @@ object nivel2 inherits Nivel{
 	
 	override method velocidadDesplazamiento() = 5500
 	
-	override method setEnemigos(){
-		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-		enemigos.forEach{ enemigo => enemigo.vida(40)}
-	}
 }
 
 
@@ -115,12 +102,6 @@ object nivel1 inherits Nivel{
 	override method proximoNivel() = nivel2
 	
 	override method muertesNivel() = 6
-	
-	override method setEnemigos(){
-		enemigos.forEach{ enemigo => game.addVisual(enemigo)}
-		enemigos.forEach{ enemigo => game.hideAttributes(enemigo)}
-		enemigos.forEach{ enemigo => enemigo.vida(20)}
-	}
 	
 }
 

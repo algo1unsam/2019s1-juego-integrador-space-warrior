@@ -7,6 +7,7 @@ import otrosDisparos.*
 import niveles.*
 
 program space_warrior {
+	
 	game.title("SpaceWarrior")
 	game.height(12)
 	game.width(14)
@@ -15,12 +16,6 @@ program space_warrior {
 	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
 	
 	var nivelActual = nivel1
-	
-	const pasarDeNivel = { nivel =>
-		game.clear()
-		game.addVisual(nave)
-		setearNivel.apply(nivel)
-	}
 	
 	const setearNivel = { nivel =>
 		const enemigos = []
@@ -47,10 +42,12 @@ program space_warrior {
 		game.onTick(2000, "proximoNivel", { =>
 			if (nivel.nivelCompleto()) {
 				nivelActual = nivel.proximoNivel()
-				pasarDeNivel.apply(nivelActual)
+				game.clear()
+				game.addVisual(nave)
+				setearNivel.apply(nivelActual)
 			}
 		})
-	}
+	}	
 	
 	keyboard.space().onPressDo{ setearNivel.apply(nivelActual) }
 	game.errorReporter(nave)
