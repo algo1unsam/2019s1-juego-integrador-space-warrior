@@ -13,7 +13,7 @@ program space_warrior {
 	game.width(14)
 	game.ground("ground.png")
 	game.addVisual(nave)
-	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
+//	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
 	
 	var nivelActual = nivel1
 	
@@ -28,7 +28,7 @@ program space_warrior {
 		if (nivel == ganarJuego) {
 			nave.finDelJuego()
 		}
-		game.say(nave, nivel.nombreDelNivel())
+		nivel.nombreDelNivel()
 		enemigos.addAll(nivel.enemigos())
 		enemigos.forEach{ enemigo => enemigo.setearEnemigo()}
 		jugadores.addAll(enemigos)

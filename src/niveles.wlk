@@ -19,9 +19,36 @@ class Nivel{
 	
 	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
 	
+	method nombreDelNivel()
+	
 }
 
-object ganarJuego{}
+object nivel0{
+	 
+	method nombreDelNivel(){
+		game.say(nave, "Hola!")
+		game.say(nave, "Usa las flechas")
+		game.say(nave, "para desplazarte y disparar")
+		game.say(nave, "Presiona la barra espaciadora para comenzar!")
+	}
+}
+
+
+object ganarJuego{
+	
+	method nombreDelNivel(){game.say(nave, "GANASTE!")
+		game.say(nave, "CHAU!")
+	} 
+}
+
+
+object perderJuego{
+		
+	method nombreDelNivel(){game.say(nave, "OH NO!")
+		game.say(nave, "Perdiste!")
+	} 
+	
+}
 
 object nivel3 inherits Nivel{
 	
@@ -50,7 +77,7 @@ object nivel3 inherits Nivel{
 		game.removeTickEvent("agregarDificultad")
 	}
 	
-	method nombreDelNivel() = "NIVEL 3"
+	override method nombreDelNivel(){(game.say(nave, "NIVEL 3"))} 
 	
 }
 
@@ -68,7 +95,7 @@ object nivel2 inherits Nivel{
 
 	override method proximoNivel() = nivel3
 	
-	method nombreDelNivel() = "NIVEL 2"
+	override method nombreDelNivel(){(game.say(nave, "NIVEL 2"))} 
 
 	override method muertesNivel() = 5
 	
@@ -90,7 +117,7 @@ object nivel1 inherits Nivel{
 		new Enemigo(position = game.at(10, 11), msegs = 2000)
 	]
 	
-	method nombreDelNivel() = "NIVEL 1"
+	override method nombreDelNivel(){(game.say(nave, "NIVEL 1"))} 
 	
 	override method agregarDificultad(){}
 	
