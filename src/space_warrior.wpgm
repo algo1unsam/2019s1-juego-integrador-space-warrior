@@ -14,7 +14,7 @@ program space_warrior {
 	game.ground("ground.png")
 	game.addVisual(nave)
 	
-	var nivelActual = nivel3
+	var nivelActual = nivel2
 	
 	const setearNivel = { nivel =>
 		const enemigos = []
@@ -38,7 +38,8 @@ program space_warrior {
 		jugadores.add(nave)
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
 		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => (nivel.enemigos()).forEach{ enemigo => enemigo.desplazarse()}})		
-		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
+		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => (nivel.enemigos()).forEach{ enemigo => enemigo.disparoInicial()}})
+		
 		game.onTick(100, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 		game.onTick(20000, "agregarDificultad", { => nivel.agregarDificultad()})
 		game.onTick(2000, "proximoNivel", { =>
