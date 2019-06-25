@@ -37,7 +37,7 @@ program space_warrior {
 		jugadores.addAll(nivel.enemigos())
 		jugadores.add(nave)
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
-		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
+		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => (nivel.enemigos()).forEach{ enemigo => enemigo.desplazarse()}})		
 		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(100, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 		game.onTick(20000, "agregarDificultad", { => nivel.agregarDificultad()})
