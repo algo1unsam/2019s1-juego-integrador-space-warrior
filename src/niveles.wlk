@@ -97,6 +97,8 @@ object nivel3 inherits Nivel{
 		game.onTick(500, "quitarEnemigosMuertos", { => enemigosDificultad.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 		enemigosDificultad.forEach{ enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
 		game.removeTickEvent("agregarDificultad")
+		game.onTick(100, "quitarEnemigosDificultad", { => enemigosDificultad.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})			
+		
 	}
 	
 	override method nombreDelNivel(){(game.say(nave, "NIVEL 3"))} 

@@ -35,9 +35,6 @@ program space_warrior {
 		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => (nivel.enemigos()).forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(100, "quitarEnemigosMuertos", { => (nivel.enemigos()).removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})	
 		game.onTick(20000, "agregarDificultad", { => nivel.agregarDificultad()})
-		if (nivel==nivel3){
-			game.onTick(100, "quitarEnemigosDificultad", { => (nivel.enemigosDificultad()).removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})			
-		}
 		game.onTick(2000, "proximoNivel", { =>
 			if (nivel.nivelCompleto()) {
 				nivelActual = nivel.proximoNivel()
