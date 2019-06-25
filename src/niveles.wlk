@@ -36,9 +36,7 @@ object nivel0 inherits Nivel{
 		game.say(nave, "Hola! Usa las flechas para desplazarte y disparar")
 		game.say(nave, "Presiona la barra espaciadora para comenzar!")
 	}
-	
-	override method nivelCompleto() = (nave.muertes() == 0)
-	
+		
 	override method proximoNivel() = nivel1
 		
 	override method velocidadDesplazamiento() = 0
