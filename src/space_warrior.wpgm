@@ -14,7 +14,7 @@ program space_warrior {
 	game.ground("ground.png")
 	game.addVisual(nave)
 	
-	var nivelActual = nivel1
+	var nivelActual = nivel3
 	
 	const setearNivel = { nivel =>
 		const jugadores = [nave]

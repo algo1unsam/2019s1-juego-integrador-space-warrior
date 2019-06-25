@@ -109,6 +109,8 @@ object nivel3 inherits Nivel{
 	
 	override method nombreDelNivel(){(game.say(nave, "NIVEL 3"))} 
 	
+	override method nivelCompleto() = (enemigos.size() == 0 and enemigosDificultad.size()==0)
+	
 }
 
 object nivel2 inherits Nivel{
