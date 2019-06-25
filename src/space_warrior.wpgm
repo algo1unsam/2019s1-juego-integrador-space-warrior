@@ -17,8 +17,7 @@ program space_warrior {
 	var nivelActual = nivel2
 	
 	const setearNivel = { nivel =>
-		const enemigos = []
-		const jugadores = []
+		const jugadores = [nave]
 		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))
 		}
 		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))
@@ -29,13 +28,8 @@ program space_warrior {
 			nivel.finDelJuego()
 		}
 		nivel.nombreDelNivel()
-//		enemigos.addAll(nivel.enemigos())
-
 		nivel.setearEnemigos()
-		
-		//---------------------------------------------------------
 		jugadores.addAll(nivel.enemigos())
-		jugadores.add(nave)
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
 		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => (nivel.enemigos()).forEach{ enemigo => enemigo.desplazarse()}})		
 		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => (nivel.enemigos()).forEach{ enemigo => enemigo.disparoInicial()}})
