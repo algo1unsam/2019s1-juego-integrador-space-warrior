@@ -11,7 +11,7 @@ class Nivel{
 	
 	method proximoNivel()
 	
-	method muertesNivel()
+//	method muertesNivel()
 	
 	method velocidadDesplazamiento()
 	
@@ -19,7 +19,7 @@ class Nivel{
 	
 	method agregarDificultad()
 	
-	method nivelCompleto() = (nave.muertes() == self.muertesNivel())
+	method nivelCompleto() = (enemigos.size() == 0)
 	
 	method nombreDelNivel()
 	 
@@ -43,7 +43,7 @@ object nivel0 inherits Nivel{
 	
 	override method proximoNivel() = nivel1
 	
-	override method muertesNivel() = 0
+//	override method muertesNivel() = 0
 	
 	override method velocidadDesplazamiento() = 0
 	
@@ -89,7 +89,7 @@ object nivel3 inherits Nivel{
 		enemigos.add(new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000))
 	}
 	
-	override method muertesNivel() = 3
+//	override method muertesNivel() = 3
 	
 	override method proximoNivel() =  ganarJuego
 	
@@ -127,7 +127,7 @@ object nivel2 inherits Nivel{
 	
 	override method nombreDelNivel(){(game.say(nave, "NIVEL 2"))} 
 
-	override method muertesNivel() = 5
+//	override method muertesNivel() = 5
 	
 	override method velocidadDisparo() = 5500
 	
@@ -161,7 +161,7 @@ object nivel1 inherits Nivel{
 	
 	override method proximoNivel() = nivel2
 	
-	override method muertesNivel() = 6
+//	override method muertesNivel() = 6
 	
 }
 
