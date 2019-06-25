@@ -10,9 +10,7 @@ class Nivel{
 	const property enemigos = []
 	
 	method proximoNivel()
-	
-//	method muertesNivel()
-	
+		
 	method velocidadDesplazamiento()
 	
 	method velocidadDisparo()
@@ -42,9 +40,7 @@ object nivel0 inherits Nivel{
 	override method nivelCompleto() = (nave.muertes() == 0)
 	
 	override method proximoNivel() = nivel1
-	
-//	override method muertesNivel() = 0
-	
+		
 	override method velocidadDesplazamiento() = 0
 	
 	override method velocidadDisparo() = 0
@@ -88,9 +84,7 @@ object nivel3 inherits Nivel{
 	override method agregarEnemigos(){
 		enemigos.add(new EnemigoMuyMalo(position = game.at(6, 10), posiciones = 1, msegs = 1000))
 	}
-	
-//	override method muertesNivel() = 3
-	
+		
 	override method proximoNivel() =  ganarJuego
 	
 	override method velocidadDisparo() = 4000
@@ -128,8 +122,6 @@ object nivel2 inherits Nivel{
 	override method proximoNivel() = nivel3
 	
 	override method nombreDelNivel(){(game.say(nave, "NIVEL 2"))} 
-
-//	override method muertesNivel() = 5
 	
 	override method velocidadDisparo() = 5500
 	
@@ -162,8 +154,6 @@ object nivel1 inherits Nivel{
 	override method velocidadDisparo() = 5000
 	
 	override method proximoNivel() = nivel2
-	
-//	override method muertesNivel() = 6
-	
+		
 }
 
