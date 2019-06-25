@@ -8,18 +8,13 @@ object nave {
 		
 	var property position = game.at(6,1)
 	var property vida = 20
-	var property muertes = 0
 	var property danio = 0
 	var property imagen = "player.png"
 	
 	method image()= imagen
 	
 	method estaMuerto()= (vida <= 0)
-	
-	method matarEnemigo() {
-		muertes += 1
-	}
-	
+		
 	method recibeDisparo() {
 		vida -= danio
 		if (vida <= 0) {
@@ -28,7 +23,6 @@ object nave {
 	}
 	
 	method subirNivel(){
-		muertes = 0
 		vida += 10
 	}
 	
