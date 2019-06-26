@@ -15,8 +15,6 @@ class Enemigo{
 	var property imagen = "alien.png"
 
 	method image() = imagen
-
-	method estaMuerto() = (vida <= 0)
 	
 	method setearEnemigo(){
 		game.addVisual(self)
