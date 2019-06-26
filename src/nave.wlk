@@ -17,9 +17,6 @@ object nave {
 		
 	method recibeDisparo() {
 		vida -= danio
-		if (vida <= 0) {
-			self.finDelJuego()
-		}
 	}
 	
 	method subirNivel(){
@@ -44,17 +41,6 @@ object nave {
 			disparo.terminarDisparo()
 		}
 	}
-	
-	
-	method finDelJuego() {
-		
-		if  (self.estaMuerto()){
-			game.say(self, "OH NO! PERDISTE!")
-		}	else {
-			game.say(self, "GANASTE!")
-		}
-			game.onTick(3000, "gameStop", { => game.stop()})
-		}
 		
 	}
 	
