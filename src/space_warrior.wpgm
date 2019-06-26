@@ -13,8 +13,9 @@ program space_warrior {
 	game.width(14)
 	game.ground("ground.png")
 	game.addVisual(nave)
+	game.say(nave, "Hola! Presiona la barra espaciadora para comenzar")
 	
-	var nivelActual = nivel2
+	var nivelActual = nivel0
 	
 	const setearNivel = { nivel =>
 		const jugadores = [nave]
@@ -56,7 +57,10 @@ program space_warrior {
 	}	
 	
 	keyboard.space().onPressDo{ 
-		setearNivel.apply(nivelActual)
+		if (nivelActual == nivel0){
+			setearNivel.apply(nivelActual)
+		}
+		
 	}
 	game.errorReporter(nave)
 	game.start()
