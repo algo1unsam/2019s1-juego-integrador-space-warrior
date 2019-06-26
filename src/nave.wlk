@@ -12,16 +12,10 @@ object nave {
 	var property imagen = "player.png"
 	
 	method image()= imagen
+			
+	method recibeDisparo() { vida -= danio }
 	
-	method estaMuerto()= (vida <= 0)
-		
-	method recibeDisparo() {
-		vida -= danio
-	}
-	
-	method subirNivel(){
-		vida += 10
-	}
+	method subirNivel(){ vida += 10 }
 	
 	method disparoInicial(){
 		

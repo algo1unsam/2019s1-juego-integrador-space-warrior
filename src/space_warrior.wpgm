@@ -34,7 +34,7 @@ program space_warrior {
 		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => (nivel.enemigos()).forEach{ enemigo => enemigo.desplazarse()}})		
 		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => (nivel.enemigos()).forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(500, "perderJuego", { => 
-			if (nave.estaMuerto()){
+			if (nave.vida() <= 0){
 				perderJuego.nombreDelNivel()
 				perderJuego.finDelJuego()
 			}
