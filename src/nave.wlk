@@ -13,7 +13,19 @@ object nave {
 	
 	method image()= imagen
 			
-	method recibeDisparo() { vida -= danio }
+	method recibeDisparo() { 
+		//vida -= danio
+		vida -= danio
+		if (vida <= 0) {
+			imagen = "explosion.png"
+			game.onTick(200, "quitarImagen"+self.identity(), { =>
+				game.removeVisual(self)
+				game.removeTickEvent("quitarImagen"+self.identity())
+			})
+		
+	}
+		
+	}
 	
 	method subirNivel(){ vida += 10 }
 	
