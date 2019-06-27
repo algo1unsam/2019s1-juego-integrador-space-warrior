@@ -142,7 +142,6 @@ object nivel1 inherits Nivel{
 	}
 	
 	override method nombreDelNivel(){
-		game.say(nave, "Presiona la barra espaciadora para comenzar!")
 		game.say(nave, "NIVEL 1")
 	} 
 	

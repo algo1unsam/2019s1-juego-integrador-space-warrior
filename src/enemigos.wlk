@@ -61,7 +61,11 @@ class Enemigo{
 	method recibeDisparo() {
 		vida -= 5
 		if (vida <= 0) {
-			game.removeVisual(self)
+			imagen = "explosion.png"
+			game.onTick(200, "quitarImagen", { =>
+				game.removeVisual(self)
+				game.removeTickEvent("quitarImagen")
+			})
 		}
 	}
 
