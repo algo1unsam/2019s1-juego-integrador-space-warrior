@@ -13,35 +13,42 @@ program space_warrior {
 	game.width(14)
 	game.ground("ground.png")
 	game.addVisual(nave)
-	game.say(nave, "PRESIONA LA BARRA ESPACIADORA PARA COMENZAR!")
+	game.say(nave, "Hola! Presiona la barra espaciadora para comenzar")
 	
-	var nivelActual = nivel1
+	var nivelActual = nivel3
+	var bloquearEspacio = 0 
 	
 	const setearNivel = { nivel =>
-		const enemigos = []
-		const jugadores = []
+		const jugadores = [nave]
 		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))
 		}
 		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))
 		}
 		keyboard.up().onPressDo{ nave.disparoInicial()}
 		if (nivel == ganarJuego) {
-			nave.finDelJuego()
+			nivel.nombreDelNivel()
+			nivel.finDelJuego()
 		}
-		game.say(nave, nivel.nombreDelNivel())
-		enemigos.addAll(nivel.enemigos())
-		enemigos.forEach{ enemigo => enemigo.setearEnemigo()}
-		jugadores.addAll(enemigos)
-		jugadores.add(nave)
+		nivel.nombreDelNivel()
+		nivel.setearEnemigos()
+		jugadores.addAll(nivel.enemigos())
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
-		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigos.forEach{ enemigo => enemigo.desplazarse()}})
-		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => enemigos.forEach{ enemigo => enemigo.disparoInicial()}})
-		game.onTick(100, "quitarEnemigosMuertos", { => enemigos.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
+		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => (nivel.enemigos()).forEach{ enemigo => enemigo.desplazarse()}})		
+		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => (nivel.enemigos()).forEach{ enemigo => enemigo.disparoInicial()}})
+		game.onTick(500, "perderJuego", { => 
+			if (nave.vida() <= 0){
+				game.clear() 
+				game.addVisual(nave)
+				perderJuego.nombreDelNivel()
+				perderJuego.finDelJuego()
+			}
+		})
+		game.onTick(100, "quitarEnemigosMuertos", { => (nivel.enemigos()).removeAllSuchThat{ enemigo => (enemigo.vida() <= 0)}})
 		game.onTick(20000, "agregarDificultad", { => nivel.agregarDificultad()})
 		game.onTick(2000, "proximoNivel", { =>
 			if (nivel.nivelCompleto()) {
 				nivelActual = nivel.proximoNivel()
-				game.clear()
+				game.clear() 
 				game.addVisual(nave)
 				nave.subirNivel()
 				setearNivel.apply(nivelActual)
@@ -50,7 +57,11 @@ program space_warrior {
 	}	
 	
 	keyboard.space().onPressDo{ 
-		setearNivel.apply(nivelActual)
+		bloquearEspacio+=1
+		if (bloquearEspacio==1){
+			setearNivel.apply(nivelActual)
+		}
+		
 	}
 	game.errorReporter(nave)
 	game.start()

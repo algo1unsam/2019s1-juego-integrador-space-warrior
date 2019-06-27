@@ -15,8 +15,6 @@ class Enemigo{
 	var property imagen = "alien.png"
 
 	method image() = imagen
-
-	method estaMuerto() = (vida <= 0)
 	
 	method setearEnemigo(){
 		game.addVisual(self)
@@ -63,8 +61,11 @@ class Enemigo{
 	method recibeDisparo() {
 		vida -= 5
 		if (vida <= 0) {
-			nave.matarEnemigo()
-			game.removeVisual(self)
+			imagen = "explosion.png"
+			game.onTick(200, "quitarImagen"+self.identity(), { =>
+				game.removeVisual(self)
+				game.removeTickEvent("quitarImagen"+self.identity())
+			})
 		}
 	}
 

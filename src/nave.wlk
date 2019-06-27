@@ -8,29 +8,26 @@ object nave {
 		
 	var property position = game.at(6,1)
 	var property vida = 20
-	var property muertes = 0
 	var property danio = 0
 	var property imagen = "player.png"
 	
 	method image()= imagen
-	
-	method estaMuerto()= (vida <= 0)
-	
-	method matarEnemigo() {
-		muertes += 1
-	}
-	
-	method recibeDisparo() {
+			
+	method recibeDisparo() { 
+		//vida -= danio
 		vida -= danio
 		if (vida <= 0) {
-			self.finDelJuego()
-		}
+			imagen = "explosion.png"
+			game.onTick(200, "quitarImagen"+self.identity(), { =>
+				game.removeVisual(self)
+				game.removeTickEvent("quitarImagen"+self.identity())
+			})
+		
+	}
+		
 	}
 	
-	method subirNivel(){
-		muertes = 0
-		vida += 10
-	}
+	method subirNivel(){ vida += 10 }
 	
 	method disparoInicial(){
 		
@@ -50,17 +47,6 @@ object nave {
 			disparo.terminarDisparo()
 		}
 	}
-	
-	
-	method finDelJuego() {
-		
-		if  (self.estaMuerto()){
-			game.say(self, "OH NO! PERDISTE!")
-		}	else {
-			game.say(self, "GANASTE!")
-		}
-			game.onTick(3000, "gameStop", { => game.stop()})
-		}
 		
 	}
 	
