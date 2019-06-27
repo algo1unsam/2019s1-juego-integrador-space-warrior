@@ -93,10 +93,9 @@ object nivel3 inherits Nivel{
 		enemigosDificultad.forEach{ enemigo => enemigo.setearEnemigo()}
 		game.onTick(self.velocidadDesplazamiento(), "comenzarDesplazamiento", { => enemigosDificultad.forEach{ enemigo => enemigo.desplazarse()}})
 		game.onTick(self.velocidadDisparo(), "comenzarDisparos", { => enemigosDificultad.forEach{ enemigo => enemigo.disparoInicial()}})
-		game.onTick(500, "quitarEnemigosMuertos", { => enemigosDificultad.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})
 		enemigosDificultad.forEach{ enemigo => game.whenCollideDo(enemigo, { disparo => disparo.impactar(enemigo)})}
 		game.removeTickEvent("agregarDificultad")
-		game.onTick(100, "quitarEnemigosDificultad", { => enemigosDificultad.removeAllSuchThat{ enemigo => enemigo.estaMuerto()}})			
+		game.onTick(100, "quitarEnemigosDificultad", { => enemigosDificultad.removeAllSuchThat{ enemigo => (enemigo.vida() <= 0)}})			
 		
 	}
 	

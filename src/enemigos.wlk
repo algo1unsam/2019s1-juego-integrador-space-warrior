@@ -62,9 +62,9 @@ class Enemigo{
 		vida -= 5
 		if (vida <= 0) {
 			imagen = "explosion.png"
-			game.onTick(200, "quitarImagen", { =>
+			game.onTick(200, "quitarImagen"+self.identity(), { =>
 				game.removeVisual(self)
-				game.removeTickEvent("quitarImagen")
+				game.removeTickEvent("quitarImagen"+self.identity())
 			})
 		}
 	}

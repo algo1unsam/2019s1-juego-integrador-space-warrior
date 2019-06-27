@@ -15,7 +15,7 @@ program space_warrior {
 	game.addVisual(nave)
 	game.say(nave, "Hola! Presiona la barra espaciadora para comenzar")
 	
-	var nivelActual = nivel1
+	var nivelActual = nivel3
 	var bloquearEspacio = 0 
 	
 	const setearNivel = { nivel =>
@@ -36,7 +36,6 @@ program space_warrior {
 		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => (nivel.enemigos()).forEach{ enemigo => enemigo.desplazarse()}})		
 		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => (nivel.enemigos()).forEach{ enemigo => enemigo.disparoInicial()}})
 		game.onTick(500, "perderJuego", { => 
-			
 			if (nave.vida() <= 0){
 				game.clear() 
 				game.addVisual(nave)
