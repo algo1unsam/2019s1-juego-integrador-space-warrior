@@ -10,21 +10,15 @@ object nave {
 	var property vida = 20
 	var property danio = 0
 	var property imagen = "player.png"
+	var property imagenMuerte = "explosion.png"
 	
 	method image()= imagen
 			
-	method recibeDisparo() { 
-		//vida -= danio
+	method recibeDisparo() {
 		vida -= danio
 		if (vida <= 0) {
-			imagen = "explosion.png"
-			game.onTick(200, "quitarImagen"+self.identity(), { =>
-				game.removeVisual(self)
-				game.removeTickEvent("quitarImagen"+self.identity())
-			})
-		
-	}
-		
+			imagen = imagenMuerte
+		}
 	}
 	
 	method subirNivel(){ vida += 10 }

@@ -67,7 +67,10 @@ object perderJuego{
 		game.say(nave, "Perdiste!")
 	} 
 	
-	method finDelJuego(){game.onTick(3000, "gameStop", { => game.stop()})}
+	method finDelJuego(){
+		nave.imagen("rip.png")
+		game.onTick(4000, "gameStop", { => game.stop()})
+	}
 	
 }
 

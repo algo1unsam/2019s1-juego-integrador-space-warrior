@@ -10,6 +10,7 @@ class Enemigo{
 	var property contador = 1
 	var property sentido = -1
 	var property vida = 20
+	var property danio = 5
 	var property msegs = 6000
 	var property posiciones = 2
 	var property imagen = "alien.png"
@@ -60,7 +61,7 @@ class Enemigo{
 	}
 
 	method recibeDisparo() {
-		vida -= 5
+		vida -= danio
 		if (vida <= 0) {
 			imagen = imagenMuerte
 			game.onTick(200, "quitarImagen"+self.identity(), { =>
