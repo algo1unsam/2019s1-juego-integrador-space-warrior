@@ -68,8 +68,8 @@ object perderJuego{
 	} 
 	
 	method finDelJuego(){
+		game.onTick(3500, "gameStop", { => game.stop()})
 		nave.imagen("rip.png")
-		game.onTick(4000, "gameStop", { => game.stop()})
 	}
 	
 }
