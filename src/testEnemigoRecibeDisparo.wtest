@@ -7,22 +7,17 @@ describe "Enemigo Nivel 1 Recibe Disparo" {
 	const enemigo = new Enemigo(position = game.at(5, 5), posiciones = 1)
 
 	test "Recibir disparo con vida = 20" {
+		game.addVisual(enemigo)
 		enemigo.recibeDisparo()	
 		assert.equals(15, enemigo.vida())
 	}
 	
 	test "Recibir disparo con vida = 5" {
 		enemigo.vida(5)
-		enemigo.recibeDisparo()
-		assert.equals(0, enemigo.vida())
+		game.addVisual(enemigo)
+		enemigo.recibeDisparo()	
+		assert.equals(enemigo.estaMuerto())
 	}
 	
-	test "Recibir disparo con vida = 0" {
-		enemigo.vida(0)
-		game.addVisual(enemigo)
-		enemigo.recibeDisparo()
-		assert.equals(0, enemigo.vida())
-	}
-
 }
 
