@@ -8,28 +8,32 @@ import niveles.*
 
 describe "Test de la nave" {	
 	
-	test "Nave sube de nivel 1 a 2 y su vida incrementa en 10" {
-		
-		nivel2.subirNivelNave()
-		assert.equals(25, nave.vida())
+	
+	
+	test "Nivel 1. Nave recibe disparo" {
+		nave.danio(5)
+		nave.recibeDisparo()
+		assert.equals(15, nave.vida())
 	}
 		
 
-	test "Nave tiene nivel = 3 y muertes = 2 cuando mata un enemigo"{
+	test "Nivel 2. Nave recibe disparo"{
 		
-		nivel3.subirNivelNave()
-		nave.muertes(2)	
-		nave.matarEnemigo()
+		nave.danio(10)
 		
-		assert.equals(3, nave.muertes())
+		nave.recibeDisparo()
+		
+		assert.equals(10, nave.vida())
 
 	}
 	
-	test "Nave muere y pierde el juego"{
-
-		nave.vida(0)
+	test "Nivel 3. Nave recibe disparo"{
 		
-		assert.that(nave.estaMuerto())
+		nave.danio(15)
+
+		nave.recibeDisparo()
+		
+		assert.equals(5, nave.vida())
 
 	}
 	

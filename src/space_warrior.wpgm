@@ -7,19 +7,16 @@ import otrosDisparos.*
 import niveles.*
 
 program space_warrior {
-	
 	game.title("SpaceWarrior")
 	game.height(12)
 	game.width(14)
 	game.ground("ground.png")
 	game.addVisual(nave)
 	game.say(nave, "Hola! Presiona la barra espaciadora para comenzar")
-	
-	var nivelActual = nivel1
-	var bloquearEspacio = 0 
-	
+	var nivelActual = nivel2
+	var bloquearEspacio = 0
 	const setearNivel = { nivel =>
-		const jugadores = [nave]
+		
 		keyboard.left().onPressDo{ if (nave.position().x() > 0) nave.position(nave.position().left(1))
 		}
 		keyboard.right().onPressDo{ if (nave.position().x() < game.width() - 1) nave.position(nave.position().right(1))
@@ -31,13 +28,13 @@ program space_warrior {
 		}
 		nivel.nombreDelNivel()
 		nivel.setearEnemigos()
-		jugadores.addAll(nivel.enemigos())
+		const jugadores = [[nave], nivel.enemigos()].flatten()
 		jugadores.forEach{ jugador => game.whenCollideDo(jugador, { disparo => disparo.impactar(jugador)})}
-		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => (nivel.enemigos()).forEach{ enemigo => enemigo.desplazarse()}})		
+		game.onTick(nivel.velocidadDesplazamiento(), "comenzarDesplazamiento", { => (nivel.enemigos()).forEach{ enemigo => enemigo.desplazarse()}})
 		game.onTick(nivel.velocidadDisparo(), "comenzarDisparos", { => (nivel.enemigos()).forEach{ enemigo => enemigo.disparoInicial()}})
-		game.onTick(500, "perderJuego", { => 
-			if (nave.vida() <= 0){
-				game.clear() 
+		game.onTick(1000, "perderJuego", { =>
+			if (nave.vida() <= 0) {
+				game.clear()
 				game.addVisual(nave)
 				perderJuego.nombreDelNivel()
 				perderJuego.finDelJuego()
@@ -48,20 +45,17 @@ program space_warrior {
 		game.onTick(2000, "proximoNivel", { =>
 			if (nivel.nivelCompleto()) {
 				nivelActual = nivel.proximoNivel()
-				game.clear() 
+				game.clear()
 				game.addVisual(nave)
 				nave.subirNivel()
 				setearNivel.apply(nivelActual)
 			}
 		})
-	}	
-	
-	keyboard.space().onPressDo{ 
-		bloquearEspacio+=1
-		if (bloquearEspacio==1){
+	}
+	keyboard.space().onPressDo{ bloquearEspacio += 1
+		if (bloquearEspacio == 1) {
 			setearNivel.apply(nivelActual)
 		}
-		
 	}
 	game.errorReporter(nave)
 	game.start()

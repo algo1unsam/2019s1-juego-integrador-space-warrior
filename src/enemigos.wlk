@@ -11,7 +11,7 @@ class Enemigo{
 	var property sentido = -1
 	var property vida = 20
 	var property danio = 5
-	var property msegs = 6000
+	var property msegs = 5000
 	var property posiciones = 2
 	var property imagen = "alien.png"
 	var property imagenMuerte = "explosion.png"

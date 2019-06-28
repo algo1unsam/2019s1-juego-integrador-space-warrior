@@ -30,27 +30,6 @@ class Nivel{
 	
 }
 
-object nivel0 inherits Nivel{
-		
-	override method nombreDelNivel(){
-		game.say(nave, "Usa las flechas para desplazarte y disparar!")
-	}
-		
-	override method proximoNivel() = nivel1
-		
-	override method velocidadDesplazamiento() = 0
-	
-	override method velocidadDisparo() = 0
-	
-	override method agregarDificultad(){}
-		
-	override method agregarEnemigos(){}
-	
-	
-	
-}
-
-
 object ganarJuego{
 	
 	method nombreDelNivel(){game.say(nave, "GANASTE!")
@@ -63,13 +42,16 @@ object ganarJuego{
 
 object perderJuego{
 		
-	method nombreDelNivel(){game.say(nave, "OH NO!")
+	method nombreDelNivel(){
+		nave.imagen("rip.png")
+		game.say(nave, "OH NO!")
 		game.say(nave, "Perdiste!")
+		
+		
 	} 
 	
 	method finDelJuego(){
 		game.onTick(3500, "gameStop", { => game.stop()})
-		nave.imagen("rip.png")
 	}
 	
 }
@@ -145,9 +127,13 @@ object nivel1 inherits Nivel{
 	
 	override method nombreDelNivel(){
 		game.say(nave, "NIVEL 1")
+		game.say(nave, "Usa las flechas para desplazarte y disparar!")
+		
 	} 
 	
-	override method agregarDificultad(){}
+	override method agregarDificultad(){
+		nave.vida(10)
+	}
 	
 	override method velocidadDesplazamiento() = 6000
 	
