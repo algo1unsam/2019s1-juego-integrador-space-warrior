@@ -13,7 +13,7 @@ program space_warrior {
 	game.ground("ground.png")
 	game.addVisual(nave)
 	game.say(nave, "Hola! Presiona la barra espaciadora para comenzar")
-	var nivelActual = nivel2
+	var nivelActual = nivel1
 	var bloquearEspacio = 0
 	const setearNivel = { nivel =>
 		

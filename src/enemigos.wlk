@@ -62,7 +62,7 @@ class Enemigo{
 
 	method recibeDisparo() {
 		vida -= danio
-		if (vida <= 0) {
+		if (vida == 0) {
 			imagen = imagenMuerte
 			game.onTick(200, "quitarImagen"+self.identity(), { =>
 				game.removeVisual(self)
