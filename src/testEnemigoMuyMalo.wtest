@@ -9,18 +9,18 @@ describe "Tests Enemigo Nivel 3"{
 
 test "Desplazamiento desde la primera posición hacia la segunda"{
 	
-	enemigo.position(game.at(5,9))
+	enemigo.position(game.at(6, 10))
 	enemigo.desplazarse()
 	
-	assert.equals(game.at(11, 5), enemigo.position())
+	assert.equals(game.at(11, 8), enemigo.position())
 }
 
 test "Desplazamiento desde la cuarta posición hacia la primera"{
 	
-	enemigo.position(game.at(0, 5))
+	enemigo.position(game.at(1, 8))
 	enemigo.desplazarse()
 	
-	assert.equals(game.at(5,9), enemigo.position())
+	assert.equals(game.at(6,10), enemigo.position())
 }
 
 test "Desplazamiento completo (4 posiciones)"{

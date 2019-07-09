@@ -7,20 +7,13 @@ import otrosDisparos.*
 class EnemigoMalo inherits Enemigo {
 
 	var property posicionFinalDesp = 0
-	
-	var property imagen2 = "enem2.png"
-	var property imagenColision2="ufo.png"
-	
-	override method image() = imagen2
-	
-	override method imagenOriginal(){
-		imagen2="enem2.png"
-	}
-	
-	override method recibeDisparo() {
+			
+	override method setearEnemigo() {
+		imagen="enem2.png"
 		super()
-		imagen2 = imagenColision2
+		vida=40
 	}
+	
 	
 	override method disparoInicial() {
 			const disparo = new DisparoMalo()
@@ -43,9 +36,7 @@ override method desplazarse(){
 		} else {self.position(self.position().left(2))}
 		if (posicionFinalDesp == (game.height() - 2)) {
 			nave.vida(0)
-			nave.finDelJuego()
 			game.removeVisual(self)
-	
 		}	
 
 }
@@ -54,18 +45,10 @@ override method desplazarse(){
 
 class EnemigoMuyMalo inherits Enemigo {
 	
-	var property imagen2 = "ufo.png"
-	var property imagenColision2="player.png"
-	
-	override method image() = imagen2
-	
-	override method imagenOriginal(){
-		imagen2="ufo.png"
-	}
-	
-	override method recibeDisparo() {
+	override method setearEnemigo() {
+		imagen="ufo.png"
 		super()
-		imagen2 = imagenColision2
+		vida=60
 	}
 		
 	override method disparoInicial(){

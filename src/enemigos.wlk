@@ -10,23 +10,18 @@ class Enemigo{
 	var property contador = 1
 	var property sentido = -1
 	var property vida = 20
-	var property msegs = 6000
+	var property danio = 5
+	var property msegs = 5000
 	var property posiciones = 2
 	var property imagen = "alien.png"
-	var property imagenColision="ufo.png"
+	var property imagenMuerte = "explosion.png"
 
-	method aumentarVida(nivel){
-		var vidaNivel = vida * (nivel.proximoNivel() - 1)
-		self.vida(vidaNivel)
-	}
-	
-	method imagenOriginal(){
-		imagen="alien.png"
-	}
-	
 	method image() = imagen
-
-	method estaMuerto() = (vida <= 0)
+	
+	method setearEnemigo(){
+		game.addVisual(self)
+		game.hideAttributes(self)
+	}
 
 	method disparoInicial() {
 		const disparo = new DisparoEnemigo()
@@ -66,13 +61,14 @@ class Enemigo{
 	}
 
 	method recibeDisparo() {
-		if (vida > 0) {
-			vida -= 5
-		} else {
-			nave.matarEnemigo()
-			game.removeVisual(self)
+		vida -= danio
+		if (vida == 0) {
+			imagen = imagenMuerte
+			game.onTick(200, "quitarImagen"+self.identity(), { =>
+				game.removeVisual(self)
+				game.removeTickEvent("quitarImagen"+self.identity())
+			})
 		}
-		imagen = imagenColision
 	}
 
 
